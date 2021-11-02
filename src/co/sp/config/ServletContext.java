@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
-@Configuration 
+@Configuration    
 @EnableWebMvc
 
 @ComponentScan("co.sp.controller")
