@@ -40,44 +40,62 @@ public class MemberVO {
 //  COMMENT ON COLUMN member.member_thumb  is 'È¸¿ø ¼¶³×ÀÏ';
 //  COMMENT ON COLUMN member.member_size is 'È¸¿ø ÇÁ·ÎÇÊ ÀÌ¹ÌÁö Å©±â';
   
+	/** È¸¿ø ¹øÈ£ **/
   private int member_no;
   
+  /** È¸¿ø ¾ÆÀÌµð **/
   @Size(min=4, max=15)
   @Pattern(regexp = "[a-zA-Z0-9]*")
   private String member_id;
   
+  /** È¸¿ø ºñ¹Ð¹øÈ£ **/
   @Size(min=4, max=15)
   @Pattern(regexp = "[a-zA-Z0-9]*")
   private String member_pw;
   
-  @Size(min=2, max=4)
+  /** È¸¿ø ºñ¹Ð¹øÈ£2 => ºñ¹Ð¹øÈ£ Ã¼Å© **/
+  @Size(min=4, max=15)
+  @Pattern(regexp = "[a-zA-Z0-9]*")
+  private String member_pw2;
+
+  /** È¸¿ø ÀÌ¸§ **/
+  @Size(min=2, max=10)
   @Pattern(regexp = "[°¡-ÆR]*")
   private String member_name;
   
+  /** È¸¿ø ÁÖ¹Îµî·Ï¹øÈ£ **/
   @Size(min=13, max=13)
   @Pattern(regexp = "[0-9]*")
   private String member_social;
   
+  /** È¸¿ø ´Ð³×ÀÓ **/
   @Size(min=4, max=15)
   @Pattern(regexp = "[a-zA-Z0-9°¡-ÆR]*")
   private String member_nickname;
   
-  @Size(min=11, max=11)
+  /** È¸¿ø ¿¬¶ôÃ³ **/
+  @Size(min=10, max=11)
   @Pattern(regexp = "[0-9]*")
   private String member_tel;
   
+  /** È¸¿ø ÀÌ¸ÞÀÏ **/
   @Email
+  @NotNull
   private String member_email;
   
+  /** È¸¿ø ¿ìÆí¹øÈ£ **/
   @NotNull
   private String member_zipcode;
   
+  /** È¸¿ø ÁÖ¼Ò **/
   @NotNull
   private String member_address1;
   
+  /** È¸¿ø »ó¼¼ÁÖ¼Ò **/
   @NotNull
   private String member_address2;
   
+  /** ÀÌ¹ÌÁö °ü·Ã º¯¼ö(»ç¿ë¿©ºÎ ºÒÅõ¸í) **/
   private String member_profile;
   private String member_thumb;
   private int member_size;
@@ -86,6 +104,16 @@ public class MemberVO {
   private String member_size_label;
   private MultipartFile member_fileMF;
   
+  /** id Áßº¹Ã¼Å© ¹× ·Î±×ÀÎ ¿©ºÎ °ü·Ã º¯¼ö **/
+  private boolean idExist;
+	private boolean memberLogin;
+  
+	//·Î±×ÀÎÀÌ µÇ¾îÀÖÁö ¾ÊÀº ÃÊ±â°ª + ¾ÆÀÌµð Áßº¹ X
+	public MemberVO() {
+		this.idExist = false;
+		this.memberLogin = false;
+	}
+	
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   public int getMember_no() {
@@ -215,5 +243,29 @@ public class MemberVO {
   public void setMember_fileMF(MultipartFile member_fileMF) {
     this.member_fileMF = member_fileMF;
   }
+
+	public String getMember_pw2() {
+		return member_pw2;
+	}
+
+	public void setMember_pw2(String member_pw2) {
+		this.member_pw2 = member_pw2;
+	}
+
+	public boolean isIdExist() {
+		return idExist;
+	}
+
+	public void setIdExist(boolean idExist) {
+		this.idExist = idExist;
+	}
+
+	public boolean isMemberLogin() {
+		return memberLogin;
+	}
+
+	public void setMemberLogin(boolean memberLogin) {
+		this.memberLogin = memberLogin;
+	}
 
 }

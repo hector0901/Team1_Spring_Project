@@ -13,8 +13,8 @@
 </head>
 <body>
 
-<a href="${root }member/login">로그인</a>
-<img src="image/main.png"/>
+<a href="${root }member/join">회원가입</a>
+<img src="image/top_image.png"/>
  
 </body>
 </html>
