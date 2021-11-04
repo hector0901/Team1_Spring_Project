@@ -13,14 +13,16 @@ public class MemberDAO {
 	private MemberMapper memberMapper;
 	
 	// 아이디 중복체크
-	public String double_id_check(String member_id) {
-		return memberMapper.double_id_check(member_id);
+	public String checkMemberIdExist(String member_id) {
+		return memberMapper.checkMemberIdExist(member_id);
 	}
 	
 	// 회원 가입
 	public void member_create(MemberVO joinMemberBean) {
 		memberMapper.member_create(joinMemberBean);
 	}
+	
+
 	
 
 }

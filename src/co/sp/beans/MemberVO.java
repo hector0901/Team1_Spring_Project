@@ -80,19 +80,19 @@ public class MemberVO {
   
   /** 회원 이메일 **/
   @Email
-  @NotNull
+  @Size(min=1, max=100)
   private String member_email;
   
   /** 회원 우편번호 **/
-  @NotNull
+  @Size(min=1, max=100)
   private String member_zipcode;
   
   /** 회원 주소 **/
-  @NotNull
+  @Size(min=1, max=100)
   private String member_address1;
   
   /** 회원 상세주소 **/
-  @NotNull
+  @Size(min=1, max=100)
   private String member_address2;
   
   /** 이미지 관련 변수(사용여부 불투명) **/
@@ -106,12 +106,13 @@ public class MemberVO {
   
   /** id 중복체크 및 로그인 여부 관련 변수 **/
   private boolean idExist;
-	private boolean memberLogin;
+  private boolean memberLogin;
   
 	//로그인이 되어있지 않은 초기값 + 아이디 중복 X
 	public MemberVO() {
 		this.idExist = false;
 		this.memberLogin = false;
+		
 	}
 	
   //////////////////////////////////////////////////////////////////////////////////////////////////////////

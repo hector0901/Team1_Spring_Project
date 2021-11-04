@@ -17,11 +17,11 @@ public class MemberService {
 	private MemberVO loginBean;
 	
 	// ID 중복 체크
-	public boolean double_id_check(String member_id) {	
-		String id_check = memberDAO.double_id_check(member_id);
+	public boolean checkMemberIdExist(String member_id) {	
+		String id_check = memberDAO.checkMemberIdExist(member_id);
 		
 		if(id_check == null) {
-			return true;             //  DB에 중복된 ID가 없는 경우
+			return true;                  //  DB에 중복된 ID가 없는 경우
 		} else {
 			return false;		  	      //  DB에 중복된 ID가 있는 경우
 		}

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="/resources/js/addressapi.js"></script>
 
 <style>
 .title_line {
@@ -25,7 +28,7 @@
 }
 
 .col-md-2 control-label {
-    margin-bottom: 10px;
+    margin-bottom: 10xp;
 }
 
 .form-group {
@@ -77,38 +80,85 @@ h1 {
 }
 </style>
 
+<script type="text/javascript">
+function execPostCode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+           // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+           // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+           // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+           var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+           var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+           // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+           // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+           if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+               extraRoadAddr += data.bname;
+           }
+           // 건물명이 있고, 공동주택일 경우 추가한다.
+           if(data.buildingName !== '' && data.apartment === 'Y'){
+              extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+           }
+           // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+           if(extraRoadAddr !== ''){
+               extraRoadAddr = ' (' + extraRoadAddr + ')';
+           }
+           // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+           if(fullRoadAddr !== ''){
+               fullRoadAddr += extraRoadAddr;
+           }
+
+           // 우편번호와 주소 정보를 해당 필드에 넣는다.
+           console.log(data.zonecode);
+           console.log(fullRoadAddr);
+           
+           
+           $("[name=member_zipcode]").val(data.zonecode);
+           $("[name=member_address1]").val(fullRoadAddr);
+           
+           /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
+           document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
+           document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
+       }
+    }).open();
+}
+</script>
+
 <script>
 function checkMemberIdExist(){
-	
-	var member_id = $("#member_id").val()
-	
-	if(member_id.length == 0){
-		alert('아이디를 입력해주세요')
-		return
-	}
-	
-	$.ajax({
-		url : '${root}user/checkMemberIdExist/' + member_id,
-		type : 'get',
-		dataType : 'text',
-		success : function(result){
-			if(result.trim() == 'true'){
-				alert('사용할 수 있는 아이디입니다')
-				$("#idExist").val('true')
-			} else {
-				alert('사용할 수 없는 아이디 입니다')
-				$("#idExist").val('false')
-			}
-		}
-	})
+  
+  var member_id = $("#member_id").val()
+  
+  if(member_id.length == 0){
+    alert('아이디를 입력해주세요.')
+    return
+  }
+  
+  $.ajax({
+    url : '${root}member/checkMemberIdExist/' + member_id,
+    type : 'get',
+    dataType : 'text',
+    success : function(result){
+      if(result.trim() == 'true'){
+        alert('사용할 수 있는 아이디입니다.')
+        $("#idExist").val('true')
+      } else {
+        alert(member_id + '는(은) 사용할 수 없는 아이디 입니다.')
+        $("#idExist").val('false')
+      }
+    }
+  })
 }  
   
-function resetUserIdExist(){
-	$("#idExist").val('false')
+function resetMemberIdExist(){
+  $("#idExist").val('false')
 }  
 </script>
 </head>
-<body>
+<body style="margin-bottom: 50px">
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- 회원가입 타이틀-->
     <div class="title_line">
@@ -123,144 +173,157 @@ function resetUserIdExist(){
     <br><br><br><br>
     
     <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean">
-   		 <form:hidden path="idExist"/>
-		   		 <div class="form-group">
-		   		 		<form:label path="member_id" class="col-md-2 control-label">이름 *</form:label>
-							<div class="col-md-6">
-								<form:input path="member_id" class='form-control'/>
-							</div>
-							<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-								<form:errors path="member_id" style='color:red' />
-							</div>
-		   		 </div>
-		   		 
-		   		 <br><br><br><br>
-		   		
-		   		 <div class="form-group">
-		   		 		<form:label path="member_pw" class="col-md-2 control-label">비밀번호 *</form:label>
-							<div class="col-md-6">
-								<form:input path="member_pw" class='form-control'/>
-							</div>
-							<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-								<form:errors path="member_pw" style='color:red' />
-							</div>
-		   		 </div>
-		   		 
-		   		 <br><br><br><br>
-					
-					<div class="form-group">
-		   		 		<form:label path="member_pw2" class="col-md-2 control-label">비밀번호 확인*</form:label>
-							<div class="col-md-6">
-								<form:input path="member_pw2" class='form-control'/>
-							</div>
-							<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-								<form:errors path="member_pw2" style='color:red' />
-							</div>
-		   		 </div>
-		   		 
-		   		 <div class="text-right">
-								<form:button class='btn btn-primary'>회원가입</form:button>
-							</div>
-		   		 
-		</form:form>
-		
-		
-    <div class="form-group">
-        <label class="col-md-2 control-label">아이디 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_id' value='' required="required"
-                style='width: 100%;' placeholder="아이디를 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
+       <form:hidden path="idExist"/>
+           <div class="form-group">
+              <form:label path="member_id" class="col-md-2 control-label">아이디 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_id" class='form-control'  onkeypress="resetIdExist()" />
+                  <div>
+                    <button type="button" class="btn btn-default" onclick='checkMemberIdExist()' style="margin-top: 2%">중복확인</button>
+                  </div>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_id" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br><br><br>
+          
+           <div class="form-group">
+              <form:label path="member_pw" class="col-md-2 control-label">비밀번호 *</form:label>
+              <div class="col-md-6">
+                <form:password path="member_pw" class='form-control'/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_pw" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
+          
+          <div class="form-group">
+              <form:label path="member_pw2" class="col-md-2 control-label">비밀번호 확인 *</form:label>
+              <div class="col-md-6">
+                <form:password path="member_pw2" class='form-control'/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_pw2" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_name" class="col-md-2 control-label">이름 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_name" class='form-control'/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_name" style='color:red' />
+              </div>
+           </div>
 
-    <br><br>
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_social" class="col-md-2 control-label">주민등록번호 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_social" class='form-control' placeholder="-를 제외한 13자리를 입력해주세요."/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_social" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_nickname" class="col-md-2 control-label">닉네임 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_nickname" class='form-control'/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_nickname" style='color:red' />
+              </div>
+           </div>
 
-    <div class="form-group">
-        <label class="col-md-2 control-label">비밀번호 *</label>
-        <div class="col-md-6">
-            <input type='password' class="form-control" id='join_pw' value='' required="required"
-                style='width: 100%;' placeholder="비밀번호를 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_tel" class="col-md-2 control-label">전화번호 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_tel" class='form-control' placeholder="-를 제외한 전화번호를 입력해주세요."/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_tel" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
 
-    <br><br>
+           <div class="form-group">
+              <form:label path="member_email" class="col-md-2 control-label">이메일 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_email" class='form-control' />
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_email" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
 
+		      <div class="form-group">
+              <form:label path="member_zipcode" class="col-md-2 control-label">우편번호 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_zipcode" class='form-control' readonly="true"/>
+                <button type="button" class="btn btn-default" onclick="execPostCode();" style="margin-top: 2%"><i class="fa fa-search"></i> 우편번호 찾기
+            </button>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_zipcode" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>   
+           
+           <div class="form-group">
+              <form:label path="member_address1" class="col-md-2 control-label">주소 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_address1" class='form-control' readonly="true"/>
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_address1" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_address2" class="col-md-2 control-label">상세주소 *</form:label>
+              <div class="col-md-6">
+                <form:input path="member_address2" class='form-control' />
+              </div>
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_address2" style='color:red' />
+              </div>
+           </div>
+           
+           <br><br><br><br>
+           
+           <div class="form-group">
+              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지 *</form:label>
+              <div class="col-md-6">
+                  <form:input type='file' path='member_profile' class="form-control" accept="image/*"/>
+              </div>
+            </div>
+           
+           <br><br><br><br>
 
-    <div class="form-group">
-        <label class="col-md-2 control-label">비밀번호 확인 *</label>
-        <div class="col-md-6">
-            <input type='password' class="form-control" id='join_pw_check' value='' required="required"
-                style='width: 100%;' placeholder="비밀번호를 확인하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">이름 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_name' value='' required="required"
-                   style='width: 100%;' placeholder="이름을 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">닉네임 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_nickname' value='' required="required"
-                   style='width: 100%;' placeholder="닉네임을 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">주민등록번호 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_social_number' value='' required="required"
-                   style='width: 100%;' placeholder="주민등록번호를 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">연락처 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_tel' value='' required="required"
-                   style='width: 100%;' placeholder="연락처를 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">e-mail *</label>
-        <div class="col-md-6">
-            <input type='email' class="form-control" id='join_email' value='' required="required"
-                style='width: 100%;' placeholder="e-mail을 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br>
-
-    <div class="form-group">
-        <label class="col-md-2 control-label">주소 *</label>
-        <div class="col-md-6">
-            <input type='text' class="form-control" id='join_address' value='' required="required"
-                style='width: 100%;' placeholder="주소를 입력하세요." autofocus="autofocus">
-        </div>
-    </div>
-
-    <br><br><br><br>
-
-    <div id="btn">
-        <button class="btn1" type="submit" id="confirm" onclick="join()">가입</button>
-        <button class="btn2" type="button" id="cancel" onclick="location.href='C:/Users/ayngi/OneDrive/바탕 화면/프로잭트2/project/login.html'">취소</button>
-    </div>
-
+           <div id="btn">
+             <form:button class='btn1'>회원가입</form:button>&emsp;
+              <button type="button" class='btn2' onclick="location.href='../'">취소</button>  
+           </div>
+    </form:form>
 </body>
-
 </html>
