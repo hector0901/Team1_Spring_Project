@@ -1,0 +1,113 @@
+
+/* �뿤�뜑 湲곕낯�삎�깭 */
+nav {
+  
+  top:0;
+  /* position: fixed; */
+  width: 100%;
+  height: 15%;
+  position: relative; 
+  display: flex;    /* flex 而⑦뀒�씠�꼫 �삎�깭*/
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;     /*viewport height �떎�뻾 以묒씤 �뒪�겕由곗뿉 留욎떠 �긽���쟻 �겕湲곕��솚 https://programming119.tistory.com/93*/
+  margin-top: -30%;
+  margin-left: -10%;
+  box-sizing: border-box;
+  margin-bottom: -15%;
+   /* padding: 200px 20px 300px; */
+}
+
+/*�뿤�뜑 �긽�쐞 �젅�씠�뼱 吏��젙*/
+.header {
+        z-index: 1; }
+
+/* �� */
+nav ul {  
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav ul::after {       /*::after: �슂�냼�쓽 而⑦뀗痢� �걹遺�遺꾩뿉  �깮�꽦�맂 而⑦뀗痢� 異붽�*/
+  display: block;
+  clear: both;       /*湲��옄 �궗吏꾩쁿�뿉 遺숈� �븡�룄濡�*/
+  content: '';       /*content : �꽑�깮�븳 �슂�냼�쓽 �궡�슜 �븵�씠�굹 �뮘�뿉 肄섑뀗�듃瑜� 遺숈엫*/
+}
+
+
+/*�긽�쐞 硫붾돱(1�떒) �쇊履쎈��꽣 �젙�젹 */
+nav ul li {            
+  position: relative;     
+  float: left;
+  /* border: 2px solid white; */
+  
+}
+
+/* first-child �냽�꽦�젣�쇅 �깭洹몄뿉 �쟻�슜 */
+ /* nav ul li:not(:first-child) {  
+   border-left: none; 
+}  */
+
+
+nav ul li:hover {
+  background-color: lemonchiffon;
+}
+
+/* �긽�쐞 硫붾돱(1�떒) �뒪���씪  */
+nav ul li a { 
+  display: inline-block;
+  padding: 1em 6em;
+  color:rgba(163, 156, 156, 0.925);
+  font: 400 22px/1 'Lato', sans-serif;
+  text-decoration: none;
+  white-space: nowrap;     /*怨듬갚泥섎━,nowrap : https://www.codingfactory.net/10597*/
+}
+
+
+/* �븯�쐞 硫붾돱 �겕湲� 議곗젙(2�떒) */
+nav ul ul {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+
+}
+/* �븯�쐞 硫붾돱 �겕湲� 議곗젙(2�떒) */
+nav ul ul li {
+  float: none;
+  margin: 0; 
+}
+
+/* first-child �냽�꽦�젣�쇅 �깭洹몄뿉 �쟻�슜 */
+/* nav ul ul li:not(:first-child) {
+  border: 2px solid white;
+  border-top: none;
+} */
+
+
+
+/* �슚怨�  */
+/*�썝洹쇨컧 李⑥씠 議곗젙 : https://gahyun-web-diary.tistory.com/80*/
+/* .header ul li {
+  perspective: 300px;    
+} */
+
+/*�븯�쐞硫붾돱 �슚怨� (2�떒)*/
+.header ul ul {
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease-in-out;
+  transform: rotateX(-90deg) rotateY(0);
+  transform-origin: 0 0;
+}
+
+/* .header ul ul li {
+  perspective: 1500px;
+} */
+
+/*�븯�쐞硫붾돱 �슚怨�(2�떒) */
+.header ul li:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  transform: rotateX(0) rotateY(0);
+}
