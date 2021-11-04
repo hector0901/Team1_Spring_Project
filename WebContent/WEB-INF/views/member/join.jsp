@@ -312,7 +312,7 @@ function resetMemberIdExist(){
            <br><br><br><br>
            
            <div class="form-group">
-              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지 *</form:label>
+              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지</form:label>
               <div class="col-md-6">
                   <form:input type='file' path='member_profile' class="form-control" accept="image/*"/>
               </div>
