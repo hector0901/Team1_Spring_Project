@@ -41,14 +41,12 @@ public class ServletContext implements WebMvcConfigurer{
 	@Value("${db.password}")
 	private String db_password;
 	
-	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.configureViewResolvers(registry);
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
-	
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

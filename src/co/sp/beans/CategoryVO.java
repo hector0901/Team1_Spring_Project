@@ -2,8 +2,8 @@ package co.sp.beans;
 
 public class CategoryVO {
   
-//  category_no                         NUMBER(10)       NOT NULL       PRIMARY KEY,
-//  category_name                       VARCHAR2(50)       NOT NULL
+  //  category_no        NUMBER(10)         NOT NULL       PRIMARY KEY,
+  //  category_name      VARCHAR2(50)       NOT NULL
   
   /** 카테고리 번호 **/
   private int category_no;
@@ -11,7 +11,7 @@ public class CategoryVO {
   /** 카테고리 이름 **/
   private String category_name;
   
-////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////
   
   public int getCategory_no() {
     return category_no;

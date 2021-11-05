@@ -171,7 +171,7 @@ function resetMemberIdExist(){
     </aside>
 
     <br><br><br><br>
-    
+
     <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean">
        <form:hidden path="idExist"/>
            <div class="form-group">
