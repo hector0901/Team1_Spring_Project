@@ -13,7 +13,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String str(HttpServletRequest request) {
 
-		return "main";
+	  return "main";
 	}
 	
 }

@@ -285,7 +285,7 @@ function resetMemberIdExist(){
               </div>
            </div>
            
-           <br><br><br><br>   
+           <br><br><br><br><br>  
            
            <div class="form-group">
               <form:label path="member_address1" class="col-md-2 control-label">주소 *</form:label>

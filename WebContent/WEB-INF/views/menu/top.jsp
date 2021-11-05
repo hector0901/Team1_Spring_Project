@@ -15,7 +15,7 @@
       <ul>
         <li><a href="#">LOGIN</a>
         <ul>
-        <li><a href="#">sub menu</a></li>
+        <li><a href="member/join">JOIN</a></li>
         <li><a href="#">sub menu</a></li>
       </ul>
       </li>
