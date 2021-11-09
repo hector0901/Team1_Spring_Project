@@ -19,8 +19,14 @@ public interface MemberMapper {
 			"VALUES (member_no_seq.nextval, #{member_id}, #{member_pw}, #{member_name}, #{member_social}, #{member_nickname}, " +
 			"#{member_tel}, #{member_email}, #{member_zipcode}, #{member_address1}, #{member_address2}, #{member_profile,jdbcType=VARCHAR}, #{member_thumb,jdbcType=VARCHAR}, #{member_size,jdbcType=NUMERIC}, sysdate)")
 	void member_create(MemberVO joinMemberBean);
-
-
+	
+	// 회원 가입 => 정보가져오기
+	@Select("select member_no, member_name " + 
+	        "from member " + 
+	        "where member_id=#{member_id} and member_pw=#{member_pw} ")
+	MemberVO getLoginMemberInfo(MemberVO tempLoginMemberBean);
+	
+	
 
 	
 }

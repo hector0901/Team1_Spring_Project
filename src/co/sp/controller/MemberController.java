@@ -2,6 +2,7 @@ package co.sp.controller;
 
 import javax.annotation.Resource;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.MemberVO;
 import co.sp.service.MemberService;
@@ -46,6 +48,33 @@ public class MemberController {
 			return "member/join_success";  // 성공한 경우
 		}		
 	}
+	
+	// 로그인
+	@GetMapping("/login")
+    public String login(@ModelAttribute("tempLoginMemberBean") MemberVO tempLoginMemberBean,
+                        @RequestParam(value = "fail", defaultValue = "false") boolean fail, Model model) {
+
+	  model.addAttribute("fail", fail);
+	  
+      return "member/login";
+    }
+    
+	// 로그인 프로시저
+    @PostMapping("/login_pro")
+    public String login_pro(@Valid @ModelAttribute("tempLoginMemberBean") MemberVO tempLoginMemberBean, BindingResult result) {
+        
+        if(result.hasErrors()) {
+            return "member/login";
+        } 
+        
+        memberService.getLoginMemberInfo(tempLoginMemberBean);
+        
+        if(loginBean.isMemberLogin() == true) {
+          return "member/login_success";
+        } else {
+          return "member/login_fail";
+        }
+    }
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {

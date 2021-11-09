@@ -1,5 +1,8 @@
 package co.sp.beans;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class ShopVO {
@@ -20,34 +23,53 @@ public class ShopVO {
 	
 	/** 가게 번호 **/
 	private int shop_no;
+	
 	/** 카테고리 번호 **/
 	private int category_no;
+	
 	/** 관리자 번호 **/
 	private int admin_no;
+	
 	/** 가게 이름 **/
+	@NotBlank
 	private String shop_name;
+	
 	/** 가게 설명 **/
+	@NotBlank
 	private String shop_content;
+	
 	/** 가게 지도<위치> **/
+	@NotBlank
 	private String shop_map;
+	
 	/** 가게 메인이미지 **/
+	@NotBlank
 	private String shop_main;
 	private MultipartFile shop_mainMF;
+	
 	/** 가게 썸네일 **/
 	private String shop_thumb;
+	
 	/** 가게 메뉴 이미지 **/
+	@NotBlank
 	private String shop_menu_img;
 	private MultipartFile shop_menuimgMF;
+	
 	/** 가게 내부 이미지 **/
+	@NotBlank
 	private String shop_inside_img;
 	private MultipartFile shop_insideimgMF;
+	
 	/** 가게 등록일 **/
 	private String shop_rdate;
-	/** 가게 총 좌석 수 **/
-	private int shop_total_seat;
-	/** 가게 잔여 좌석 수 **/
-	private int shop_remain_seat;
 	
+	/** 가게 총 좌석 수 **/
+	@NotBlank
+	private int shop_total_seat;
+	
+	/** 가게 잔여 좌석 수 **/
+	@NotBlank
+	private int shop_remain_seat;
 	
 	public MultipartFile getShop_mainMF() {
 		return shop_mainMF;

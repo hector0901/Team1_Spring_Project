@@ -1,6 +1,7 @@
 package co.sp.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
 
 import co.sp.beans.MemberVO;
@@ -21,6 +22,11 @@ public class MemberDAO {
 	public void member_create(MemberVO joinMemberBean) {
 		memberMapper.member_create(joinMemberBean);
 	}
+	
+	// ·Î±×ÀÎ
+	public MemberVO getLoginMemberInfo(MemberVO tempLoginMemberBean) {
+      return memberMapper.getLoginMemberInfo(tempLoginMemberBean);
+  }
 	
 
 	

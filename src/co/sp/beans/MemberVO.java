@@ -40,7 +40,7 @@ public class MemberVO {
 //  COMMENT ON COLUMN member.member_thumb  is '회원 섬네일';
 //  COMMENT ON COLUMN member.member_size is '회원 프로필 이미지 크기';
   
-	/** 회원 번호 **/
+  /** 회원 번호 **/
   private int member_no;
   
   /** 회원 아이디 **/

@@ -49,10 +49,9 @@ CREATE TABLE member(
 /**********************************/
 CREATE TABLE shop(
 		shop_no NUMBER(10) NOT NULL PRIMARY KEY,
-		category_no NUMBER(10),
-		admin_no NUMBER(10),
 		shop_name VARCHAR2(100) NOT NULL,
 		shop_content CLOB(10) NOT NULL,
+		shop_reply CLOB(10),
 		shop_map CLOB(10) NOT NULL,
 		shop_main VARCHAR2(100) NOT NULL,
 		shop_thumb VARCHAR2(100),
@@ -61,8 +60,13 @@ CREATE TABLE shop(
 		shop_rdate DATE NOT NULL,
 		shop_total_seat NUMBER(10) NOT NULL,
 		shop_remain_seat NUMBER(10) NOT NULL,
+		shop_reply VARCHAR2(1000),
+		category_no NUMBER(10),
+		admin_no NUMBER(10),
+		member_no NUMBER(10),
+  FOREIGN KEY (category_no) REFERENCES category (category_no),
   FOREIGN KEY (admin_no) REFERENCES admin (admin_no),
-  FOREIGN KEY (category_no) REFERENCES category (category_no)
+  FOREIGN KEY (member_no) REFERENCES member (member_no)
 );
 
 /**********************************/

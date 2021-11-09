@@ -33,7 +33,7 @@
 <br>
 <br>
 <div style="display: inline-block;">
-  <a href="" class="category"><img src="${root }image/bar_1.png" alt="" width="20%" height="20%"></a>
+  <a href="${root }category/main?category_no=1" class="category"><img src="${root }image/bar_1.png" alt="" width="20%" height="20%"></a>
   <a href=""class="category"><img src="${root }image/restaurant_1.png" alt=""width="20%" height="20%"></a>
  <a href=""class="category"><img src="${root }image/cafe_1.png" alt=""width="20%" height="20%"></a>
 <br>

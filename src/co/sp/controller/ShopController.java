@@ -10,7 +10,6 @@ import co.sp.beans.ShopVO;
 
 @Controller
 @RequestMapping("/shop")
-
 public class ShopController {
 
 	@GetMapping("/ShopList")

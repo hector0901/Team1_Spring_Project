@@ -1,6 +1,7 @@
 package co.sp.service;
 
 import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,19 @@ public class MemberService {
 	public void member_create(MemberVO joinMemberBean) {
 		memberDAO.member_create(joinMemberBean);
 	}
+	
+	// 회원 로그인
+	public void getLoginMemberInfo(MemberVO tempLoginMemberBean) {
+      
+	  MemberVO tempLoginMemberBean2 = memberDAO.getLoginMemberInfo(tempLoginMemberBean);
+      
+      if(tempLoginMemberBean2 != null) {
+          loginBean.setMember_no(tempLoginMemberBean2.getMember_no());
+          loginBean.setMember_name(tempLoginMemberBean2.getMember_name());
+          
+          loginBean.setMemberLogin(true);
+      }
+  }
 	
 	
 }
