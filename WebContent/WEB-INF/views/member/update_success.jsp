@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value='${pageContext.request.contextPath}/'/>
 <script>
-	alert('로그인에 실패하였습니다')
-	location.href = '${root}member/login?fail=true'
+	alert('수정되었습니다')
+	location.href = '../'
 </script>

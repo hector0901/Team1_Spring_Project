@@ -29,20 +29,19 @@
 						<p>아이디 비밀번호를 확인해주세요</p>
 					</div>
 					</c:if>
-					<form:form action="${root }member/login_pro" method='post' modelAttribute="tempLoginMemberBean">
+					<form:form action="${root }admin/login_pro2" method='post' modelAttribute="tempLoginAdminBean">
 						<div class="form-group">
-							<form:label path="member_id">아이디</form:label>
-							<form:input path="member_id" class='form-control'/>
-							<form:errors path='member_id' style='color:red'/>
+							<form:label path="admin_id">아이디</form:label>
+							<form:input path="admin_id" class='form-control'/>
+							<form:errors path='admin_id' style='color:red'/>
 						</div>
 						<div class="form-group">
-							<form:label path="member_pw">비밀번호</form:label>
-							<form:password path="member_pw" class='form-control'/>
-							<form:errors path='member_pw' style='color:red'/>
+							<form:label path="admin_pw">비밀번호</form:label>
+							<form:password path="admin_pw" class='form-control'/>
+							<form:errors path='admin_pw' style='color:red'/>
 						</div>
 						<div class="form-group text-right">
 							<form:button class='btn btn-primary'>로그인</form:button>
-							<a href="${root }member/join" class="btn btn-danger">회원가입</a>
 						</div>
 					</form:form>
 				</div>

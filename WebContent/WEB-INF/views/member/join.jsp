@@ -171,7 +171,7 @@ function resetMemberIdExist(){
     </aside>
 
     <br><br><br><br>
-
+    
     <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean">
        <form:hidden path="idExist"/>
            <div class="form-group">
@@ -285,7 +285,7 @@ function resetMemberIdExist(){
               </div>
            </div>
            
-           <br><br><br><br><br>  
+           <br><br><br><br>   
            
            <div class="form-group">
               <form:label path="member_address1" class="col-md-2 control-label">주소 *</form:label>
@@ -312,7 +312,7 @@ function resetMemberIdExist(){
            <br><br><br><br>
            
            <div class="form-group">
-              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지</form:label>
+              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지 *</form:label>
               <div class="col-md-6">
                   <form:input type='file' path='member_profile' class="form-control" accept="image/*"/>
               </div>

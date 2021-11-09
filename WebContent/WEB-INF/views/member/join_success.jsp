@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="root" value="${pageContext.request.contextPath }/"/>
-
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var='root' value='${pageContext.request.contextPath }/' />
 <script type="text/javascript">
 var member_name = "<c:out value='${joinMemberBean.member_name }'/>";
-	alert(member_name + '님 회원가입에 성공했습니다.')
-	location.href = "../"
+   alert(member_name + '님 회원가입에 성공했습니다.')
+   location.href = "../"
 </script>

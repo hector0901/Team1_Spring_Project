@@ -3,6 +3,8 @@ package co.sp.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
+
+import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
 
 
@@ -14,6 +16,12 @@ public class RootContext {
 	@SessionScope
 	public MemberVO loginBean() {
 		return new MemberVO();
+	}
+	
+	@Bean("loginBean2")
+	@SessionScope
+	public AdminVO loginBean2() {
+		return new AdminVO();
 	}
 
 

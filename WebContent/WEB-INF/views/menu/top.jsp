@@ -15,8 +15,27 @@
       <ul>
         <li><a href="#">LOGIN</a>
         <ul>
-        <li><a href="member/join">JOIN</a></li>
-        <li><a href="member/login">로그인</a></li>
+        
+        <c:choose>
+         <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">회원전체 목록!</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">로그아웃!</a>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="nav-item">
+            <a href="${root }member/login" class="nav-link">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a href="${root }admin/admin_login" class="nav-link">관리자 로그인</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+
+			
       </ul>
       </li>
 
