@@ -1,5 +1,7 @@
 package co.sp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
+import co.sp.service.AdminService;
 import co.sp.service.MemberService;
 import co.sp.validator.MemberValidator;
 
@@ -28,9 +31,15 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private AdminService adminService;
+	
 	@Resource(name = "loginBean")
 	private MemberVO loginBean;
 	
+	@Resource(name = "loginBean2")
+	private AdminVO loginBean2;
+
 	// ?öå?õêÍ∞??ûÖ 
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinMemberBean") MemberVO joinMemberBean) {
@@ -120,6 +129,21 @@ public class MemberController {
 		session.invalidate();
 		return "member/logout";
 	}
+	
+	
+	@GetMapping("/list") 
+	public String list(Model model) {
+		
+		if(loginBean2.isAdminLogin() == true) {
+			List<MemberVO> memberList = memberService.member_list();
+			model.addAttribute("memberList", memberList);
+		} else {
+			
+		}
+		
+		return "member/list";
+	}
+	
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {

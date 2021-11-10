@@ -21,6 +21,10 @@ public class MemberDAO {
 		return memberMapper.checkMemberIdExist(member_id);
 	}
 	
+	public List<MemberVO> member_list(){
+		return memberMapper.member_list();
+	}
+	
 	// 회원 가입
 	public void member_create(MemberVO joinMemberBean) {
 		memberMapper.member_create(joinMemberBean);

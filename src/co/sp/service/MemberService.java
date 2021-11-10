@@ -2,6 +2,7 @@ package co.sp.service;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.RowBounds;
@@ -84,6 +85,15 @@ public class MemberService {
 		   deleteMemberBean.setMember_no(loginBean.getMember_no());
 		   memberDAO.deleteMemberInfo(deleteMemberBean);
 	   }
+	   
+		/**
+		 * 회원 목록
+		 * 
+		 * @return
+		 */
+		public List<MemberVO> member_list() {
+			return memberDAO.member_list();
+		}
 	
 }
 

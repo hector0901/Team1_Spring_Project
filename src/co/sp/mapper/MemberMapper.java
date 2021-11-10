@@ -26,14 +26,14 @@ public interface MemberMapper {
 			"#{member_tel}, #{member_email}, #{member_zipcode}, #{member_address1}, #{member_address2}, #{member_profile,jdbcType=VARCHAR}, #{member_size,jdbcType=NUMERIC}, sysdate)")
 	void member_create(MemberVO joinMemberBean);
 	
-
-	
-	//로그인
-	@Select("select member_no, member_name " + 
-			"from member " + 
-			"where member_id=#{member_id} and member_pw=#{member_pw}")
-	MemberVO getLoginmemberInfo(MemberVO tempLoginMemberBean);
-	
+	/**
+	 * 회원목록
+	 * @return
+	 */
+	@Select("SELECT member_no, member_id, member_profile, member_nickname, member_email, member_tel, member_rdate " + 
+			"FROM member " +
+			"ORDER BY member_no ")
+	List<MemberVO> member_list();
 	
 	//수정
 	@Select("select member_id, member_pw, member_name, member_social, member_nickname, member_tel, member_email, member_zipcode, member_address1, member_address2, member_profile " +
@@ -55,6 +55,12 @@ public interface MemberMapper {
 			"from member " +
 			"where member_no = #{member_no}")
 	MemberVO getdeletememberInfo(int member_no);
+
+	// 로그인
+	@Select("select member_no, member_name " + "from member "
+			+ "where member_id=#{member_id} and member_pw=#{member_pw}")
+	MemberVO getLoginmemberInfo(MemberVO tempLoginMemberBean);
+		
 
 	
 }

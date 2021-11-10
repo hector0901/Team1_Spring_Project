@@ -19,7 +19,7 @@
         <c:choose>
          <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
           <li class="nav-item">
-            <a href="${root }member/read" class="nav-link">회원전체 목록!</a>
+            <a href="${root }member/list" class="nav-link">회원전체 목록!</a>
           </li>
           <li class="nav-item">
             <a href="${root }admin/logout" class="nav-link">관리자 로그아웃</a>
@@ -39,6 +39,9 @@
           </li>
           <li class="nav-item">
             <a href="${root }admin/admin_login" class="nav-link">관리자 로그인</a>
+          </li>
+          <li class="nav-item">
+            <a href="${root }member/join" class="nav-link">회원가입</a>
           </li>
         </c:otherwise>
       </c:choose>

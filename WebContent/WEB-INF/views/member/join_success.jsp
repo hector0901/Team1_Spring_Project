@@ -5,5 +5,5 @@
 <script type="text/javascript">
 var member_name = "<c:out value='${joinMemberBean.member_name }'/>";
    alert(member_name + '님 회원가입에 성공했습니다.')
-   location.href = "../"
+   location.href = "${root }member/login"
 </script>
