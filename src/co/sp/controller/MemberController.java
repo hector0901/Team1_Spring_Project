@@ -109,10 +109,15 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * 회원 로그아웃
+	 * @param session
+	 * @return
+	 */
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
 		loginBean.setMemberLogin(false);
-		
+		session.invalidate();
 		return "member/logout";
 	}
 	

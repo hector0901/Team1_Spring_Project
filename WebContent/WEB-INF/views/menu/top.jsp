@@ -19,10 +19,18 @@
         <c:choose>
          <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
           <li class="nav-item">
-            <a href="#" class="nav-link">회원전체 목록!</a>
+            <a href="${root }member/read" class="nav-link">회원전체 목록!</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">로그아웃!</a>
+            <a href="${root }admin/logout" class="nav-link">관리자 로그아웃</a>
+          </li>
+        </c:when>
+        <c:when test="${loginBean.memberLogin == true }">                   <!--  회원 로그인 -->
+          <li class="nav-item">
+            <a href="${root }member/update" class="nav-link">개인정보 수정 및 탈퇴</a>
+          </li>
+          <li class="nav-item">
+            <a href="${root }member/logout" class="nav-link">회원 로그아웃</a>
           </li>
         </c:when>
         <c:otherwise>

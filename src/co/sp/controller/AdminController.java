@@ -1,6 +1,7 @@
 package co.sp.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,17 @@ public class AdminController {
 		public String not_login() {
 			return "admin/not_login";
 		}
+		
+		/**
+		 * 관리자 로그아웃
+		 * @return
+		 */
+		@GetMapping("/logout")
+	      public String logout(HttpSession session) {
+	         loginBean2.setAdminLogin(false);
+	         session.invalidate();
+	         return "admin/logout";
+	      }
 		
 		@InitBinder
 	    public void initBinder(WebDataBinder binder) {
