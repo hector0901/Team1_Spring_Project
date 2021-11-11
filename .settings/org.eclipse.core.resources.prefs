@@ -2,3 +2,5 @@ eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/views/doc/integration.ddl=MS949
 encoding//WebContent/resources/css/main_Style.css=UTF-8
 encoding//WebContent/resources/menu/css/mainHeader_Style.css=UTF-8
+encoding//src/co/sp/controller/MemberController.java=UTF-8
+encoding//src/co/sp/controller/ShopController.java=UTF-8

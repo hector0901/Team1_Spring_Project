@@ -31,34 +31,31 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@Autowired
-	private AdminService adminService;
-	
 	@Resource(name = "loginBean")
 	private MemberVO loginBean;
 	
 	@Resource(name = "loginBean2")
 	private AdminVO loginBean2;
 
-	// ?šŒ?›ê°??… 
+	// ?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½ 
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinMemberBean") MemberVO joinMemberBean) {
 		return "member/join";
 	} 
 	
-	// ?šŒ?›ê°??… ?”„ë¡œì‹œ??
+	// ?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½ ?ï¿½ï¿½ë¡œì‹œ??
 	@PostMapping("/join_pro")
 	public String join_pro(@Valid @ModelAttribute("joinMemberBean") MemberVO joinMemberBean, BindingResult result,Model m) {
 		if(result.hasErrors()) {
-			return "member/join";           // ?‹¤?Œ¨?•œ ê²½ìš°
-		} else {
-			memberService.member_create(joinMemberBean);
+			return "member/join";           // ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê²½ìš°
+		} else {	
 			m.addAttribute("joinMemberBean", joinMemberBean);
-			return "member/join_success";  // ?„±ê³µí•œ ê²½ìš°
+			memberService.member_create(joinMemberBean);
+			return "member/join_success";  // ?ï¿½ï¿½ê³µí•œ ê²½ìš°
 		}
 		
 	}
-	// È¸¿ø ·Î±×ÀÎ
+	// È¸ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
 	@GetMapping("/login")
 	public String login(@ModelAttribute("tempLoginMemberBean") MemberVO tempLoginMemberBean,
 			            @RequestParam(value="fail", defaultValue ="false") boolean fail,
@@ -67,7 +64,7 @@ public class MemberController {
 		
 		return "member/login";
 	}
-	//·Î±×ÀÎ ¼º°ø ½ÇÆĞ
+	//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@PostMapping("/login_pro")
 	public String login_pro(@Valid @ModelAttribute("tempLoginMemberBean") MemberVO tempLoginMemberBean, BindingResult result, Model m) {
 		if(result.hasErrors()) {
@@ -88,7 +85,7 @@ public class MemberController {
 		return "member/not_login";
 	}
 	
-	//¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½
 	@GetMapping("/update")
 	public String update(@ModelAttribute("updateMemberBean") MemberVO updateMemberBean) {
 		memberService.getupdatememberInfo(updateMemberBean);
@@ -102,7 +99,7 @@ public class MemberController {
 			return "member/update";
 		}
 		memberService.updatememberInfo(updateMemberBean);
-		System.out.println("¼öÁ¤µÈ È¸¿ø ¹øÈ£: " + updateMemberBean.getMember_no());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½È£: " + updateMemberBean.getMember_no());
 		
 		return "member/update_success";
 	}
@@ -119,7 +116,7 @@ public class MemberController {
 	
 	
 	/**
-	 * È¸¿ø ·Î±×¾Æ¿ô
+	 * È¸ï¿½ï¿½ ï¿½Î±×¾Æ¿ï¿½
 	 * @param session
 	 * @return
 	 */

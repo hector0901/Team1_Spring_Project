@@ -343,7 +343,7 @@ nav ul ul ul {
 
 
 		<div class="option">
-			<button type="button" onclick="location.href='${root }category/write?category_no=${category_no }'">가게
+			<button type="button" onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게
 				등록</button>
 			<li><a href="C:/Users/ayngi/OneDrive/바탕 화면/프로젝트 통합/프로젝트2.html"><input
 					type="image" src="C:/Users/ayngi/OneDrive/바탕 화면/프로잭트2/2.png"

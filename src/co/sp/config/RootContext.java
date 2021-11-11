@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
 
 import co.sp.beans.AdminVO;
+import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.MemberVO;
 
 
@@ -23,6 +24,7 @@ public class RootContext {
 	public AdminVO loginBean2() {
 		return new AdminVO();
 	}
+
 
 
 }

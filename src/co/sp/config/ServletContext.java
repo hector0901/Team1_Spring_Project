@@ -23,6 +23,7 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import co.sp.beans.AdminVO;
+import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.MemberVO;
 import co.sp.interceptor.AdminLoginInterceptor;
 import co.sp.interceptor.LoginInterceptor;
@@ -31,8 +32,10 @@ import co.sp.interceptor.TopMenuInterceptor;
 import co.sp.interceptor.TopMenuInterceptor2;
 import co.sp.mapper.AdminMapper;
 import co.sp.mapper.MemberMapper;
+import co.sp.mapper.ShopMapper;
 import co.sp.service.AdminService;
 import co.sp.service.MemberService;
+import co.sp.service.ShopService;
 
 @Configuration
 @EnableWebMvc
@@ -114,6 +117,14 @@ public class ServletContext implements WebMvcConfigurer {
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}
+	
+	@Bean
+    public MapperFactoryBean<ShopMapper> getShopMapper(SqlSessionFactory factory) throws Exception {
+        MapperFactoryBean<ShopMapper> factoryBean = new MapperFactoryBean<ShopMapper>(ShopMapper.class);
+        factoryBean.setSqlSessionFactory(factory);
+        return factoryBean;
+    }
+
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -133,14 +144,10 @@ public class ServletContext implements WebMvcConfigurer {
 		reg2.addPathPatterns("/member/member_update", "/member/member_delete", "/views/*");
 		reg2.excludePathPatterns("/views/main");
 		
-
-		
 		MemberInterceptor memberInterceptor = new MemberInterceptor(loginBean, memberService);
 		InterceptorRegistration reg3 = registry.addInterceptor(memberInterceptor);
 		reg3.addPathPatterns("/member/member_update", "/member/member_delete");
 	}
-	
-	
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer PropertySourcesPlaceholderConfigurer() {

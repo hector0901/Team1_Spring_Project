@@ -18,7 +18,8 @@ import co.sp.beans.ShopVO;
 public class CategoryController {
 
   @GetMapping("/main")
-  public String main(@RequestParam("category_no") int category_no, Model model) {
+  public String main(@RequestParam("category_no") int category_no, 
+      Model model) {
 
     model.addAttribute("category_no", category_no);
     System.out.println("카테고리 번호" + category_no);

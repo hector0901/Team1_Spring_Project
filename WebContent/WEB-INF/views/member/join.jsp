@@ -172,7 +172,7 @@ function resetMemberIdExist(){
 
     <br><br><br><br>
     
-    <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean">
+    <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean" enctype="multipart/form-data">
        <form:hidden path="idExist"/>
            <div class="form-group">
               <form:label path="member_id" class="col-md-2 control-label">아이디 *</form:label>
@@ -310,12 +310,25 @@ function resetMemberIdExist(){
            </div>
            
            <br><br><br><br>
-           
-           <div class="form-group">
-              <form:label path="member_profile" class="col-md-2 control-label">첨부 이미지 *</form:label>
+
+            <div class="form-group">
+              <form:label path="upload_file" class="col-md-2 control-label">첨부 이미지 *</form:label>
               <div class="col-md-6">
-                  <form:input type='file' path='member_profile' class="form-control" accept="image/*"/>
+                  <form:input type='file' path='upload_file' class="form-control" accept="image/*"/>
               </div>
+              <div class="select_img"><img src="" /></div>
+
+               <script>
+               $("#upload_file").change(function(){
+            	   if(this.files && this.files[0]) {
+            		   var reader = new FileReader;
+            		   reader.onload = function(data) {
+            			   $(".select_img img").attr("src", data.target.result).width(500);        
+            			   }
+            		   reader.readAsDataURL(this.files[0]);
+            		   }
+            	   });
+               </script>
             </div>
            
            <br><br><br><br>

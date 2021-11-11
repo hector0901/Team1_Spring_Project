@@ -33,17 +33,25 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var='obj' items="${memberList }">
+					<c:forEach var='obj' items="${memberList }"  varStatus="status" >
 					<tr>
 						<td class="text-center d-none d-md-table-cell">${obj.member_no }</td>
 						<td class="text-center d-none d-md-table-cell">${obj.member_id }</td>
-						<td class="text-center d-none d-md-table-cell">${obj.member_profile }</td>
+						<td>
+						    <c:choose>
+						      <c:when test="${obj.member_profile != null}"> <!-- 파일이 존재하면 -->
+						        <img src="${root }upload/${obj.member_profile}" style="width: 120px; height: 150px;"> <!--  -->
+				          </c:when>
+			           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+			            <img src='${root }image/none1.png' style='width: 150px; height: 150px;'>
+                 </c:otherwise>
+              </c:choose>       
+						</td>					
 						<td class="text-center d-none d-md-table-cell">${obj.member_nickname }</td>
 						<td class="text-center d-none d-md-table-cell">${obj.member_email }</td>
 						<td class="text-center d-none d-md-table-cell">${obj.member_tel }</td>
-						<td class="text-center d-none d-md-table-cell">${obj.member_rdate }</td>
-						
-					</tr>
+						<td class="text-center d-none d-md-table-cell">${obj.member_rdate }</td>		
+					  </tr>
 					</c:forEach>
 				</tbody>
 			</table>
