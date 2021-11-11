@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.Admin_Category_ShopVO;
+import co.sp.beans.ShopVO;
 import co.sp.dao.ShopDAO;
 
 @Service
@@ -22,9 +23,9 @@ public class ShopService {
    * 가게 등록
    * @param RegShopBean
    */
-//  public void shop_create(Admin_Category_ShopVO RegShopBean) {
-//    shopDAO.shop_create(RegShopBean);
-//  }
+  public void shop_create(ShopVO RegShopBean) {
+    shopDAO.shop_create(RegShopBean);
+  }
   
 
 }

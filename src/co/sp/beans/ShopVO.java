@@ -40,7 +40,7 @@ public class ShopVO {
 	
 	/** 가게 지도<위치> **/
 	@NotBlank
-	private String shop_map;
+	private String map;
 	
 	/** 가게 메인이미지 **/
 	@NotBlank
@@ -70,6 +70,12 @@ public class ShopVO {
 	/** 가게 잔여 좌석 수 **/
 	@NotBlank
 	private int shop_remain_seat;
+
+	
+	private String shop_zipcode;
+	private String shop_address1;
+	private String shop_address2;
+
 	
 	public MultipartFile getShop_mainMF() {
 		return shop_mainMF;
@@ -135,12 +141,12 @@ public class ShopVO {
 		this.shop_content = shop_content;
 	}
 
-	public String getShop_map() {
-		return shop_map;
+	public String getMap() {
+		return map;
 	}
 
-	public void setShop_map(String shop_map) {
-		this.shop_map = shop_map;
+	public void setMap(String map) {
+		this.map = map;
 	}
 
 	public String getShop_main() {
@@ -198,9 +204,30 @@ public class ShopVO {
 	public void setShop_remain_seat(int shop_remain_seat) {
 		this.shop_remain_seat = shop_remain_seat;
 	}
-	
-	
-	
-	
+
+  public String getShop_zipcode() {
+    return shop_zipcode;
+  }
+
+  public void setShop_zipcode(String shop_zipcode) {
+    this.shop_zipcode = shop_zipcode;
+  }
+
+  public String getShop_address1() {
+    return shop_address1;
+  }
+
+  public void setShop_address1(String shop_address1) {
+    this.shop_address1 = shop_address1;
+  }
+
+  public String getShop_address2() {
+    return shop_address2;
+  }
+
+  public void setShop_address2(String shop_address2) {
+    this.shop_address2 = shop_address2;
+  }
+
 	
 }

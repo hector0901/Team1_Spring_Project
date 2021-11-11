@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.Admin_Category_ShopVO;
+import co.sp.beans.ShopVO;
 import co.sp.service.ShopService;
 
 @Controller
@@ -31,10 +32,12 @@ public class ShopController {
   public String main(@RequestParam("category_no") int category_no, 
                      Model model) {
 
+    model.addAttribute("admin_no", loginBean2.getAdmin_no());
     model.addAttribute("category_no", category_no);
+    
     System.out.println("관리자 번호: " + loginBean2.getAdmin_no());
     System.out.println("카테고리 번호: " + category_no);
-
+    
     return "shop/main";
   }
 
@@ -45,17 +48,14 @@ public class ShopController {
    * @param category_no    -- 카테고리 번호
    * @return
    */
-//  @GetMapping("/reg")
-//  public String reg(@ModelAttribute("RegShopBean") Admin_Category_ShopVO RegShopBean,
-//                    @RequestParam("category_no") int category_no,
-//                    @RequestParam("admin_no" ) int admin_no,
-//                    Model m) {
-//    
-//    System.out.println("관리자 번호: " + loginBean2.getAdmin_no());
-//    
-//    
-//    return "shop/reg";
-//  } 
+  @GetMapping("/reg")
+  public String reg(@ModelAttribute("RegShopBean") ShopVO RegShopBean,
+                    @RequestParam("category_no") int category_no,
+                    @RequestParam("admin_no" ) int admin_no,
+                    Model m) {
+
+    return "shop/reg";
+  } 
   
   /**
    * 가게 등록처리
@@ -64,15 +64,16 @@ public class ShopController {
    * @param m
    * @return
    */
-//  @PostMapping("/reg_pro")
-//  public String reg_pro(@ModelAttribute("RegShopBean") Admin_Category_ShopVO RegShopBean, BindingResult result, Model m) {
-//      if(result.hasErrors()) {
-//          return "shop/reg";             // 가게 등록에 실패한 경우 
-//      } else {    
-//          m.addAttribute("RegShopBean", RegShopBean);
-//          shopService.shop_create(RegShopBean);
-//          return "shop/reg_success";  // 가게 등록에 성공한 경우
-//      } 
-//  }
+  @PostMapping("/reg_pro")
+  public String reg_pro(@ModelAttribute("RegShopBean") ShopVO RegShopBean, BindingResult result, Model m) {
+      if(result.hasErrors()) {
+          return "shop/reg";             // 가게 등록에 실패한 경우 
+      } else {    
+          m.addAttribute("RegShopBean", RegShopBean);
+          shopService.shop_create(RegShopBean);
+          System.out.println(RegShopBean.getCategory_no());
+          return "shop/reg_success";     // 가게 등록에 성공한 경우
+      } 
+  }
 
 }
