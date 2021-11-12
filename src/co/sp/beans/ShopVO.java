@@ -1,6 +1,7 @@
 package co.sp.beans;
 
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -38,27 +39,27 @@ public class ShopVO {
   ////////////////////////////////////////////
   
   /** 가게명 **/
-  @NotNull
+  @NotBlank
   private String shop_name;
   
   /** 가게 설명 **/
-  @NotNull
+  @NotBlank
   private String shop_content;
   
   /** 가게 우편번호 **/
-  @NotNull
+  @NotBlank
   private String shop_zipcode;
   
   /** 가게 주소1 **/
-  @NotNull
+  @NotBlank
   private String shop_address1;
   
   /** 가게 주소2 **/
-  @NotNull
+  @NotBlank
   private String shop_address2;
   
   /** 가게 지도 **/
-  @NotNull
+  @NotBlank
   private String map;
   
   /** 가게 메인이미지 & Multipart 사진 **/
