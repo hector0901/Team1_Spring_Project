@@ -51,8 +51,8 @@ public class ShopController {
   @GetMapping("/reg")
   public String reg(@ModelAttribute("RegShopBean") ShopVO RegShopBean,
                     @RequestParam("category_no") int category_no,
-                    @RequestParam("admin_no" ) int admin_no,
-                    Model m) {
+                    @RequestParam("admin_no") int admin_no
+                    ) {
 
     return "shop/reg";
   } 
@@ -65,13 +65,12 @@ public class ShopController {
    * @return
    */
   @PostMapping("/reg_pro")
-  public String reg_pro(@ModelAttribute("RegShopBean") ShopVO RegShopBean, BindingResult result, Model m) {
-      if(result.hasErrors()) {
+  public String reg_pro(@Valid @ModelAttribute("RegShopBean") ShopVO RegShopBean, BindingResult result, Model m) {
+      if(result.hasErrors()) { 
           return "shop/reg";             // 가게 등록에 실패한 경우 
       } else {    
           m.addAttribute("RegShopBean", RegShopBean);
           shopService.shop_create(RegShopBean);
-          System.out.println(RegShopBean.getCategory_no());
           return "shop/reg_success";     // 가게 등록에 성공한 경우
       } 
   }

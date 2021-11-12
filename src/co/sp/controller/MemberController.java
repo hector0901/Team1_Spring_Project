@@ -37,7 +37,11 @@ public class MemberController {
 	@Resource(name = "loginBean2")
 	private AdminVO loginBean2;
 
-	// ?��?���??�� 
+	/**
+	 * 등록폼
+	 * @param joinMemberBean
+	 * @return
+	 */
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinMemberBean") MemberVO joinMemberBean) {
 		return "member/join";

@@ -2,14 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<c:set var='root' value="${pageContext.request.contextPath }/"/>    
+<c:set var='root' value="${pageContext.request.contextPath }/"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <title>가게 등록</title>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>  
- <style>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="/resources/js/addressapi.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<style>
  #title{
     text-align: left;
     border-bottom: 1px dashed lightgray;
@@ -72,14 +80,7 @@ h1 {
     color: black;
     cursor: pointer;
 }
-   </style>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="/resources/js/addressapi.js"></script>
+</style>
 
 <script type="text/javascript">
 function execPostCode() {
@@ -113,8 +114,7 @@ function execPostCode() {
            // 우편번호와 주소 정보를 해당 필드에 넣는다.
            console.log(data.zonecode);
            console.log(fullRoadAddr);
-           
-           
+
            $("[name=shop_zipcode]").val(data.zonecode);
            $("[name=shop_address1]").val(fullRoadAddr);
            
@@ -127,23 +127,30 @@ function execPostCode() {
 </script>
 
 </head>
-
 <body>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <div id="title">
         <h1>가게 등록</h1>
     </div>
-
-     <form:form action="${root }shop/reg_pro" method='post' modelAttribute="RegShopBean">
-      <form:hidden path="admin_no"/>
-      <form:hidden path="category_no"/>
+    
+    <aside>
+        * 표시는 필수 입력사항 입니다.
+    </aside>
+    
+    <br><br><br><br>
+    
+    <form:form action="${root }shop/reg_pro" method='post' modelAttribute="RegShopBean" enctype="multipart/form-data">
+	    <form:hidden path="admin_no"/>
+	    <form:hidden path="category_no"/>
       
       <div class="form-group">
         <form:label path="shop_name" class="col-md-2 control-label">가게명 *</form:label>
           <div class="col-md-6">
-            <form:input path="shop_name" class='form-control' required="required"/>
+            <form:input path="shop_name" class='form-control' />
           </div>
+          <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+            <form:errors path="shop_name" style='color:red' />
+          </div>   
       </div>
 
       <br><br><br>
@@ -151,8 +158,11 @@ function execPostCode() {
       <div class="form-group">
         <form:label path="shop_content" class="col-md-2 control-label">설명 *</form:label>
           <div class="col-md-6">
-            <form:textarea path="shop_content" class="form-control" rows="10" style="resize:none" required="required"/>
+            <form:textarea path="shop_content" class="form-control" rows="10" style="resize:none"/>
           </div>
+          <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+            <form:errors path="shop_content" style='color:red' />
+          </div>  
       </div>
       
       <br><br><br><br><br><br><br><br><br><br><br>
@@ -160,9 +170,12 @@ function execPostCode() {
       <div class="form-group">
         <form:label path="shop_zipcode" class="col-md-2 control-label">우편번호 *</form:label>
           <div class="col-md-6">
-            <form:input path="shop_zipcode" class='form-control' readonly="true" required="required"/>
+            <form:input path="shop_zipcode" class='form-control' readonly="true" />
               <button type="button" class="btn btn-default" onclick="execPostCode();" style="margin-top: 2%"><i class="fa fa-search"></i> 우편번호 찾기
             </button>
+          </div>
+          <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+            <form:errors path="shop_zipcode" style='color:red' />
           </div>
       </div>
            
@@ -171,7 +184,10 @@ function execPostCode() {
       <div class="form-group">
         <form:label path="shop_address1" class="col-md-2 control-label">주소 *</form:label>
           <div class="col-md-6">
-            <form:input path="shop_address1" class='form-control' readonly="true" required="required"/>
+            <form:input path="shop_address1" class='form-control' readonly="true" />
+          </div>
+          <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+            <form:errors path="shop_address1" style='color:red' />
           </div>
       </div>
            
@@ -181,7 +197,7 @@ function execPostCode() {
         <form:label path="shop_address2" class="col-md-2 control-label">상세주소 *</form:label>
           <div class="col-md-6">
             <form:input path="shop_address2" class='form-control' />
-          </div>
+          </div> 
       </div>
       
       <br><br><br>
@@ -189,43 +205,83 @@ function execPostCode() {
       <div class="form-group">
         <form:label path="map" class="col-md-2 control-label">지도 *</form:label>
           <div class="col-md-6">
-            <form:textarea path="map" class="form-control" rows="10" style="resize:none" required="required"/>
+            <form:textarea path="map" class="form-control" rows="10" style="resize:none" />
           </div>
       </div>
            
-      <br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br>
            
       <div class="form-group">
-        <form:label path="shop_main" class="col-md-2 control-label">메인 이미지 *</form:label>
+        <form:label path="upload_file1" class="col-md-2 control-label">메인 이미지 *</form:label>
           <div class="col-md-6">
-            <form:input type='file' path='shop_main' class="form-control" accept="image/*" required="required"/>
+            <form:input type='file' path='upload_file1' class="form-control" accept="image/*"/>
           </div>
+          <div class="select_img"><img src="" /></div>
+          
+          <script>
+               $("#upload_file1").change(function(){
+                 if(this.files && this.files[0]) {
+                   var reader = new FileReader;
+                   reader.onload = function(data) {
+                     $(".select_img img").attr("src", data.target.result).width(500);        
+                     }
+                   reader.readAsDataURL(this.files[0]);
+                   }
+                 });
+          </script>
       </div>
 
-      <br><br><br>
+      <br><br>
 
       <div class="form-group">
-        <form:label path="shop_menu_img" class="col-md-2 control-label">메뉴 이미지 *</form:label>
+        <form:label path="upload_file2" class="col-md-2 control-label">메뉴 이미지 *</form:label>
           <div class="col-md-6">
-            <form:input type='file' path='shop_menu_img' class="form-control" accept="image/*" required="required"/>
+            <form:input type='file' path='upload_file2' class="form-control" accept="image/*" />
           </div>
+          <div class="select_img1"><img src="" /></div>
+          
+          <script>
+               $("#upload_file2").change(function(){
+                 if(this.files && this.files[0]) {
+                   var reader = new FileReader;
+                   reader.onload = function(data) {
+                     $(".select_img1 img").attr("src", data.target.result).width(500);        
+                     }
+                   reader.readAsDataURL(this.files[0]);
+                   }
+                 });
+               </script>
       </div>
 
-      <br><br><br>
+      <br><br>
            
        <div class="form-group">
-        <form:label path="shop_inside_img" class="col-md-2 control-label">내부 이미지 *</form:label>
+        <form:label path="upload_file3" class="col-md-2 control-label">내부 이미지 *</form:label>
           <div class="col-md-6">
-            <form:input type='file' path='shop_inside_img' class="form-control" accept="image/*" required="required"/>
+            <form:input type='file' path='upload_file3' class="form-control" accept="image/*" />
           </div>
+          <div class="select_img3"><img src="" /></div>
+          
+          <script>
+               $("#upload_file3").change(function(){
+                 if(this.files && this.files[0]) {
+                   var reader = new FileReader;
+                   reader.onload = function(data) {
+                     $(".select_img3 img").attr("src", data.target.result).width(500);        
+                     }
+                   reader.readAsDataURL(this.files[0]);
+                   }
+                 });
+               </script>
+          
        </div>
            
-       <br><br><br>
+       <br><br>
            
        <div class="form-group">
         <form:label path="shop_total_seat" class="col-md-2 control-label">총 좌석 수 *</form:label>
           <div class="col-md-6">
-            <form:input type="number" path="shop_total_seat" class='form-control' required="required"/>
+            <form:input type="number" path="shop_total_seat" class='form-control'/>
           </div>
        </div>
            
@@ -234,11 +290,11 @@ function execPostCode() {
        <div class="form-group">
         <form:label path="shop_remain_seat" class="col-md-2 control-label">잔여 좌석 수 *</form:label>
           <div class="col-md-6">
-            <form:input type="number" path="shop_remain_seat" class='form-control' required="required"/>
+            <form:input type="number" path="shop_remain_seat" class='form-control' />
           </div>
        </div>
            
-       <br><br><br>
+       <br><br>
 
        <div id="btn">
         <form:button class='btn1'>가게 등록</form:button>&emsp;
@@ -246,7 +302,7 @@ function execPostCode() {
        </div>
     </form:form>
     
-    <br><br><br>
+    <br><br>
     
 </body>
 </html>
