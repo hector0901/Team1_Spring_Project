@@ -27,13 +27,22 @@ public interface MemberMapper {
 	void member_create(MemberVO joinMemberBean);
 	
 	/**
-	 * 회원목록
-	 * @return
-	 */
-	@Select("SELECT member_no, member_id, member_profile, member_nickname, member_email, member_tel, member_rdate " + 
-			"FROM member " +
-			"ORDER BY member_no ")
-	List<MemberVO> member_list();
+     * 회원목록
+     * @return
+     */
+    @Select("SELECT member_no, member_id, member_profile, member_nickname, member_email, member_tel, member_rdate " + 
+            "FROM member " +
+            "ORDER BY member_no ")
+    List<MemberVO> member_list(RowBounds rowBounds);
+    
+  //회원 목록 페이징
+    @Select("SELECT member_no, member_id, member_profile, member_nickname, member_email, member_tel, member_rdate " +
+            "FROM member " +
+            "where member_no = #{member_no}")
+    MemberVO getMemberInfo(int member_no);
+    
+    @Select("select count(*) from member")
+    int getMemberCnt();
 	
 	//수정
 	@Select("select member_id, member_pw, member_name, member_social, member_nickname, member_tel, member_email, member_zipcode, member_address1, member_address2, member_profile " +

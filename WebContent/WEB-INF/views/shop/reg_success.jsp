@@ -17,7 +17,7 @@
    var shop_name = "<c:out value='${RegShopBean.shop_name }'/>";
    var category_no = "<c:out value='${RegShopBean.category_no }'/>";
    alert(shop_name + '가게 등록에 성공했습니다..')
-   location.href = "${root }shop/main?category_no="+ category_no;
+   location.href = "${root }shop/shop_list_search_paging?category_no="+ category_no;
 </script>
 
 </head>

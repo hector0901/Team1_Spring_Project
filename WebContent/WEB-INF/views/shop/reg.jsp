@@ -140,8 +140,8 @@ function execPostCode() {
     <br><br><br><br>
     
     <form:form action="${root }shop/reg_pro" method='post' modelAttribute="RegShopBean" enctype="multipart/form-data">
-	    <form:hidden path="admin_no"/>
-	    <form:hidden path="category_no"/>
+      <form:hidden path="admin_no"/>
+      <form:hidden path="category_no"/> 
       
       <div class="form-group">
         <form:label path="shop_name" class="col-md-2 control-label">가게명 *</form:label>
@@ -156,7 +156,16 @@ function execPostCode() {
       <br><br><br>
       
       <div class="form-group">
-        <form:label path="shop_content" class="col-md-2 control-label">설명 *</form:label>
+        <form:label path="shop_simple" class="col-md-2 control-label">가게 설명 *</form:label>
+          <div class="col-md-6">
+            <form:input path="shop_simple" class='form-control' />
+          </div> 
+      </div>
+      
+      <br><br><br>
+      
+      <div class="form-group">
+        <form:label path="shop_content" class="col-md-2 control-label">상세 설명 *</form:label>
           <div class="col-md-6">
             <form:textarea path="shop_content" class="form-control" rows="10" style="resize:none"/>
           </div>
@@ -293,6 +302,15 @@ function execPostCode() {
             <form:input type="number" path="shop_remain_seat" class='form-control' />
           </div>
        </div>
+       
+       <br><br><br>
+       
+       <div class="form-group">
+        <form:label path="shop_time" class="col-md-2 control-label">영업 시간 *</form:label>
+          <div class="col-md-6">
+            <form:input path="shop_time" class='form-control' />
+          </div> 
+      </div>
            
        <br><br>
 

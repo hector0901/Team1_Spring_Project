@@ -154,6 +154,31 @@ function checkMemberIdExist(){
 function resetMemberIdExist(){
   $("#idExist").val('false')
 }  
+
+//nameCheck() -> name을 테이블명에 맞게 변경
+//member_name -> 테이블명에 맞게 변경
+//name -> 테이블명으로 변경
+
+function nameCheck(){
+var member_name = $("#member_name").val()
+if(member_name.length < 2 || member_name.length > 10) {
+  var c=document.getElementById("member_namecheck"); //div아이디
+  c.innerHTML=null;
+  var a= document.createElement("member_namecheck_txt"); //오류 텍스트
+  a.innerHTML = "이름은 2 ~ 10글자 사이로 입력해주세요1.";
+  document.getElementById("member_namecheck").appendChild(a);
+  return;
+}
+else{
+  var c2=document.getElementById("member_namecheck");
+  c2.innerHTML=null;
+  var b2=document.getElementById("member_namecheck").removeChild(a);
+  return;
+}
+}
+
+
+
 </script>
 </head>
 <body style="margin-bottom: 50px">
@@ -216,10 +241,9 @@ function resetMemberIdExist(){
            <div class="form-group">
               <form:label path="member_name" class="col-md-2 control-label">이름 *</form:label>
               <div class="col-md-6">
-                <form:input path="member_name" class='form-control'/>
+                <form:input path="member_name" class='form-control' oninput="nameCheck()"/> <!-- oninput="nameCheck()" : name을 테이블명에 맞게 변경 -->
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-                <form:errors path="member_name" style='color:red' />
+              <div id=member_namecheck oninput="nameCheck()">
               </div>
            </div>
 

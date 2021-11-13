@@ -1,0 +1,51 @@
+@charset "EUC-KR";
+
+#area {
+    width: 800px;
+    height: 300px;
+    background-color: lemonchiffon;
+}
+#image {
+    padding-left: 3%;
+    padding-top: 3%;
+    float: left;
+}
+
+#shop-name {
+    padding-top: 4%;
+    padding-left: 40%;
+    font-size: 2.5em;
+}
+
+#shop-address {
+    padding-top: 7%;
+    padding-left: 40%;
+    font-size: 1.6em;
+}
+
+#time-title {
+    border: 1px solid #d4f6b7;
+    width: 100px;
+    height: 30px;
+    margin-left: 60%;
+    margin-top: 12%;
+    background-color: #d4f6b7;
+    padding-left: 1.5%;
+    padding-top: 0.5%;
+    font-size: 20px;
+    color: gray;
+}
+
+#shop-time {
+    width: 200px;
+    height: 30px;
+    margin-left: 77%;
+    font-size: 25px;
+    margin-top: -4.5%;
+    color: gray;
+}
+
+#face-image {
+    margin-left: 80%;
+    margin-top: -18%;
+}

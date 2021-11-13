@@ -274,12 +274,24 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_profile" class="col-md-2 control-label">프로필 사진 *</form:label>
-				<div class="col-md-4">
-					<form:input path="member_profile" type='file' class="form-control"
-						required="required" />
-				</div>
-			</div>
+              <form:label path="upload_file" class="col-md-2 control-label">첨부 이미지 *</form:label>
+              <div class="col-md-6">
+                  <form:input type='file' path='upload_file' class="form-control" accept="image/*"/>
+              </div>
+              <div class="select_img"><img src="" /></div>
+
+               <script>
+               $("#upload_file").change(function(){
+                 if(this.files && this.files[0]) {
+                   var reader = new FileReader;
+                   reader.onload = function(data) {
+                     $(".select_img img").attr("src", data.target.result).width(500);        
+                     }
+                   reader.readAsDataURL(this.files[0]);
+                   }
+                 });
+               </script>
+            </div>
 
 			<br>
 			<br>

@@ -42,6 +42,10 @@ public class ShopVO {
   @NotBlank
   private String shop_name;
   
+  /** 가게 심플설명 **/
+  @NotBlank
+  private String shop_simple;
+  
   /** 가게 설명 **/
   @NotBlank
   private String shop_content;
@@ -85,6 +89,10 @@ public class ShopVO {
   /** 가게 등록일 **/
   private String shop_rdate;
   
+  /** 가게 영업시간 **/
+  @NotBlank
+  private String shop_time;
+  
   //////////////////////////////////////////////
   
   public int getShop_no() {
@@ -110,6 +118,12 @@ public class ShopVO {
   }
   public void setShop_name(String shop_name) {
     this.shop_name = shop_name;
+  }
+  public String getShop_simple() {
+    return shop_simple;
+  }
+  public void setShop_simple(String shop_simple) {
+    this.shop_simple = shop_simple;
   }
   public String getShop_content() {
     return shop_content;
@@ -194,6 +208,12 @@ public class ShopVO {
   }
   public void setShop_rdate(String shop_rdate) {
     this.shop_rdate = shop_rdate;
+  }
+  public String getShop_time() {
+    return shop_time;
+  }
+  public void setShop_time(String shop_time) {
+    this.shop_time = shop_time;
   }
   
 }

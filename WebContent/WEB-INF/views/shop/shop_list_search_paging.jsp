@@ -135,20 +135,18 @@ input[type=submit] {
 	    <input type="submit" id="submit" value="검색">
 	</div>
        
+
+    <c:if test="${loginBean2.adminLogin == true }">
+      <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
+      <span class='menu_divide' >│</span>
+    </c:if>
+    <A href="javascript:location.reload();">새로고침</A>
+       
+       
+       
      <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
      
      <div class="option">
-         <li>
-                <c:choose>
-                  <c:when test="${loginBean2.adminLogin == true }">
-                      <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
-                  </c:when>
-                  <c:otherwise>
-                  </c:otherwise>
-               </c:choose>     
-         </li>
-                       
-
          <li>
              <div id="area">
                <div id="image">

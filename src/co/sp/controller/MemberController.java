@@ -31,6 +31,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+    private AdminService adminService;
+	
 	@Resource(name = "loginBean")
 	private MemberVO loginBean;
 	
@@ -47,7 +50,13 @@ public class MemberController {
 		return "member/join";
 	} 
 	
-	// ?��?���??�� ?��로시??
+	/**
+	 * 회원가입 프로시저
+	 * @param joinMemberBean
+	 * @param result
+	 * @param m
+	 * @return
+	 */
 	@PostMapping("/join_pro")
 	public String join_pro(@Valid @ModelAttribute("joinMemberBean") MemberVO joinMemberBean, BindingResult result,Model m) {
 		if(result.hasErrors()) {
@@ -98,7 +107,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/update_pro")
-	public String update_pro(@Valid @ModelAttribute("updateMemberBean") MemberVO updateMemberBean, BindingResult result) {
+	public String update_pro(@Valid @ModelAttribute("updateMemberBean") MemberVO updateMemberBean, BindingResult result, Model m) {
 		if(result.hasErrors()) {
 			return "member/update";
 		}
@@ -129,20 +138,6 @@ public class MemberController {
 		loginBean.setMemberLogin(false);
 		session.invalidate();
 		return "member/logout";
-	}
-	
-	
-	@GetMapping("/list") 
-	public String list(Model model) {
-		
-		if(loginBean2.isAdminLogin() == true) {
-			List<MemberVO> memberList = memberService.member_list();
-			model.addAttribute("memberList", memberList);
-		} else {
-			
-		}
-		
-		return "member/list";
 	}
 	
 	

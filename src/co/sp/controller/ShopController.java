@@ -1,5 +1,7 @@
 package co.sp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -28,13 +30,19 @@ public class ShopController {
   @Resource(name = "loginBean2")
   private AdminVO loginBean2;
   
+  /**
+   * 목록
+   * @param category_no
+   * @param model
+   * @return
+   */
   @GetMapping("/main")
   public String main(@RequestParam("category_no") int category_no, 
                      Model model) {
 
     model.addAttribute("admin_no", loginBean2.getAdmin_no());
     model.addAttribute("category_no", category_no);
-    
+
     System.out.println("관리자 번호: " + loginBean2.getAdmin_no());
     System.out.println("카테고리 번호: " + category_no);
     
@@ -74,5 +82,33 @@ public class ShopController {
           return "shop/reg_success";     // 가게 등록에 성공한 경우
       } 
   }
+  
+  /**
+   * 카테고리별 가게 목록
+   * @param category_no
+   * @param model
+   * @return
+   */
+  @GetMapping("/shop_list_search_paging")
+  public String shop_list_search_paging(@RequestParam("category_no") int category_no, Model model){
+
+    List<ShopVO> shop_list_search_paging = shopService.shop_list_search_paging(category_no);
+
+    model.addAttribute("category_no", category_no);
+    model.addAttribute("admin_no", loginBean2.getAdmin_no());                // 가게 등록에 필요한 관리자 번호
+    model.addAttribute("shop_list_search_paging", shop_list_search_paging);
+    
+    return "shop/shop_list_search_paging";
+    
+  }
+  
+  
+  
+  
+
+  
+
+  
+  
 
 }

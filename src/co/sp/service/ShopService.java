@@ -1,6 +1,7 @@
 package co.sp.service;
 
 import java.io.File;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -108,5 +109,18 @@ public class ShopService {
     shopDAO.shop_create(RegShopBean);
     
   }
+  
+  /**
+   * 카테고리별 가게 목록
+   * @return
+   */
+  public List<ShopVO> shop_list_search_paging(int category_no) {
+    return shopDAO.shop_list_search_paging(category_no);
+  }
+  
+  
+  
+  
+  
 
 }

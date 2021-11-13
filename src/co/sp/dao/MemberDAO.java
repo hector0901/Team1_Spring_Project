@@ -22,9 +22,18 @@ public class MemberDAO {
 		return memberMapper.checkMemberIdExist(member_id);
 	}
 	
-	public List<MemberVO> member_list(){
-		return memberMapper.member_list();
-	}
+	// 회원 목록 페이징
+    public List<MemberVO> member_list(RowBounds rowBounds) {
+        return memberMapper.member_list(rowBounds);
+    }
+    
+    public MemberVO getMemberInfo(int member_no) {
+        return memberMapper.getMemberInfo(member_no);
+    }
+    
+    public int getMemberCnt() {
+        return memberMapper.getMemberCnt();
+    }
 	
 	// 회원 가입
 	public void member_create(MemberVO joinMemberBean) {

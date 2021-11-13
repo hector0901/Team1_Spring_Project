@@ -14,11 +14,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.dao.MemberDAO;
 
 @Service
 @PropertySource("/WEB-INF/properties/option.properties")
 public class MemberService {
+  
+  @Value("${page.listcount}")
+  private int page_listcount;
+  
+  @Value("${page.pa}")
+  private int page_pa;
   
   @Value("${path.upload}")
   private String path_upload;
@@ -118,13 +125,19 @@ public class MemberService {
     memberDAO.deleteMemberInfo(deleteMemberBean);
   }
 
-  /**
-   * 회원 목록
-   * 
-   * @return
-   */
-  public List<MemberVO> member_list() {
-    return memberDAO.member_list();
+  //회원목록
+  public List<MemberVO> member_list(int page) {
+      
+      int start = (page -1)* page_listcount;
+      RowBounds rowBounds = new RowBounds(start, page_listcount);
+      return memberDAO.member_list(rowBounds);
+  }
+  
+  public Page getMemberCnt(int currentPage) {
+      int member_cnt = memberDAO.getMemberCnt();
+      Page pageBean = new Page(member_cnt, currentPage, page_listcount, page_pa);
+      
+      return pageBean;
   }
 
 }

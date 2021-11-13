@@ -31,8 +31,8 @@
 <br>
 <br>
 <div style="display: inline-block;">
-  <a href="${root }shop/main?category_no=1" class="shop"><img src="${root }image/bar_1.png" alt="" width="20%" height="20%"></a>
-  <a href="${root }shop/main?category_no=2" class="shop"><img src="${root }image/restaurant_1.png" alt=""width="20%" height="20%"></a>
+  <a href="${root }shop/shop_list_search_paging?category_no=1" class="shop"><img src="${root }image/bar_1.png" alt="" width="20%" height="20%"></a>
+  <a href="${root }shop/shop_list_search_paging?category_no=2" class="shop"><img src="${root }image/restaurant_1.png" alt=""width="20%" height="20%"></a>
  <a href=""class="category"><img src="${root }image/cafe_1.png" alt=""width="20%" height="20%"></a>
 <br>
 <br>
