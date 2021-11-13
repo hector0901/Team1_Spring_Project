@@ -4,6 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>    
 
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +61,7 @@ aside {
 
 body {
     margin: 0px auto;
-    width: 60%;
+    width: 100%;
 }
 
 button {
@@ -78,6 +82,12 @@ h1 {
     color: black;
     cursor: pointer;
 }
+
+section {
+    margin: 0px auto;
+    width: 60%;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -181,8 +191,14 @@ else{
 
 </script>
 </head>
-<body style="margin-bottom: 50px">
 
+
+
+
+
+<body style="width: 100%;">
+<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
+<section>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- 회원가입 타이틀-->
@@ -362,5 +378,6 @@ else{
               <button type="button" class='btn2' onclick="location.href='../'">취소</button>  
            </div>
     </form:form>
+    </section>
 </body>
 </html>

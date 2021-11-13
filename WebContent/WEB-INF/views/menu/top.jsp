@@ -12,6 +12,8 @@
 
 <!-- 헤더 -->
     <nav class="header">
+    
+      <img src="${root }menu/image/logo_1.png" alt="" width="15%" height="15%">
       <ul>
         <li><a href="#">LOGIN</a>
         <ul>

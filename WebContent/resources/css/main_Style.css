@@ -8,7 +8,7 @@
     left: 0px;
    
 
-   /* ��媛곸꽑 議곗젅 */
+   /* 占쏙옙揶쏄낯苑� 鈺곌퀣�쟿 */
      transform: skewX(160deg) translateX(60%); 
     overflow: hidden;
     
@@ -22,10 +22,10 @@
     TOP:0px;
     left: 0px;
     opacity: 0;
-    background-size: 75%;      /*諛곌꼍 �궗�씠利� 議곗젙*/
+    background-size: 75%;      /*獄쏄퀗瑗� 占쎄텢占쎌뵠筌앾옙 鈺곌퀣�젟*/
     /* background-position:50% 50%; */
-    background-repeat: none;             /* 諛곌꼍�씠誘몄� 諛섎났:none */
-    -webkit-animation: bg-slide-animation 30s linear infinite 0s; /*�씪�젙�냽�룄濡� �븷�땲硫붿씠�뀡 臾댄븳�옱�깮*/
+    background-repeat: none;             /* 獄쏄퀗瑗랃옙�뵠沃섎챷占� 獄쏆꼶�궗:none */
+    -webkit-animation: bg-slide-animation 30s linear infinite 0s; /*占쎌뵬占쎌젟占쎈꺗占쎈즲嚥∽옙 占쎈막占쎈빍筌롫뗄�뵠占쎈�� �눧�똾釉놂옙�삺占쎄문*/
      animation: bg-slide-animation 30s
       linear infinite 0s;
 }
@@ -50,16 +50,16 @@
     animation-delay: 21s;
 }
 @-webkit-keyframes bg-slide-animation{
-    0%{ -webkit-animation-timing-function:ease-in;    /*ease-in�븷�땲硫붿씠�뀡 �뒓由ш쾶 �떆�옉*/
+    0%{ -webkit-animation-timing-function:ease-in;    /*ease-in占쎈막占쎈빍筌롫뗄�뵠占쎈�� 占쎈뮄�뵳�덉쓺 占쎈뻻占쎌삂*/
     opacity: 0;}
 
     10%{
         -webkit-transform: scale(1.1);
-        -webkit-animation-timing-function: ease-out;  /*ease-in�븷�땲硫붿씠�뀡 �뒓由ш쾶 �걹�궓*/
+        -webkit-animation-timing-function: ease-out;  /*ease-in占쎈막占쎈빍筌롫뗄�뵠占쎈�� 占쎈뮄�뵳�덉쓺 占쎄국占쎄텚*/
         opacity:1;
     }
-    30%{-webkit-transform: scale(1.3);     /*scale:1.3諛� �솗�� */
-        opacity: 1;                        /*�닾紐낅룄:1 (�셿�쟾遺덊닾紐�) */
+    30%{-webkit-transform: scale(1.3);     /*scale:1.3獄쏉옙 占쎌넇占쏙옙 */
+        opacity: 1;                        /*占쎈떮筌뤿굝猷�:1 (占쎌끏占쎌읈�겫�뜇�떮筌륅옙) */
     }
     50%{-webkit-transform: scale(1.3);
         opacity: 0;
@@ -92,10 +92,10 @@
 
 
 
-.category img {
+.shop img {
     transition: all 0.2s linear;
      padding-left: 8%;
   }
-  .category:hover img {
+  .shop:hover img {
     transform: scale(1.2);
   }
