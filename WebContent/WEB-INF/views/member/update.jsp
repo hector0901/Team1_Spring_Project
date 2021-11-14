@@ -25,9 +25,6 @@
         $(function () {
             $(":disabled").css("background-color", "white");
         })
-        function ch2() {
-            window.close();
-        }
     </script>
 <script type="text/javascript">
 function execPostCode() {
@@ -305,7 +302,7 @@ function execPostCode() {
 				<form:button class="mypage회원정보수정_button" id="button1"
 					style="margin-left: 19%;">수정완료</form:button>
 				<form:button type="button" value="취소" class="mypage회원정보수정_button"
-					id="button2" onclick="ch2()" />
+					id="button2" onclick="location.href='../'" />
 					
 			</div>
 		</div>
