@@ -187,7 +187,7 @@ function execPostCode() {
           </div>  
       </div>
       
-      <br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br><br>
       
       <div class="form-group">
         <form:label path="shop_zipcode" class="col-md-2 control-label">우편번호 *</form:label>
@@ -201,7 +201,7 @@ function execPostCode() {
           </div>
       </div>
            
-      <br><br><br><br><br>
+      <br><br><br><br><br><br>
            
       <div class="form-group">
         <form:label path="shop_address1" class="col-md-2 control-label">주소 *</form:label>
@@ -213,7 +213,7 @@ function execPostCode() {
           </div>
       </div>
            
-      <br><br><br>
+      <br><br><br><br>
       
       <div class="form-group">
         <form:label path="shop_address2" class="col-md-2 control-label">상세주소 *</form:label>

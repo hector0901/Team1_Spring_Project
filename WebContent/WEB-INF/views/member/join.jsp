@@ -260,11 +260,11 @@ else{
            <br><br><br><br>
           
           <div class="form-group">
-              <form:label path="member_pw2" class="col-md-2 control-label">비밀번호 확인 *</form:label>
+              <form:label path="member_pw2" class="col-md-2 control-label">비밀번호확인 *</form:label>
               <div class="col-md-6">
                 <form:password path="member_pw2" class='form-control'/>
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+              <div class="col-md-6" style="margin-top: 0.3%"  >
                 <form:errors path="member_pw2" style='color:red' />
               </div>
            </div>
@@ -287,7 +287,7 @@ else{
               <div class="col-md-6">
                 <form:input path="member_social" class='form-control' placeholder="-를 제외한 13자리를 입력해주세요."/>
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+              <div class="col-md-6" style="margin-top: 0.3%"  >
                 <form:errors path="member_social" style='color:red' />
               </div>
            </div>
@@ -342,7 +342,7 @@ else{
               </div>
            </div>
            
-           <br><br><br><br>   
+           <br><br><br><br><br>  
            
            <div class="form-group">
               <form:label path="member_address1" class="col-md-2 control-label">주소 *</form:label>
