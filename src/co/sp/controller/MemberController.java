@@ -117,6 +117,11 @@ public class MemberController {
 		return "member/update_success";
 	}
 	
+	@GetMapping("/delete_page")
+	public String delete_page(@ModelAttribute("deleteMemberBean") MemberVO deleteMemberBean, BindingResult result, Model model) {
+		
+		return "member/delete_page";
+	}
 	@GetMapping("/delete")
 	public String delete(@Valid @ModelAttribute("deleteMemberBean") MemberVO deleteMemberBean, BindingResult result, Model model, HttpSession session) {
 		memberService.deleteMemberInfo(deleteMemberBean);

@@ -21,6 +21,55 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="/resources/js/addressapi.js"></script>
 <link rel="stylesheet" type="text/css" href="css/mypage.css">
+<style type="text/css">
+.select_img {
+	margin-top:2%;
+	margin-left: 18%;
+}
+
+img {
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.col-md-4 {
+    margin-left: -80px;
+}
+
+
+body {
+    margin: 0px auto;
+    width: 100%;
+}
+ 
+#button1{
+	width: 7.5%;
+    height: 35px;
+    border: 0px;
+    background-color: lemonchiffon;
+    color: rgba(163, 156, 156, 0.925);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 50%;
+}
+#button2{
+    margin-left: 1%;
+	width: 7.5%;
+    height: 35px;
+    border: 0.5px solid;
+    background-color: white;
+    color: rgba(163, 156, 156, 0.925);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+}
+.form-group{
+	margin-left: 38%;
+}
+
+
+
+</style>
 <script>
         $(function () {
             $(":disabled").css("background-color", "white");
@@ -73,55 +122,22 @@ function execPostCode() {
 </head>
 
 <body>
-	<!-- 헤더 (메뉴리스트, 로고) -->
-	<header class="mypage회원정보수정_header">
-		<!-- <form id="form1" runat="server">
-            <div class="wrap"> -->
-		<div class="mypage회원정보수정_menubar">
-			<div class="mypage회원정보수정_menuLogo" style="margin: -30px;">
-				<a
-					href="file:///C:/Users/ayngi/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/%ED%94%84%EB%A1%9C%EC%9E%AD%ED%8A%B82/project/%EB%A9%94%EC%9D%B8.html">
-					<img src="C:/Users/ayngi/OneDrive/바탕 화면/프로잭트2/logo.png" alt=""
-					style="margin-left: 150px;">
-				</a>
-			</div>
-			<ul class="mypage회원정보수정_menuItem">
-				<li><a href="#"><i class="fas fa-search"></i></a></li>
-				<li><a href="#">예약내역</a></li>
-
-				<li><a href="#">더보기</a>
-					<ul>
-						<li><a href="#" style="padding-bottom: 60px;">공지사항</a></li>
-						<li><a href="#" style="padding-bottom: 60px;">이벤트</a></li>
-						<li><a href="#" style="padding-bottom: 60px;">Q&A</a></li>
-					</ul></li>
-			</ul>
-		</div>
-		<!-- </div>
-            </form> -->
-	</header>
-	<form:form action='${root }member/update_pro' method='post'
-		modelAttribute="updateMemberBean">
-		<div class="mypage회원정보수정_div" style="margin-top: 10px;">
-			<br>
-			<br>
-			<br>
+<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
+	<form:form action='${root }member/update_pro' method='post' modelAttribute="updateMemberBean">
+		<div class="mypage회원정보수정_div" style="margin-top: -3%;">
 			<div class="form-group">
 				<form:label path="member_id" class="col-md-2 control-label">아이디 *</form:label>
 				<div class="col-md-4">
-					<form:input path="member_id" type='text' class="form-control"
-						required="required" disabled="disabled" />
+					<form:input path="member_id" type='text' class="form-control" required="required" disabled="disabled" />
 				</div>
 			</div>
 
-			<br>
-			<br>
+			<br><br><br>
 
 			<div class="form-group">
 				<form:label path="member_pw" class="col-md-2 control-label">비밀번호 *</form:label>
 				<div class="col-md-4">
-					<form:input path="member_pw" type='password' class="form-control"
-						required="required" />
+					<form:input path="member_pw" type='password' class="form-control" required="required" />
 				</div>
 			</div>
 
@@ -131,8 +147,7 @@ function execPostCode() {
 			<div class="form-group">
 				<form:label path="member_pw2" class="col-md-2 control-label">비밀번호 확인 *</form:label>
 				<div class="col-md-4">
-					<form:input path="member_pw2" type='password' class="form-control"
-						required="required" />
+					<form:input path="member_pw2" type='password' class="form-control" required="required" />
 				</div>
 			</div>
 
@@ -220,15 +235,13 @@ function execPostCode() {
     </div>-->
 			<div class="form-group">
 				<form:label path="member_zipcode" class="col-md-2 control-label">우편번호 *</form:label>
-				<div class="col-md-6">
-					<form:input path="member_zipcode" class='form-control'
-						readonly="true" />
-					<button type="button" class="btn btn-default"
-						onclick="execPostCode();" style="margin-top: 2%">
+				<div class="col-md-4">
+					<form:input path="member_zipcode" class='form-control' readonly="true" />
+					<button type="button" class="btn btn-default" onclick="execPostCode();" style="margin-top: 2%">
 						<i class="fa fa-search"></i> 우편번호 찾기
 					</button>
 				</div>
-				<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%">
+				<div class="col-md-4" style="margin-left: 14.8%; margin-top: 0.3%">
 					<form:errors path="member_zipcode" style='color:red' />
 				</div>
 			</div>
@@ -240,49 +253,41 @@ function execPostCode() {
 
 			<div class="form-group">
 				<form:label path="member_address1" class="col-md-2 control-label">주소 *</form:label>
-				<div class="col-md-6">
-					<form:input path="member_address1" class='form-control'
-						readonly="true" />
+				<div class="col-md-4">
+					<form:input path="member_address1" class='form-control' readonly="true" />
 				</div>
-				<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%">
+				<div class="col-md-4" style="margin-left: 14.8%; margin-top: 0.3%">
 					<form:errors path="member_address1" style='color:red' />
 				</div>
 			</div>
 
-			<br>
-			<br>
-			<br>
-			<br>
+			<br><br>
 
 			<div class="form-group">
 				<form:label path="member_address2" class="col-md-2 control-label">상세주소 *</form:label>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<form:input path="member_address2" class='form-control' />
 				</div>
-				<div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%">
+				<div class="col-md-4" style="margin-left: 14.8%; margin-top: 0.3%">
 					<form:errors path="member_address2" style='color:red' />
 				</div>
 			</div>
 
-			<br>
-			<br>
-			<br>
-			<br> <br>
-			<br>
+			<br><br>
 
 			<div class="form-group">
-              <form:label path="upload_file" class="col-md-2 control-label">첨부 이미지 *</form:label>
-              <div class="col-md-6">
+              <form:label path="upload_file" class="col-md-2 control-label">프로필 이미지 *</form:label>
+              <div class="col-md-4">
                   <form:input type='file' path='upload_file' class="form-control" accept="image/*"/>
-              </div>
-              <div class="select_img"><img src="" /></div>
+              </div><br><br>
+              <div class="select_img"><img src=""/></div>
 
                <script>
                $("#upload_file").change(function(){
                  if(this.files && this.files[0]) {
                    var reader = new FileReader;
                    reader.onload = function(data) {
-                     $(".select_img img").attr("src", data.target.result).width(500);        
+                     $(".select_img img").attr("src", data.target.result).width(150).height(150);        
                      }
                    reader.readAsDataURL(this.files[0]);
                    }
@@ -290,51 +295,18 @@ function execPostCode() {
                </script>
             </div>
 
-			<br>
-			<br>
 
 			<!--  <button type="button" value="우편번호찾기" class="mypage회원정보수정_button" onclick="execPostCode();" style="margin-left: 720px;">우편번호찾기</button><br><br>-->
 
 			<br>
-			<br>
-
-			<div style="margin-left: 488px;">
-				<form:button class="mypage회원정보수정_button" id="button1"
-					style="margin-left: 19%;">수정완료</form:button>
-				<form:button type="button" value="취소" class="mypage회원정보수정_button"
-					id="button2" onclick="location.href='../'" />
-					
+			
+			<div style="margin-left: -10%;">
+				<form:button class="mypage회원정보수정_button" id="button1" >수정완료</form:button>
+				<form:button type="button" class="mypage회원정보수정_button" id="button2" onclick="location.href='../'" >취소</form:button>
+			</div>		
 			</div>
-		</div>
+		
 	</form:form>
-	<form:form action='${root }member/delete' method='get'
-		modelAttribute="deleteMemberBean">
-    <a href="${root }member/delete">삭제</a>
-	</form:form>
-	<br>
-	<br>
-	<footer class="mypage_footer">
-		<!-- <hr> -->
-		<ul class="mypage_footer_1">
-			<li><i class="fas fa-map-marker-alt"></i> 15, Jong-ro 12-gil,
-				Jongno-gu, <br> &nbsp; &nbsp; Seoul, Republic of Korea <br>
-				&nbsp; &nbsp;(서울시 종로구 관철동 13-13)</li>
-			<li><i class="fas fa-phone-alt"></i> +82-1234-5678</li>
-			<li style="color: dodgerblue;"><i class="far fa-envelope"></i>
-				abcdhijklmnop@gmail.com</li>
-		</ul>
-		<ul class="mypage_footer_2">
-			<li><span style="font-size: 25px; font-weight: bold;">
-					About the company</span> <br> Yesterday. All my troubles seemed so
-				far away. <br> Now it looks as though they're here to stay. <br>
-				Oh, I believe in yesterday. Suddenly. <br> I'm not half the man
-				I used to be. <br> There's a shadow hanging over me. Oh,
-				yesterday came</li>
-			<hr>
-			<li class="mypage_mark"><i class="fab fa-facebook-square"></i></li>
-			<li class="mypage_mark"><i class="fab fa-twitter-square"></i></li>
-			<li class="mypage_mark"><i class="fab fa-instagram"></i></li>
-			<li class="mypage_mark"><i class="fas fa-blog"></i></li>
-		</ul>
-	</footer>
+	<br><br>
+	
 </body>

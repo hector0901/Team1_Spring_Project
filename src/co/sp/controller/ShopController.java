@@ -103,9 +103,22 @@ public class ShopController {
   }
   
   
-  
-  
-
+	@GetMapping("/shop_detail")
+	public String shopmain(@RequestParam("shop_no") int shop_no,
+							@RequestParam("category_no") int category_no,
+					   		@RequestParam(value="admin_no", defaultValue = "1") int admin_no,
+					   		Model model) {
+		
+		model.addAttribute("category_no",category_no);
+		model.addAttribute("shop_no",shop_no);
+		model.addAttribute("admin_no",admin_no);
+		
+		System.out.println("카테고리 번호" + category_no);
+		System.out.println("가게 번호"+shop_no);
+		System.out.println("관리자 번호"+admin_no);
+		
+		return "shop/shop_detail";
+	}
   
 
   

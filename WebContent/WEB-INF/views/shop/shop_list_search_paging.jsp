@@ -173,7 +173,5 @@ input[type=submit] {
             </div>
        </div>
       </c:forEach>
-
 </body>
-
 </html>

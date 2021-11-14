@@ -14,10 +14,51 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!-- 폰트 링크 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+<style type="text/css">
+/* 폰트 링크 */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+	.admin_login_logo{
+	  font-family: 'Mochiy Pop P One', sans-serif;
+	  margin-left:35%;
+	  margin-top: 36px;
+	  position: absolute;
+	  z-index : 1;
+	}
+	.container{
+	  margin-top:70px;
+	}
+	.login_btn{
+      padding: 1% 3%;
+      background-color: lemonchiffon;
+      border-radius: 5px;
+      font-family:"맑은고딕";
+      border:none;
+      color: rgba(112, 109, 109, 0.925);
+      font-size: 20px;
+      cursor: pointer;
+	}
+	.login_btn:hover{
+	  background-color: rgb(228, 223, 184);
+	}
+	 #main_logo{
+	    margin-left: 8%;
+	  }
+</style>
 </head>
 <body>
+<div id="main_logo">
+<a href="../" class="nav-link">
+<img src="${root }image/logo_1.png" alt="" width="20%" height="20%"></a>
+</div>
+<div class="admin_login_logo">
+	<h2>Admain Login</h2>
+</div>
 
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:70px">
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
@@ -41,7 +82,7 @@
 							<form:errors path='admin_pw' style='color:red'/>
 						</div>
 						<div class="form-group text-right">
-							<form:button class='btn btn-primary'>로그인</form:button>
+							<form:button class='login_btn'>로그인</form:button>
 						</div>
 					</form:form>
 				</div>

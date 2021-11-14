@@ -24,7 +24,7 @@ td {
 }
 </style>
 <body>
-	
+	<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
 
 <!-- 게시글 리스트 -->
 <div class="container" style="margin-top:100px">

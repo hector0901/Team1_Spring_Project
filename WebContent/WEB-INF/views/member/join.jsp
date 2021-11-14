@@ -56,7 +56,7 @@ label {
 
 aside {
     width: 44%;
-    float: right;
+    margin-left: 64%;
 }
 
 body {
@@ -98,12 +98,20 @@ section {
 }
 
 .select_img {
+	margin-top:2%;
     margin-left: 18%;
 }
 
 img {
     border-radius: 70%;
     overflow: hidden;
+}
+.error{
+	color: red;
+	width: 60%;
+	height: 10%;
+	padding-top: 5%;
+	padding-left: 16%;
 }
 </style>
 
@@ -191,8 +199,8 @@ var member_name = $("#member_name").val()
 if(member_name.length < 2 || member_name.length > 10) {
   var c=document.getElementById("member_namecheck"); //div아이디
   c.innerHTML=null;
-  var a= document.createElement("member_namecheck_txt"); //오류 텍스트
-  a.innerHTML = "이름은 2 ~ 10글자 사이로 입력해주세요1.";
+  var a= document.createElement("div"); //오류 텍스트
+  a.innerHTML = "이름은 2 ~ 10글자 사이로 입력해주세요.";
   document.getElementById("member_namecheck").appendChild(a);
   return;
 }
@@ -204,6 +212,59 @@ else{
 }
 }
 
+function socialCheck(){
+	var member_social = $("#member_social").val()
+	if(member_social.length < 13 || member_social.length > 13) {
+	  var c=document.getElementById("member_socialcheck"); //div아이디
+	  c.innerHTML=null;
+	  var a= document.createElement("div"); //오류 텍스트
+	  a.innerHTML = "주민등록번호는 13자리를 정확히 입력해주세요.";
+	  document.getElementById("member_socialcheck").appendChild(a);
+	  return;
+	}
+	else{
+	  var c2=document.getElementById("member_socialcheck");
+	  c2.innerHTML=null;
+	  var b2=document.getElementById("member_socialcheck").removeChild(a);
+	  return;
+	}
+	}
+
+function nicknameCheck(){
+	var member_nickname = $("#member_nickname").val()
+	if(member_nickname.length < 4 || member_nickname.length > 15) {
+	  var c=document.getElementById("member_nicknamecheck"); //div아이디
+	  c.innerHTML=null;
+	  var a= document.createElement("div"); //오류 텍스트
+	  a.innerHTML = "닉네임은 4 ~ 15글자 사이로 입력해주세요.";
+	  document.getElementById("member_nicknamecheck").appendChild(a);
+	  return;
+	}
+	else{
+	  var c2=document.getElementById("member_nicknamecheck");
+	  c2.innerHTML=null;
+	  var b2=document.getElementById("member_nicknamecheck").removeChild(a);
+	  return;
+	}
+	}
+	
+function telCheck(){
+	var member_tel = $("#member_tel").val()
+	if(member_tel.length < 10 || member_tel.length > 11) {
+	  var c=document.getElementById("member_telcheck"); //div아이디
+	  c.innerHTML=null;
+	  var a= document.createElement("div"); //오류 텍스트
+	  a.innerHTML = "전화번호는 10 ~ 11글자 사이로 입력해주세요.";
+	  document.getElementById("member_telcheck").appendChild(a);
+	  return;
+	}
+	else{
+	  var c2=document.getElementById("member_telcheck");
+	  c2.innerHTML=null;
+	  var b2=document.getElementById("member_telcheck").removeChild(a);
+	  return;
+	}
+	}
 
 
 </script>
@@ -228,7 +289,7 @@ else{
         * 표시는 필수 입력사항 입니다.
     </aside>
 
-    <br><br><br><br>
+    <br><br>
     
     <form:form action="${root }member/join_pro" method='post' modelAttribute="joinMemberBean" enctype="multipart/form-data">
        <form:hidden path="idExist"/>
@@ -264,8 +325,8 @@ else{
               <div class="col-md-6">
                 <form:password path="member_pw2" class='form-control'/>
               </div>
-              <div class="col-md-6" style="margin-top: 0.3%"  >
-                <form:errors path="member_pw2" style='color:red' />
+              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+                <form:errors path="member_pw2" style='color:red;' />
               </div>
            </div>
            
@@ -276,47 +337,45 @@ else{
               <div class="col-md-6">
                 <form:input path="member_name" class='form-control' oninput="nameCheck()"/> <!-- oninput="nameCheck()" : name을 테이블명에 맞게 변경 -->
               </div>
-              <div id=member_namecheck oninput="nameCheck()">
+              <div id=member_namecheck class="error" oninput="nameCheck()">
               </div>
            </div>
 
-           <br><br><br><br>
+           <br>
            
            <div class="form-group">
               <form:label path="member_social" class="col-md-2 control-label">주민등록번호 *</form:label>
               <div class="col-md-6">
-                <form:input path="member_social" class='form-control' placeholder="-를 제외한 13자리를 입력해주세요."/>
+                <form:input path="member_social" class='form-control' placeholder="-를 제외한 13자리를 입력해주세요." oninput="socialCheck()"/>
               </div>
-              <div class="col-md-6" style="margin-top: 0.3%"  >
-                <form:errors path="member_social" style='color:red' />
+              <div id="member_socialcheck" class="error" oninput="socialCheck()">
               </div>
            </div>
            
-           <br><br><br><br>
+           <br>
            
            <div class="form-group">
               <form:label path="member_nickname" class="col-md-2 control-label">닉네임 *</form:label>
               <div class="col-md-6">
-                <form:input path="member_nickname" class='form-control'/>
+                <form:input path="member_nickname" class='form-control' oninput="nicknameCheck()"/>
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-                <form:errors path="member_nickname" style='color:red' />
+                
+                <div id="member_nicknamecheck" class="error" oninput="nicknameCheck()">
               </div>
            </div>
 
-           <br><br><br><br>
+           <br>
            
            <div class="form-group">
               <form:label path="member_tel" class="col-md-2 control-label">전화번호 *</form:label>
               <div class="col-md-6">
-                <form:input path="member_tel" class='form-control' placeholder="-를 제외한 전화번호를 입력해주세요."/>
+                <form:input path="member_tel" class='form-control' placeholder="-를 제외한 전화번호를 입력해주세요." oninput="telCheck()"/>
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
-                <form:errors path="member_tel" style='color:red' />
+                <div id="member_telcheck" class="error" oninput="telCheck()">
               </div>
            </div>
            
-           <br><br><br><br>
+           <br>
 
            <div class="form-group">
               <form:label path="member_email" class="col-md-2 control-label">이메일 *</form:label>
@@ -380,7 +439,7 @@ else{
             	   if(this.files && this.files[0]) {
             		   var reader = new FileReader;
             		   reader.onload = function(data) {
-            			   $(".select_img img").attr("src", data.target.result).width(250);        
+            			   $(".select_img img").attr("src", data.target.result).width(250).height(250);        
             			   }
             		   reader.readAsDataURL(this.files[0]);
             		   }

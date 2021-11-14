@@ -53,12 +53,22 @@
       </ul>
       </li>
 
-        <li><a href="#">MORE</a>
+         <li><a href="#">MORE</a>
           <ul>
+          <c:choose>
+            <c:when test="${loginBean.memberLogin == true }">
+            <li><a href="${root }member/delete_page">탈퇴하기</a></li>
             <li><a href="#">sub menu</a></li>
+          </c:when>
+          
+          <c:otherwise>
+          <li><a href="#">sub menu</a></li>
             <li><a href="#">sub menu</a></li>
-          </ul>
-        </li>
+          
+         </c:otherwise>
+        </c:choose>
+       </ul>
+       </li>
 
         <li><a href="#">MORE</a>
           <ul>
