@@ -13,6 +13,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
+
+<style>
+td {
+  text-align: center;
+}
+
+#id {
+  padding-top: 5.5%;
+}
+</style>
 <body>
 	
 
@@ -23,7 +33,7 @@
 			<table class="table table-hover" id='board_list'>
 				<thead>
 					<tr>
-							<th class="text-center d-none d-md-table-cell">번호</th>
+					    <th class="text-center d-none d-md-table-cell">번호</th>
 						<th class="text-center d-none d-md-table-cell">아이디</th>
 						<th class="text-center d-none d-md-table-cell">사진</th>
 						<th class="text-center d-none d-md-table-cell">닉네임</th>
@@ -35,22 +45,22 @@
 				<tbody>
 					<c:forEach var='obj' items="${memberList }"  varStatus="status" >
 					<tr>
-						<td class="text-center d-none d-md-table-cell">${obj.member_no }</td>
-						<td><a href='${root }member/update?member_no=${obj.member_no}&page=${page}'>${obj.member_id }</a></td>
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_no }</td>
+						<td id="id"><a href='${root }member/update?member_no=${obj.member_no}&page=${page}'>${obj.member_id }</a></td>
 						<td>
 						    <c:choose>
 						      <c:when test="${obj.member_profile != null}"> <!-- 파일이 존재하면 -->
-						        <img src="${root }upload/${obj.member_profile}" style="width: 120px; height: 150px;"> <!--  -->
+						        <img src="${root }upload/${obj.member_profile}" style="width: 120px; height: 120px;"> <!--  -->
 				          </c:when>
 			           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
 			            <img src='${root }image/none1.png' style='width: 150px; height: 150px;'>
                  </c:otherwise>
               </c:choose>       
 						</td>					
-						<td class="text-center d-none d-md-table-cell">${obj.member_nickname }</td>
-						<td class="text-center d-none d-md-table-cell">${obj.member_email }</td>
-						<td class="text-center d-none d-md-table-cell">${obj.member_tel }</td>
-						<td class="text-center d-none d-md-table-cell">${obj.member_rdate }</td>		
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_email }</td>
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_tel }</td>
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_rdate }</td>		
 					  </tr>
 					</c:forEach>
 				</tbody>

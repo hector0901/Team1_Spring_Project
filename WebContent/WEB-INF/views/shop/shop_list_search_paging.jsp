@@ -133,31 +133,27 @@ input[type=submit] {
 	<div id="search" style="margin-left: 50%; margin-bottom: 5%;">
 	    <input type="text" name="keyword" placeholder="검색어 입력">
 	    <input type="submit" id="submit" value="검색">
+	    <c:choose>
+      	<c:when test="${loginBean2.adminLogin == true }">
+              <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
+        </c:when>
+        <c:otherwise></c:otherwise>
+    </c:choose>        
 	</div>
-       
 
-    <c:if test="${loginBean2.adminLogin == true }">
-      <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
-      <span class='menu_divide' >│</span>
-    </c:if>
-    <A href="javascript:location.reload();">새로고침</A>
-       
-       
-       
-     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
+    <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
      
      <div class="option">
-         <li>
-             <div id="area">
+            <div id="area">
                <div id="image">
-                <c:choose>
+               <c:choose>
                <c:when test="${obj.shop_main != null}"> <!-- 파일이 존재하면 -->
-                    <img src="${root }upload/${obj.shop_main }" style="width: 120px; height: 150px;"> <!--  -->
+                    <img src="${root }upload/${obj.shop_main }" style="width: 250px; height: 250px;">
                </c:when>
-                <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-                      <img src='${root }shop/image/alt_image.png' style='width: 250px; height: 250px;'>
-                </c:otherwise>
-              </c:choose>
+               <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+                      <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
+               </c:otherwise>
+               </c:choose>
                </div>
  
                <div id="shop-name">${obj.shop_name }</div>
@@ -174,8 +170,7 @@ input[type=submit] {
 
                <div id="time-title">영업 시간</div>
                <div id="shop-time">${obj.shop_time }</div>
-              </div>
-         </li> 
+            </div>
        </div>
       </c:forEach>
 

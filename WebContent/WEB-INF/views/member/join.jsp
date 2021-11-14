@@ -73,6 +73,7 @@ h1 {
 }
 
 .btn1, .btn2 {
+    padding-top : 3px;
     width: 130px;
     height: 40px;
     /*border: 1px solid rgb(242,7,76);*/
@@ -83,11 +84,27 @@ h1 {
     cursor: pointer;
 }
 
+.btn1 {
+    margin-left: -10%;
+}
+
 section {
     margin: 0px auto;
     width: 60%;
 }
 
+.btn2 {
+    margin-left: 3%;
+}
+
+.select_img {
+    margin-left: 18%;
+}
+
+img {
+    border-radius: 70%;
+    overflow: hidden;
+}
 </style>
 
 <script type="text/javascript">
@@ -352,18 +369,18 @@ else{
            <br><br><br><br>
 
             <div class="form-group">
-              <form:label path="upload_file" class="col-md-2 control-label">첨부 이미지 *</form:label>
+              <form:label path="upload_file" class="col-md-2 control-label">프로필 이미지</form:label>
               <div class="col-md-6">
                   <form:input type='file' path='upload_file' class="form-control" accept="image/*"/>
-              </div>
-              <div class="select_img"><img src="" /></div>
+              </div><br><br>
+              <div class="select_img"><img src=""/></div>
 
                <script>
                $("#upload_file").change(function(){
             	   if(this.files && this.files[0]) {
             		   var reader = new FileReader;
             		   reader.onload = function(data) {
-            			   $(".select_img img").attr("src", data.target.result).width(500);        
+            			   $(".select_img img").attr("src", data.target.result).width(250);        
             			   }
             		   reader.readAsDataURL(this.files[0]);
             		   }
@@ -371,7 +388,7 @@ else{
                </script>
             </div>
            
-           <br><br><br><br>
+           <br><br>
 
            <div id="btn">
              <form:button class='btn1'>회원가입</form:button>&emsp;
@@ -379,5 +396,6 @@ else{
            </div>
     </form:form>
     </section>
+    <br><br>
 </body>
 </html>

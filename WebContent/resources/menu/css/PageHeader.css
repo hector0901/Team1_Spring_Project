@@ -115,3 +115,13 @@ nav ul ul li {
   opacity: 1;
   transform: rotateX(0) rotateY(0);
 }
+
+a:hover {
+	text-decoration: none;
+	color:rgba(163, 156, 156, 0.925);
+}
+
+
+.nav-item {
+	padding-left: -5%;
+}

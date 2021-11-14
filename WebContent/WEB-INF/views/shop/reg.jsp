@@ -80,6 +80,19 @@ h1 {
     color: black;
     cursor: pointer;
 }
+
+
+.select_img {
+    margin-left: 18%;
+}
+
+.select_img1 {
+    margin-left: 18%;
+}
+
+.select_img3 {
+    margin-left: 18%;
+}
 </style>
 
 <script type="text/javascript">
@@ -225,6 +238,7 @@ function execPostCode() {
           <div class="col-md-6">
             <form:input type='file' path='upload_file1' class="form-control" accept="image/*"/>
           </div>
+          <br><br>
           <div class="select_img"><img src="" /></div>
           
           <script>
@@ -232,7 +246,7 @@ function execPostCode() {
                  if(this.files && this.files[0]) {
                    var reader = new FileReader;
                    reader.onload = function(data) {
-                     $(".select_img img").attr("src", data.target.result).width(500);        
+                     $(".select_img img").attr("src", data.target.result).width(250).margin-top(10);        
                      }
                    reader.readAsDataURL(this.files[0]);
                    }
@@ -247,6 +261,7 @@ function execPostCode() {
           <div class="col-md-6">
             <form:input type='file' path='upload_file2' class="form-control" accept="image/*" />
           </div>
+          <br><br>
           <div class="select_img1"><img src="" /></div>
           
           <script>
@@ -254,7 +269,7 @@ function execPostCode() {
                  if(this.files && this.files[0]) {
                    var reader = new FileReader;
                    reader.onload = function(data) {
-                     $(".select_img1 img").attr("src", data.target.result).width(500);        
+                     $(".select_img1 img").attr("src", data.target.result).width(250);        
                      }
                    reader.readAsDataURL(this.files[0]);
                    }
@@ -269,6 +284,7 @@ function execPostCode() {
           <div class="col-md-6">
             <form:input type='file' path='upload_file3' class="form-control" accept="image/*" />
           </div>
+          <br><br>
           <div class="select_img3"><img src="" /></div>
           
           <script>
@@ -276,7 +292,7 @@ function execPostCode() {
                  if(this.files && this.files[0]) {
                    var reader = new FileReader;
                    reader.onload = function(data) {
-                     $(".select_img3 img").attr("src", data.target.result).width(500);        
+                     $(".select_img3 img").attr("src", data.target.result).width(250).margin-top(10);        
                      }
                    reader.readAsDataURL(this.files[0]);
                    }
