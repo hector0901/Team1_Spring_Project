@@ -107,12 +107,12 @@ public class MemberController {
 	}
 	
 	@PostMapping("/update_pro")
-	public String update_pro(@Valid @ModelAttribute("updateMemberBean") MemberVO updateMemberBean, BindingResult result, Model m) {
+	public String update_pro(@Valid @ModelAttribute("updateMemberBean") MemberVO updateMemberBean, BindingResult result) {
 		if(result.hasErrors()) {
-			return "member/update";
+			return "member/update_fail";
 		}
 		memberService.updatememberInfo(updateMemberBean);
-		System.out.println("������ ȸ�� ��ȣ: " + updateMemberBean.getMember_no());
+		System.out.println("수정된 회원 번호: " + updateMemberBean.getMember_no());
 		
 		return "member/update_success";
 	}
@@ -128,7 +128,6 @@ public class MemberController {
 		model.addAttribute("member_no", deleteMemberBean.getMember_no());
 		model.addAttribute("member_id", deleteMemberBean.getMember_id());
 		model.addAttribute("member_pw", deleteMemberBean.getMember_pw());
-		session.invalidate();
 		return "member/delete";
 	}
 	

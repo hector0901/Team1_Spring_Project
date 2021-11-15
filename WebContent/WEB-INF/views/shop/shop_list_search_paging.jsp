@@ -122,6 +122,10 @@ input[type=submit] {
 #submit:hover {
     font-size: 18px;
 }
+a{
+   text-decoration: none;
+       color:rgba(163, 156, 156, 0.925);
+}
 </style>
 
 </head>
@@ -142,7 +146,7 @@ input[type=submit] {
 	</div>
 
     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
-     
+     <a href="${root }shop/shop_detail?category_no=1&shop_no=1">
      <div class="option">
             <div id="area">
                <div id="image">
@@ -172,6 +176,7 @@ input[type=submit] {
                <div id="shop-time">${obj.shop_time }</div>
             </div>
        </div>
+       </a>
       </c:forEach>
 </body>
 </html>

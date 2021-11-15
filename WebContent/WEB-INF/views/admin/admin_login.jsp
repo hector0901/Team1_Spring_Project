@@ -55,7 +55,7 @@
 <img src="${root }image/logo_1.png" alt="" width="20%" height="20%"></a>
 </div>
 <div class="admin_login_logo">
-	<h2>Admain Login</h2>
+	<h2>Admin Login</h2>
 </div>
 
 <div class="container" style="margin-top:70px">

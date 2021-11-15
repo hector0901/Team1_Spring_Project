@@ -276,14 +276,14 @@ function execPostCode() {
 			<br><br>
 
 			<div class="form-group">
-              <form:label path="upload_file" class="col-md-2 control-label">프로필 이미지 *</form:label>
+              <form:label path="member_profile" class="col-md-2 control-label">프로필 이미지 *</form:label>
               <div class="col-md-4">
-                  <form:input type='file' path='upload_file' class="form-control" accept="image/*"/>
+                  <form:input type='file' path='member_profile' class="form-control" accept="image/*"/>
               </div><br><br>
               <div class="select_img"><img src=""/></div>
 
                <script>
-               $("#upload_file").change(function(){
+               $("#member_profile").change(function(){
                  if(this.files && this.files[0]) {
                    var reader = new FileReader;
                    reader.onload = function(data) {
