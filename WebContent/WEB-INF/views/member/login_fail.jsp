@@ -46,8 +46,8 @@
 
     <div id="box">
         <img src="${root }menu/image/bear.png" style="width: 200px; height: 200px;">
-        <div id="text" style="text-align: center;">로그인에 실패하였습니다</div>
-        <div id="button-div" style="text-align: center;"><button id="button" onclick="location.href='${root}member/login'">이전 페이지로 이동</button></div>
+        <div id="text" style="text-align: center;">로그인에 실패하였습니다...</div>
+        <div id="button-div" style="text-align: center;"><button id="button" onclick="location.href='${root}member/login'">돌아가기</button></div>
     </div>
     
 </body>
