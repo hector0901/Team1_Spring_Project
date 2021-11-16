@@ -44,13 +44,11 @@
 
 </head>
 <body>
-
     <div id="box">
         <img src="${root }menu/image/fail_bear.png" style="width: 200px; height: 200px;">
         <div id="text" style="text-align: center;">수정에 실패하였습니다...</div>
         <div id="button-div" style="text-align: center;">
-		<button type="button" id="button" onclick="javascript:history.back()">돌아가기</button>
-        </div>
+		<button type="button" id="button" onclick="location.href='${root }member/update">돌아가기</button>
     </div>
     
 </body>

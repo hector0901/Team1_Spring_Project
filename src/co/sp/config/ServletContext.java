@@ -23,19 +23,18 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import co.sp.beans.AdminVO;
-import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.MemberVO;
-import co.sp.interceptor.AdminLoginInterceptor;
 import co.sp.interceptor.LoginInterceptor;
 import co.sp.interceptor.MemberInterceptor;
 import co.sp.interceptor.TopMenuInterceptor;
 import co.sp.interceptor.TopMenuInterceptor2;
 import co.sp.mapper.AdminMapper;
 import co.sp.mapper.MemberMapper;
+import co.sp.mapper.ReservationMapper;
 import co.sp.mapper.ShopMapper;
+import co.sp.mapper.WaitingMapper;
 import co.sp.service.AdminService;
 import co.sp.service.MemberService;
-import co.sp.service.ShopService;
 
 @Configuration
 @EnableWebMvc
@@ -124,6 +123,20 @@ public class ServletContext implements WebMvcConfigurer {
         factoryBean.setSqlSessionFactory(factory);
         return factoryBean;
     }
+	
+	@Bean
+    public MapperFactoryBean<ReservationMapper> getReservationMapper(SqlSessionFactory factory) throws Exception {
+        MapperFactoryBean<ReservationMapper> factoryBean = new MapperFactoryBean<ReservationMapper>(ReservationMapper.class);
+        factoryBean.setSqlSessionFactory(factory);
+        return factoryBean;
+    }
+	
+	@Bean
+	public MapperFactoryBean<WaitingMapper> getWaitingMapper(SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<WaitingMapper> factoryBean = new MapperFactoryBean<WaitingMapper>(WaitingMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
 
 
 	@Override

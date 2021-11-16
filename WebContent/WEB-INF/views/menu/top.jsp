@@ -35,6 +35,17 @@
             <a href="${root }member/logout" class="nav-link">회원 로그아웃</a>
           </li>
         </c:when>
+        <c:when test="${loginBean.memberLogin == null }">
+          <li class="nav-item">
+            <a href="${root }member/login" class="nav-link">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a href="${root }admin/admin_login" class="nav-link">관리자 로그인</a>
+          </li>
+          <li class="nav-item">
+            <a href="${root }member/join" class="nav-link">회원가입</a>
+          </li>
+        </c:when>
         <c:otherwise>
           <li class="nav-item">
             <a href="${root }member/login" class="nav-link">로그인</a>
@@ -58,7 +69,8 @@
           <c:choose>
             <c:when test="${loginBean.memberLogin == true }">
             <li><a href="${root }member/delete_page">탈퇴하기</a></li>
-            <li><a href="#">sub menu</a></li>
+            <li><a href="${root }waiting/waiting_list?member_no=${loginBean.member_no}">웨이팅 목록</a></li>
+            <li><a href="${root }reservation/reservation_list?member_no=${loginBean.member_no}">예약내역 확인</a></li>
           </c:when>
           
           <c:otherwise>

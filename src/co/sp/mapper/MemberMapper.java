@@ -45,13 +45,13 @@ public interface MemberMapper {
     int getMemberCnt();
 	
 	//¼öÁ¤
-	@Select("select member_id, member_pw, member_name, member_social, member_nickname, member_tel, member_email, member_zipcode, member_address1, member_address2 " +
+	@Select("select member_id, member_pw, member_name, member_social, member_nickname, member_tel, member_email, member_zipcode, member_address1, member_address2, member_profile " +
 			"from member " +
 			"where member_no = #{member_no}")
 	MemberVO getupdatememberInfo(int member_no);
 	
 	@Update("update member " +
-			"set member_pw = #{member_pw},  member_nickname = #{member_nickname}, member_tel = #{member_tel}, member_zipcode = #{member_zipcode} " +
+			"set member_pw = #{member_pw},  member_nickname = #{member_nickname}, member_tel = #{member_tel}, member_zipcode = #{member_zipcode}, member_address1 = #{member_address1}, member_address2 = #{member_address2}, member_profile = #{member_profile} " +
 			"where member_no = #{member_no}")
 	void updatememberInfo(MemberVO updateMemberBean);
 	

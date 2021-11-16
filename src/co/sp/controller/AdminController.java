@@ -42,7 +42,7 @@ public class AdminController {
 		@PostMapping("/login_pro2")
 		public String login_pro2(@Valid @ModelAttribute("tempLoginAdminBean") AdminVO tempLoginAdminBean, BindingResult result, Model m) {
 			if(result.hasErrors()) {
-				return "admin/login_fail";
+				return "admin/admin_login";
 			}
 			adminService.getLoginadminInfo(tempLoginAdminBean);
 			

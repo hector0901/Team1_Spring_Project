@@ -1,0 +1,52 @@
+package co.sp.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import co.sp.beans.ReservationVO;
+import co.sp.mapper.ReservationMapper;
+
+@Repository
+public class ReservationDAO {
+  
+  @Autowired
+  private ReservationMapper reservationMapper;
+  
+  /**
+   * 예약 등록
+   * @param reservationBean
+   */
+  public void reservation(ReservationVO reservationBean) {
+    reservationMapper.reservation(reservationBean);
+  }
+  
+  /**
+   * 예약 목록
+   * @param member_no
+   * @return
+   */
+  public List<ReservationVO> reservation_list(int member_no) {
+    return reservationMapper.reservation_list(member_no);
+  }
+
+  /**
+   * 예약 상세조회
+   * @param reservation_no
+   * @return
+   */
+  public ReservationVO reservation_read(int reservation_no) {
+    return reservationMapper.reservation_read(reservation_no);
+  }
+  
+  /**
+   * 삭제
+   * @param reservation_no
+   */         
+  public void reservation_delete(int reservation_no) {
+    reservationMapper.reservation_delete(reservation_no);
+  }
+
+
+}

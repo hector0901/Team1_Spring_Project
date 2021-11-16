@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
  <c:set var='root' value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
@@ -95,23 +96,23 @@
             
             </fieldset>
         </form>
-                
+                <form:form action="${root }waiting/waiting_pro" method='post' modelAttribute="joinWaitingBean">
+                <form:hidden path="member_no"/>
+                <form:hidden path="shop_no"/>
                     <div class="waiting_im">
                         <h3>대기 고객정보</h3>
                         <div class="waiting_people">
                             대기인원
-                            <button type="button" id="minus-button" onclick="minus()" style="background-color: white; color: gray; border: none; font-size: 27px; cursor: pointer;">-</button>
-                                <p id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;">1</p>
-                            <button type="button" id="plus-button" onclick="plus()" style="background-color: white; color: gray; border: none; font-size: 20px; cursor: pointer;">&emsp;&emsp;+</button>
+                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" min="0"/><br>
                             <span id="waiting_guide">(인원은 최대 8명까지입력해주세요)</span>
                         </div>
                         <hr style="width: 85%;">
                         <div id="waiting_people_im">
                         <div id="waiting_name">
-                          이름 &emsp;&emsp;<input type="text">
+                          <!-- name -->
                         </div>
                         <div id="waiting_tel">
-                           전화번호 <input type="tel">
+                           <!-- tel -->
                         </div>
                         </div>
                         <hr>
@@ -129,6 +130,7 @@
                         </ul> 
                         <input type="submit" id="waiting_button" value="확인" onclick="watiting_check()">
                     </div>
+                    </form:form>
                    
                     
 </body>

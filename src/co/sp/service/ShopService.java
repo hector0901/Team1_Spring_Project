@@ -119,7 +119,19 @@ public class ShopService {
   }
   
   
+  //가게 상세페이지
+  public ShopVO getShopInfo(int shop_no) {
+	  return shopDAO.getShopInfo(shop_no);
+  }
+  //가게 수정
+  public void updateShopInfo(ShopVO updateShopBean) {
+	  shopDAO.updateShopInfo(updateShopBean);
+  }
   
+  //가게 삭제
+  public void deleteShopInfo(int shop_no) {
+	  shopDAO.deleteShopInfo(shop_no);
+  }
   
   
 

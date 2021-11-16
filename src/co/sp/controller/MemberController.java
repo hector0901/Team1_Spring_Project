@@ -128,6 +128,7 @@ public class MemberController {
 		model.addAttribute("member_no", deleteMemberBean.getMember_no());
 		model.addAttribute("member_id", deleteMemberBean.getMember_id());
 		model.addAttribute("member_pw", deleteMemberBean.getMember_pw());
+		session.invalidate();
 		return "member/delete";
 	}
 	

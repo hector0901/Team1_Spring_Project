@@ -12,32 +12,41 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/shop_Style.css">
 <style type="text/css">
+
+#daumRoughmapContainer1636946545932 {
+  style=suser-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 45px; top: 40px; opacity: 1; transition-property: opacity; transition-duration: 0.2s; transition-timing-function: ease; width: 1000px; height: 1000px;
+}
+.map{
+<img src="http://map2.daumcdn.net/map_2d/2106wof/L4/1000/446.png" alt="" draggable="false" style="position: absolute; user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 45px; top: 40px; opacity: 1; transition-property: opacity; transition-duration: 0.2s; transition-timing-function: ease; width: 300px; height: 300px;">
+}
+
+
 </style>
   <script type="text/javascript">
-    var num=1;
-    function previous(idx){
-      
-      if(idx){
-        if(num==2)
-         return;
-        num++;
-      }
-      else{
-        if(num==1)
-        return;
-        num--;
-      }
-      var imgTag=document.getElementById("shop_menupan_img");
-      imgTag.setAttribute("src","image/가게내부"+num+".png");
-    }
 
     function reserveclick(){
       window.open("${root }reservation/reservation?reservation_no=1&member_no=1&shop_no=1","예매하기","width=500,height=600,left=300");
     }
     function waitingclick(){
-      window.open("${root }waiting/waiting?waiting_no=1&member_no=1&shop_no=1","웨이팅","width=400,height=500,left=300");
+      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=500,left=300");
     }
   </script>
+  <script>
+  function resizeMap() {
+	    var mapContainer = document.getElementById('map');
+	    mapContainer.style.width = '650px';
+	    mapContainer.style.height = '650px'; 
+	}
+
+	function relayout() {    
+	    
+	    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+	    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+	    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+	    map.relayout();
+	}
+  </script>
+  
 </head>
 
 <body>
@@ -51,23 +60,31 @@
       <ul id="shop_detail_page">
       	
         <li id="shop_main_img">
-          <img src="image/갓잇메인.png" alt="사진없음" width="600" height="500" ></li>
+        
+        <!-- 메인이미지  -->
+        <c:choose>
+      	  <c:when test="${readShopBean.shop_main != null}"> <!-- 파일이 존재하면 -->
+          	<img src="${root }upload/${readShopBean.shop_main }" style="width: 250px; height: 250px;">
+      	  </c:when>
+          <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+            <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
+       	  </c:otherwise>
+        </c:choose>
+          
+        </li> 
         <li id="shop_main_explanation">
-          <p id="shop_main_name">르블란서<span id="group_name">양식</span></p>
-          <p>궁금했던 익선동 분위기 좋은 프랑스 가정식 레스토랑</p>
+          <p id="shop_main_name">${readShopBean.shop_name }</p>
+          <p>${readShopBean.shop_simple }</p>
           <img src="image/telephone.png" width="15" height="15"> 0507-1339-9951<br>
-          <img src="image/pin.png" width="15" height="15"> 서울 종로구 익선동 170-1<br>
-          종로3가역 4번 출구에서<span style="color:tomato">114m</span><br>
-          <img src="image/clock.png" width="15" height="15"> 매일 12:00 - 22:00
-           <span style="color:red">월요일 휴무</span>
+          <img src="image/pin.png" width="15" height="15">${readShopBean.shop_address1 }<br>
+          ${readShopBean.shop_address2 }<br>
+          <img src="image/clock.png" width="15" height="15"> ${readShopBean.shop_time }
          <br>
-          <img src="image/clipboard.png" width="15" height="15"> 주차는 매장으로 전화 주시면 설명드리겠습니다<br>
-           break time 16:00-17:00<br>
-          last oder: 21:0<br>
-          &nbsp;&nbsp;&nbsp; 맛있는녀석들 334회, 21.07.16 방영<br>
-          &nbsp;&nbsp;&nbsp; 단체석, 포장, 배달, 예약<br>&nbsp;&nbsp;&nbsp; 무선인터넷, 지역화폐(카드형), 제로페이가능<br><br>
+          <img src="image/clipboard.png" width="15" height="15"> ${readShopBean.shop_content }<br>
           <input id="shop_reserve_button" type="submit" value="예약하기" onclick="reserveclick()">
           <input id="shop_waiting_button" type="submit" value="waiting" onclick="waitingclick()"><br><br><br>
+          <a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a>
+          <a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">가게 삭제</a>
         </li>
       </ul>
       
@@ -93,25 +110,38 @@
         </ul>
 
         <div class="shop_tab_content">
-            <div id="shop_main_menu_content" class="cont">
-              <div id="shop_mainmenu_img">
-                <img src="image/갓잇.png" width="950"height="500">
-              </div>
-                </div>
+          <div id="shop_main_menu_content" class="cont">
+            <!-- 메뉴 이미지 -->
+            <div id="shop_mainmenu_img">
+            
+            <c:choose>
+      	      <c:when test="${readShopBean.shop_menu_img != null}"> <!-- 파일이 존재하면 -->
+            	<img src="${root }upload/${readShopBean.shop_menu_img }" style="width: 250px; height: 250px;">
+      	      </c:when>
+              <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+                <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
+       	      </c:otherwise>
+            </c:choose>
+               
+            </div>
+          </div>
         
 
         <div id="shop_menu_pan_content" class="cont">
              <div id="shop_menu_pan">
-                    <div id="shop_menu_pan_back_button">
-                    <button id="back_button" onclick="previous(0)">
-                     <
-                    </button><br><br>
-                    </div>
-                    <img src="image/가게내부1.png" id="shop_menupan_img" alt="사진없음" width="700" height="500">
-                    <div id="shop_menu_pan_after_button">
-                    <button id="after_button" onclick="previous(1)">
-                      >
-                    </button><br><br>
+                    <div id="shop_menu_pan_back_button">      
+                    <!-- 내부이미지  -->
+                    
+                    <c:choose>
+	      	          <c:when test="${readShopBean.shop_inside_img != null}"> <!-- 파일이 존재하면 -->
+	                    <img src="${root }upload/${readShopBean.shop_inside_img }" style="width: 250px; height: 250px;">
+	      	          </c:when>
+	                  <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+	                    <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
+	       	          </c:otherwise>
+	                </c:choose>
+                         
+                   <br><br>
                   </div>
             </div>   
         </div>
@@ -138,9 +168,9 @@
 
         <div id="shop_map_contact" class="cont">
             <div id="map_content">
-            <p style="font:30px bold">오시는길</p>
+            <p style="font:30px bold">오시는길</p> 
+            <div id="map" oninput=resizeMap() style="width: 120%; height: 120%;">${readShopBean.map }</div> 
             
-
             </div>
         </div>
         </div>
@@ -149,7 +179,7 @@
     const tabList = document.querySelectorAll('.shop_tab_menu .list li');
     const contents = document.querySelectorAll('.cont')
     let activeCont =""; // 현재 활성화 된 컨텐츠 (기본:#tab1 활성화)
-  
+     /* var map=document.getElementById("map"); */
     for(var i = 0; i < tabList.length; i++){
       tabList[i].querySelector('.btn').addEventListener('click', function(e){
         e.preventDefault();
@@ -167,6 +197,10 @@
         // 버튼 클릭시 컨텐츠 전환
         activeCont = this.getAttribute('href');
         document.querySelector(activeCont).style.display = 'block';
+        // display: block 이 된 직 후,
+        window.setTimeout(function() {
+         /* map.relayout(); */
+     }, 0);
       });
     }
   </script> 

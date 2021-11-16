@@ -146,7 +146,7 @@ a{
 	</div>
 
     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
-     <a href="${root }shop/shop_detail?category_no=1&shop_no=1">
+     <a href="${root }shop/shop_detail?category_no=${obj.category_no }&shop_no=${obj.shop_no}&member_no=${loginBean.member_no}">
      <div class="option">
             <div id="area">
                <div id="image">

@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
- <c:set var='root' value="${pageContext.request.contextPath }/"/>
+<c:set var='root' value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
 <head>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/shop_Style.css">
@@ -84,7 +83,7 @@ input[type=text]{
             cursor: pointer;
             /*text-align: center;*/
             border-radius: 5px;
-            font-family:"¸¼Àº°íµñ";
+            font-family:"ë§‘ì€ê³ ë”•";
             border:none;
             font-size: 20px;
         }
@@ -115,12 +114,12 @@ input[type=text]{
     tmp++;
     if(tmp>6){
         tmp=5;
-        alert("ÃÖ´ë ÀÎ¿øÀº 5¸íÀÔ´Ï´Ù.");
+        alert("ìµœëŒ€ ì¸ì›ì€ 5ëª…ìž…ë‹ˆë‹¤.");
     }
     n.innerText = tmp;
    }
    function reserveclick(){
-	      window.open("${root }pay/pay?reservation_no=1&pay_no=1","¿¹¸ÅÇÏ±â","width=500,height=600,left=300");
+	      window.open("${root }pay/pay?reservation_no=1&pay_no=1","ì˜ˆì•½í•˜ê¸°","width=500,height=600,left=300");
 	    }
     </script>
 </head>
@@ -134,68 +133,79 @@ input[type=text]{
     </header>
     
     <form:form action="${root }reservation/reservation_pro" method="post" modelAttribute="reservationBean">
-        <h2>¿¹¾à Á¤º¸</h2>
+      <form:hidden path="member_no"/>
+      <form:hidden path="shop_no"/> 
+
+     
+        <h2>ì˜ˆì•½ ì •ë³´</h2>
         <div style="margin-left:20%"> 
-        <span style="font:7px bold gray; margin-left: 8%;">ÃÖ¼±À» ´ÙÇØ ÁØºñÇÏ°Ú½À´Ï´Ù</span>
+        <span style="font:7px bold gray; margin-left: 8%;">ìµœì„ ì„ ë‹¤í•´ ì¤€ë¹„í•˜ê² ìŠµë‹ˆë‹¤</span>
         <ul id="time">
             <li>
-                ³¯Â¥ ¼±ÅÃ&nbsp;&nbsp;<form:input type="date" id="reservation_date" path="reservation_time"/><br>
-                						<form:errors path="reservation_time" style='color:red'/>
-            </li><br>
+                ë‚ ì§œ ì„ íƒ&nbsp;&nbsp;
+                <form:input type="date" id="reservation_date" path="reservation_date"/><br>
+                <form:errors path="reservation_date" style='color:red'/>
+            </li>
+            
+            <br>
+            
             <li>
-                ½Ã°£ ¼±ÅÃ&nbsp;&nbsp;<form:input type="time" id="reservation" path="reservation_time"/>
-                						<form:errors path="reservation_time" style='color:red'/>	
-                </li>
+                ì‹œê°„ ì„ íƒ&nbsp;&nbsp;
+                <form:input type="time" id="reservation" path="reservation_time"/>
+                <form:errors path="reservation_time" style='color:red'/>	
+            </li>
+            
                 <br><br>
+                 
             <li style="border-bottom: gray;">
-                ÀÎ¿ø ¼±ÅÃ
+                ì¸ì› ì„ íƒ
                 <button type="button" id="minus-button" onclick="minus()" style="background-color: white; color: gray; border: none; font-size: 27px; cursor: pointer;">-</button>
-                <p id="eun_number" style=" display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;">1</p>
+                <form:input type="number" path="reservation_person" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" />
+                <p id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;">1</p>
                 <button type="button" id="plus-button" onclick="plus()" style="background-color: white; color: gray; border: none; font-size: 20px; cursor: pointer;">&emsp;&emsp;+</button>
-            (ÃÖ´ë 5ÀÎ±îÁö °¡´É)</li>
+            (ìµœëŒ€ 5ì¸ê¹Œì§€ ê°€ëŠ¥)</li>
         </ul>
-        <form>
             <fieldset>
-            <legend>°³ÀÎÁ¤º¸ÀÔ·Â</legend>
+            <legend>ê°œì¸ì •ë³´ í™•ì¸</legend>
             <div style="margin-left:5%;">
         <div class="form-inline form-group" style="width: 70%">
-         <label for="name" class="col-sm-2 control-label">ÀÌ¸§:</label>
+         <label for="name" class="col-sm-2 control-label">ì´ë¦„:</label>
          <div class="col-sm-3"> 
-         <input type="text" class="form-control" id="name" readonly="readonly" value="È«±æµ¿">
+         <input type="text" class="form-control" id="name" readonly="readonly" value="í™ê¸¸ë™">
          </div>
         </div>
      
       <div class="form-inline form-group" style="width: 70%">
-         <label for="tel" class="col-sm-2 control-label">¿¬¶ôÃ³:</label>
+         <label for="tel" class="col-sm-2 control-label">ì—°ë½ì²˜:</label>
          <div class="col-sm-3">
          <input type="text" class="form-control" id="tel" value="abc@naver.com" readonly="readonly">
          </div>
         </div>
    
       <div class="form-inline form-group" style="width: 70%">
-         <label for="email" class="col-sm-2 control-label">ÀÌ¸ÞÀÏ:</label>
+         <label for="email" class="col-sm-2 control-label">ì´ë©”ì¼:</label>
          <div class="col-sm-3">
          <input type="text" class="form-control" id="email" value="01077323936" readonly="readonly">
          </div>
         </div>
       
         <div class="form-group" style="width: 70%; margin-left: 3%">
-    <label for="add">Ãß°¡»çÇ×</label>
+    <label for="add">ì¶”ê°€ì‚¬í•­</label>
     <div class="col-sm-1">
-    <textarea class="form-control"id="add" rows="4"></textarea>
+    <form:textarea class="form-control" id="add" rows="4" path="reservation_add"/>
     </div>
   </div>
 </div>
-        <form:button type="submit" id="pay" onclick="check()">°áÁ¦ÇÏ±â</form:button>
+        <form:button type="submit" id="pay" onclick="check()">ê²°ì œí•˜ê¸°</form:button>
         </fieldset>
-        </form>
+
        </form:form>
         </div>
        <hr style="width: 86%;">
         <div style="font-size: 3px; margin:2%;margin-left: 35%">
-            ¿¹¾à½Ã ¿¹¾à±Ý ÀÎ¿ø¼ö*10,000¿ø °áÁ¦ µÇ´ÂÁ¡ ¾çÇØºÎÅ¹µå¸³´Ï´Ù.<br>
-            ³ë¼î ¹æÁö¸¦ À§ÇÏ¿© ¿¹¾à ÈÄ Ãë¼Ò´Â ºÒ°¡ÇÑÁ¡ ¾È³»µå¸³´Ï´Ù.<br>
-            ¿¹¾àÃë¼Ò½Ã ¸ðµç ¿¹¾à±ÝÀº ¼Ò¸êµÇ¹Ç·Î ½ÅÁßÇÑ ¿¹¾àºÎÅ¹µå¸³´Ï´Ù.
+            ì˜ˆì•½ì‹œ ì˜ˆì•½ê¸ˆ ì¸ì›ìˆ˜*10,000ì› ê²°ì œ ë˜ëŠ”ì  ì–‘í•´ë¶€íƒë“œë¦½ë‹ˆë‹¤.<br>
+            ë…¸ì‡¼ ë°©ì§€ë¥¼ ìœ„í•˜ì—¬ ì˜ˆì•½ í›„ ì·¨ì†ŒëŠ” ë¶ˆê°€í•œì  ì•ˆë‚´ë“œë¦½ë‹ˆë‹¤.<br>
+            ì˜ˆì•½ì·¨ì†Œì‹œ ëª¨ë“  ì˜ˆì•½ê¸ˆì€ ì†Œë©¸ë˜ë¯€ë¡œ ì‹ ì¤‘í•œ ì˜ˆì•½ë¶€íƒë“œë¦½ë‹ˆë‹¤.
         </div> 
                    
                     

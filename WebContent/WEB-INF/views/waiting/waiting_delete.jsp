@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }/"/>
 <script>
-	alert('탈퇴되었습니다')
-	location.href = "../"
-    session.invalidate();
+	alert('삭제되었습니다')
+	location.href='${root }waiting/waiting_list?member_no=${loginBean.member_no}'
 </script>
