@@ -30,6 +30,12 @@
     function waitingclick(){
       window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=500,left=300");
     }
+    function shopreplyclick() {
+    	window.open("${root}shopreply/shopreply?member_no=${loginBean.member_no}&shop_no=${shop_no}", "댓글");
+    }
+    function shopreplylistclick() {
+    	window.open("${root}shopreply/shopreply_list?member_no=${loginBean.member_no}&shop_no=${shop_no}", "댓글리스트");
+    }
   </script>
   <script>
   function resizeMap() {
@@ -103,6 +109,8 @@
             </li> 
             <li>
                 <a href="#shop_review" class="btn" id="shop_review_tab">리뷰</a>
+                <input id="shop_reply_button" type="submit" value="댓글등록" onclick="shopreplyclick()">
+                <input id="shop_reply_list_button" type="submit" value="댓글목록" onclick="shopreplylistclick()">
             </li> 
             <li>
                 <a href="#shop_map_contact" class="btn" id="shop_contact_tab">오시는길</a>
@@ -149,21 +157,32 @@
         <div id="shop_review" class="cont">
         	<div id="review_view">
         	<!-- 닉네임 올린 리뷰들어가야함 -->
-            	<div id="shop_review_img"> 
-            		<img id="profile" src="image/고양이.png" width="100px" height="90px">
-            	</div>
-            	<div id="review_user">
-            		<input type="text" class="review_nickname" value="응갬" readonly="readonly"/>
-            		<textarea class="add" cols="70" rows="4" readonly="readonly">음식이 맛있고 좋다</textarea> 
-            	</div>
-            </div>	
-                	<div class="form-group" style="width: 70%; margin-left: 10%; margin-top: 5%;">
-    					<div class="col-sm-12">
-    						<textarea class="form-control"id="add" rows="4" style="resize: none;"></textarea>  
-  						</div>
-  						
-  						</div>
-  						<button type="submit" id="review_button">등록</button>
+        	<div class="container" style="margin-top: 100px">
+		<div class="card shadow">
+			<div class="card-body">
+				<table class="table table-hover" id=shopreply_list>
+					<thead>
+						<tr>
+							<th class="text-center d-none d-md-table-cell">회원닉네임</th>
+							<th class="text-center d-none d-md-table-cell">회원프로필</th>
+							<th class="text-center d-none d-md-table-cell">댓글내용</th>
+							<th class="text-center d-none d-md-table-cell">댓글등록일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var='obj' items="${shopreply_list }" varStatus="status">
+							<tr>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.member_profile }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_content }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_rdate }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
         </div>
 
         <div id="shop_map_contact" class="cont">

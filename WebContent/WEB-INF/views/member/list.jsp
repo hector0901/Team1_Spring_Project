@@ -46,7 +46,7 @@ td {
 					<c:forEach var='obj' items="${memberList }"  varStatus="status" >
 					<tr>
 						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_no }</td>
-						<td id="id"><a href='${root }member/update?member_no=${obj.member_no}&page=${page}'>${obj.member_id }</a></td>
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_id }</td>
 						<td>
 						    <c:choose>
 						      <c:when test="${obj.member_profile != null}"> <!-- 파일이 존재하면 -->

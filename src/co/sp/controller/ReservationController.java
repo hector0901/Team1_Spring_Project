@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.beans.ReservationVO;
 import co.sp.service.ReservationService;
 
@@ -57,13 +58,18 @@ public class ReservationController {
   }
   
   @GetMapping("/reservation_list")
-  public String reservation_list(@RequestParam("member_no") int member_no, Model model) {
+  public String reservation_list(@RequestParam("member_no") int member_no,
+		                         @RequestParam(value = "page", defaultValue = "1") int page ,Model model) {
     
     model.addAttribute("member_no", member_no);
     model.addAttribute("loginBean.getMember_no()", loginBean.getMember_no());
     
-    List<ReservationVO> reservation_list = reservationService.reservation_list(member_no);
+    List<ReservationVO> reservation_list = reservationService.reservation_list(member_no, page);
     model.addAttribute("reservation_list", reservation_list);
+    
+    Page pageBean=reservationService.getReservationCnt(page);
+    model.addAttribute("pageBean", pageBean);
+    model.addAttribute("page", page);
 
     return "reservation/reservation_list";
   }

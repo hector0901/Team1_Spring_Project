@@ -103,7 +103,7 @@
                         <h3>대기 고객정보</h3>
                         <div class="waiting_people">
                             대기인원
-                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" min="0"/><br>
+                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" min="0" max="8"/><br>
                             <span id="waiting_guide">(인원은 최대 8명까지입력해주세요)</span>
                         </div>
                         <hr style="width: 85%;">

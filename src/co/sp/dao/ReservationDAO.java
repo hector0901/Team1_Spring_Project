@@ -2,6 +2,7 @@ package co.sp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,10 +28,14 @@ public class ReservationDAO {
    * @param member_no
    * @return
    */
-  public List<ReservationVO> reservation_list(int member_no) {
-    return reservationMapper.reservation_list(member_no);
+  public List<ReservationVO> reservation_list(int member_no, RowBounds rowBounds) {
+    return reservationMapper.reservation_list(member_no, rowBounds);
   }
-
+  
+  //예약목록페이징
+  public int getReservationCnt() {
+	  return reservationMapper.getReservationCnt();
+  }
   /**
    * 예약 상세조회
    * @param reservation_no

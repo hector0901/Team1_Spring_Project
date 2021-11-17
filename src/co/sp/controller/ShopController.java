@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.beans.ShopVO;
 import co.sp.service.ShopService;
 
@@ -94,13 +95,18 @@ public class ShopController {
 	 * @return
 	 */
 	@GetMapping("/shop_list_search_paging")
-	public String shop_list_search_paging(@RequestParam("category_no") int category_no, Model model) {
-
-		List<ShopVO> shop_list_search_paging = shopService.shop_list_search_paging(category_no);
+	public String shop_list_search_paging(@RequestParam("category_no") int category_no, 
+			                              @RequestParam(value = "page", defaultValue = "1") int page ,Model model) {
+		shopService.getShopCnt(page);
+		List<ShopVO> shop_list_search_paging = shopService.shop_list_search_paging(category_no, page);
 
 		model.addAttribute("category_no", category_no);
 		model.addAttribute("admin_no", loginBean2.getAdmin_no()); // 가게 등록에 필요한 관리자 번호
 		model.addAttribute("shop_list_search_paging", shop_list_search_paging);
+		
+		Page pageBean = shopService.getShopCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("page", page);
 
 		return "shop/shop_list_search_paging";
 

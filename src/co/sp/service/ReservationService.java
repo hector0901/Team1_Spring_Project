@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.beans.ReservationVO;
 import co.sp.dao.ReservationDAO;
 
@@ -24,6 +27,12 @@ public class ReservationService {
   @Resource(name = "loginBean")
   private MemberVO loginBean;
   
+  @Value("${page.listcount}")
+  private int page_listcount;
+  
+  @Value("${page.pa}")
+  private int page_pa;
+  
   /**
    * 예약
    * @param reservationBean
@@ -37,8 +46,19 @@ public class ReservationService {
    * @param member_no
    * @return
    */
-  public List<ReservationVO> reservation_list(int member_no) {
-   return reservationDAO.reservation_list(member_no); 
+  public List<ReservationVO> reservation_list(int member_no, int page) {
+	  int start=(page -1)* page_listcount;
+	  RowBounds rowBounds = new RowBounds(start, page_listcount);
+	  
+   return reservationDAO.reservation_list(member_no, rowBounds); 
+  }
+  
+  //예약목록 페이징
+  public Page getReservationCnt(int currentPage) {
+	  int reservation_cnt=reservationDAO.getReservationCnt();
+	  Page pageBean=new Page(reservation_cnt, currentPage, page_listcount, page_pa);
+	  
+	  return pageBean;
   }
   
   /**

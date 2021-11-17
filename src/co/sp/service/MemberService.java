@@ -133,6 +133,7 @@ public class MemberService {
       return memberDAO.member_list(rowBounds);
   }
   
+  //회원목록 페이징
   public Page getMemberCnt(int currentPage) {
       int member_cnt = memberDAO.getMemberCnt();
       Page pageBean = new Page(member_cnt, currentPage, page_listcount, page_pa);

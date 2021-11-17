@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.session.RowBounds;
 
 import co.sp.beans.WaitingVO;
 
@@ -14,12 +15,15 @@ public interface WaitingMapper {
             "values (waiting_no_seq.nextval, #{member_no}, #{shop_no}, #{waiting_count}, sysdate)")
 	void waiting_create(WaitingVO joinWaitingBean);
 	
-	//웨이팅 목록
-	@Select("select waiting_no, waiting_count, waiting_rdate " +
-	        "from waiting " +
-			"where member_no=#{member_no} " +
+	//웨이팅 목록+페이징
+	@Select("select s.shop_name, w.waiting_no, w.waiting_count, w.waiting_rdate  " +
+	        "from shop s, member m, waiting w " +
+			"where w.shop_no = s.shop_no AND w.member_no = m.member_no AND m.member_no = #{member_no} " +
 	        "order by waiting_no desc")
-	List<WaitingVO> waiting_list(int member_no);
+	List<WaitingVO> waiting_list(int member_no, RowBounds rowBounds);
+	
+	@Select("select count(*) from waiting")
+	int getWaitingCnt();
 	
 	//웨이팅 조회
 	@Select("select waiting_no, waiting_count, waiting_rdate " +

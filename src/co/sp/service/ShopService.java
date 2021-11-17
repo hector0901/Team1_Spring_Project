@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -13,12 +14,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import co.sp.beans.AdminVO;
 import co.sp.beans.Admin_Category_ShopVO;
+import co.sp.beans.Page;
 import co.sp.beans.ShopVO;
 import co.sp.dao.ShopDAO;
 
 @Service
 @PropertySource("/WEB-INF/properties/option.properties")
 public class ShopService {
+  @Value("${page.listcount}")
+  private int page_listcount;
+  
+  @Value("${page.pa}")
+  private int page_pa;
  
   @Value("${path.upload}")
   private String path_upload;
@@ -110,12 +117,19 @@ public class ShopService {
     
   }
   
-  /**
-   * 카테고리별 가게 목록
-   * @return
-   */
-  public List<ShopVO> shop_list_search_paging(int category_no) {
-    return shopDAO.shop_list_search_paging(category_no);
+  //가게목록+페이징
+  public List<ShopVO> shop_list_search_paging(int category_no, int page) {
+	  
+	  int start = (page -1)* page_listcount;
+	  RowBounds rowBounds=new RowBounds(start, page_listcount);
+      return shopDAO.shop_list_search_paging(category_no, rowBounds);
+  }
+  
+  public Page getShopCnt(int currentPage) {
+	  int shop_cnt=shopDAO.getShopCnt();
+	  Page pageBean = new Page(shop_cnt, currentPage, page_listcount, page_pa);
+	  
+	  return pageBean;
   }
   
   

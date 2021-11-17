@@ -2,6 +2,7 @@ package co.sp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,13 +29,18 @@ public class ShopDAO {
    * 가게 목록(검색 + 페이징은 구현되지 않았음)
    * @return
    */
-  public List<ShopVO> shop_list_search_paging(int category_no) {
-    return shopMapper.shop_list_search_paging(category_no);
+  public List<ShopVO> shop_list_search_paging(int category_no, RowBounds rowBounds) {
+    return shopMapper.shop_list_search_paging(category_no, rowBounds);
   }
   
   //가게 상세페이지
   public ShopVO getShopInfo(int shop_no) {
 	  return shopMapper.getShopInfo(shop_no);
+  }
+  
+  //가게 목록 페이징
+  public int getShopCnt() {
+	  return shopMapper.getShopCnt();
   }
   
   //가게 수정

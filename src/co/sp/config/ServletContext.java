@@ -32,6 +32,7 @@ import co.sp.mapper.AdminMapper;
 import co.sp.mapper.MemberMapper;
 import co.sp.mapper.ReservationMapper;
 import co.sp.mapper.ShopMapper;
+import co.sp.mapper.ShopReplyMapper;
 import co.sp.mapper.WaitingMapper;
 import co.sp.service.AdminService;
 import co.sp.service.MemberService;
@@ -134,6 +135,12 @@ public class ServletContext implements WebMvcConfigurer {
 	@Bean
 	public MapperFactoryBean<WaitingMapper> getWaitingMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<WaitingMapper> factoryBean = new MapperFactoryBean<WaitingMapper>(WaitingMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	@Bean MapperFactoryBean<ShopReplyMapper> getShopReplyMapper (SqlSessionFactory factory) throws Exception {
+		MapperFactoryBean<ShopReplyMapper> factoryBean = new MapperFactoryBean<ShopReplyMapper>(ShopReplyMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}

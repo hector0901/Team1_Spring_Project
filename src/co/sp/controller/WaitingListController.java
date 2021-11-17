@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.beans.WaitingVO;
 import co.sp.service.WaitingService;
 
@@ -26,12 +27,18 @@ public class WaitingListController {
 	private MemberVO loginBean;
 	
 	@GetMapping("/waiting_list")
-	public String waiting_list(@RequestParam("member_no") int member_no, Model model) {
-		List<WaitingVO> waiting_list=waitingService.waiting_list(member_no);
+	public String waiting_list(@RequestParam("member_no") int member_no, 
+			                   @RequestParam(value="page", defaultValue = "1") int page ,Model model) {
+		List<WaitingVO> waiting_list=waitingService.waiting_list(member_no, page);
 		
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("waiting_list", waiting_list);
 		model.addAttribute(loginBean.getMember_no());
+		
+		Page pageBean = waitingService.getWaitingCnt(page);
+		model.addAttribute("pageBean", pageBean);
+		model.addAttribute("page", page);
+		
 		return "waiting/waiting_list";
 	}
 	

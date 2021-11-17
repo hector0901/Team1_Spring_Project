@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }/"/>
 <script>
-  alert('예약이 취소되었습니다')
-  location.href = "${root }reservation/reservation_list?member_no=${loginBean.member_no}"
+	alert('댓글이 삭제되었습니다')
+	window.close(); 
 </script>

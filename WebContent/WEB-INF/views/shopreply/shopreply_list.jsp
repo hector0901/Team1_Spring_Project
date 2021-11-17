@@ -34,41 +34,53 @@ td {
 	<div class="container" style="margin-top: 100px">
 		<div class="card shadow">
 			<div class="card-body">
-				<table class="table table-hover" id='waiting_list'>
+				<table class="table table-hover" id=shopreply_list>
 					<thead>
 						<tr>
-							<th class="text-center d-none d-md-table-cell">웨이팅번호</th>
-							<th class="text-center d-none d-md-table-cell">가게명</th>
-							<th class="text-center d-none d-md-table-cell">인원</th>
-							<th class="text-center d-none d-md-table-cell">웨이팅시간</th>
-							<th class="text-center d-none d-md-table-cell">웨이팅취소</th>
+							<th class="text-center d-none d-md-table-cell">회원닉네임</th>
+							<th class="text-center d-none d-md-table-cell">회원프로필</th>
+							<th class="text-center d-none d-md-table-cell">댓글내용</th>
+							<th class="text-center d-none d-md-table-cell">댓글등록일</th>
+							<th class="text-center d-none d-md-table-cell">댓글삭제</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var='obj' items="${waiting_list }" varStatus="status">
+						<c:forEach var='obj' items="${shopreply_list }" varStatus="status">
 							<tr>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_no }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_name }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_count }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
+								<td><c:choose>
+										<c:when test="${obj.member_profile != null}">
+											<!-- 파일이 존재하면 -->
+											<img src="${root }upload/${obj.member_profile}"
+												style="width: 120px; height: 120px;">
+											<!--  -->
+										</c:when>
+										<c:otherwise>
+											<%-- 파일이 없는 경우 기본 이미지 출력 --%>
+											<img src='${root }image/none1.png'
+												style='width: 150px; height: 150px;'>
+										</c:otherwise>
+									</c:choose></td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_content }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_rdate }</td>
 								<td><a
-									href="${root }waiting/waiting_delete?member_no=${loginBean.member_no}&waiting_no=${obj.waiting_no}">취소</a></td>
+									href="${root }shopreply/shopreply_delete?shop_reply_no=${obj.shop_reply_no}">삭제</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-
+				
 				<div class="d-none d-md-block">
 					<ul class="pagination justify-content-center">
 						<c:choose>
 							<c:when test="${pageBean.prevPage <= 0 }">
 								<li class="page-item active"><a
-									href="${root }waiting/waiting_list?page=${pageBean.prevPage}&member_no=${member_no}"
+									href="${root }shopreply/shopreply_list?page=${pageBean.prevPage}&shop_no=${shop_no}"
 									class="page-link">이전</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${root }waiting/waiting_list?page=${pageBean.prevPage}&member_no=${member_no}"
+									href="${root }shopreply/shopreply_list?page=${pageBean.prevPage}&shop_no=${shop_no}"
 									class="page-link">이전</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -79,12 +91,12 @@ td {
 							<c:choose>
 								<c:when test="${idx == pageBean.currentPage }">
 									<li class="page-item active"><a
-										href="${root }waiting/waiting_list?page=${idx}&member_no=${member_no}"
+										href="${root }shopreply/shopreply_list?page=${idx}&shop_no=${shop_no}"
 										class="page-link">${idx }</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item"><a
-										href="${root }waiting/waiting_list?page=${idx}&member_no=${member_no}"
+										href="${root }shopreply/shopreply_list?page=${idx}&shop_no=${shop_no}"
 										class="page-link">${idx }</a></li>
 								</c:otherwise>
 							</c:choose>
@@ -94,12 +106,12 @@ td {
 						<c:choose>
 							<c:when test="${pageBean.max >= pageBean.pageCnt }">
 								<li class="page-item active"><a
-									href="${root }waiting/waiting_list?page=${pageBean.nextPage}&member_no=${member_no}"
+									href="${root }shopreply/shopreply_list?page=${pageBean.nextPage}&shop_no=${shop_no}"
 									class="page-link">다음</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${root }waiting/waiting_list?page=${pageBean.nextPage}&member_no=${member_no}"
+									href="${root }shopreply/shopreply_list?page=${pageBean.nextPage}&shop_no=${shop_no}"
 									class="page-link">다음</a></li>
 							</c:otherwise>
 						</c:choose>
@@ -107,7 +119,9 @@ td {
 					</ul>
 
 				</div>
+				
 			</div>
 		</div>
+	</div>
 </body>
 </html>

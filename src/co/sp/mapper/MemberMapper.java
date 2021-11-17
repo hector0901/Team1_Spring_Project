@@ -35,7 +35,7 @@ public interface MemberMapper {
             "ORDER BY member_no ")
     List<MemberVO> member_list(RowBounds rowBounds);
     
-  //회원 목록 페이징
+    //회원 목록 페이징
     @Select("SELECT member_no, member_id, member_profile, member_nickname, member_email, member_tel, member_rdate " +
             "FROM member " +
             "where member_no = #{member_no}")

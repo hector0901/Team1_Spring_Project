@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.session.RowBounds;
 
 import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.ShopVO;
@@ -30,7 +31,7 @@ public interface ShopMapper {
           "FROM shop " + 
           "WHERE category_no = #{category_no} " + 
           "ORDER BY shop_no DESC")
-  List<ShopVO> shop_list_search_paging(int category_no);
+  List<ShopVO> shop_list_search_paging(int category_no, RowBounds rowBounds);
   
   //가게 상세페이지
   @Select("select shop_name, shop_address1, shop_address2, shop_simple, shop_content, map, shop_main, shop_menu_img, shop_inside_img, shop_total_seat, shop_remain_seat, shop_time " +
@@ -38,6 +39,10 @@ public interface ShopMapper {
 		  "WHERE shop_no = #{shop_no} " +
           "order by shop_no desc")
   ShopVO getShopInfo(int shop_no);
+  
+  //가게 목록 페이징
+  @Select("select count(*) from shop")
+  int getShopCnt();
   
   
   //가게 수정

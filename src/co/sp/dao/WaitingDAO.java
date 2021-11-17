@@ -2,6 +2,7 @@ package co.sp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +19,13 @@ public class WaitingDAO {
 		waitingMapper.waiting_create(joinWaitingBean);
 	}
 	//웨이팅 목록
-	public List<WaitingVO> waiting_list(int member_no) {
-		return waitingMapper.waiting_list(member_no);
+	public List<WaitingVO> waiting_list(int member_no, RowBounds rowBounds) {
+		return waitingMapper.waiting_list(member_no, rowBounds);
+	}
+	
+	//웨이팅 목록 페이징
+	public int getWaitingCnt() {
+		return waitingMapper.getWaitingCnt();
 	}
 	
 	//웨이팅 조회

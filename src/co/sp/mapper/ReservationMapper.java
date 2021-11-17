@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.session.RowBounds;
 
 import co.sp.beans.ReservationVO;
 
@@ -29,7 +30,10 @@ public interface ReservationMapper {
           "FROM reservation r, member m, shop s " +
           "WHERE r.member_no = m.member_no AND r.shop_no = s.shop_no AND r.member_no = #{member_no} " +
           "ORDER BY r.reservation_no DESC ")
-  List<ReservationVO> reservation_list(int member_no);
+  List<ReservationVO> reservation_list(int member_no, RowBounds rowBounds);
+  
+  @Select("select count(*) from reservation")
+  int getReservationCnt();
   
   
   /**
