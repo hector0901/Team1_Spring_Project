@@ -1,5 +1,7 @@
 package co.sp.config;
 
+import java.util.Properties;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -14,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -185,5 +188,22 @@ public class ServletContext implements WebMvcConfigurer {
 	public StandardServletMultipartResolver multipartResolver() {
 		return new StandardServletMultipartResolver();
 	}
+	
+	@Bean
+    public JavaMailSenderImpl mailSender() {
+        
+        JavaMailSenderImpl mailsender = new JavaMailSenderImpl();
+        
+        mailsender.setHost("smtp.gmail.com");
+        mailsender.setPort(25);
+        mailsender.setUsername("cso3398@gmail.com");
+        mailsender.setPassword("서버 메일 비밀번호 치기");
+        Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        mailsender.setJavaMailProperties(props);
+        
+        return mailsender;
+    }
 
 }

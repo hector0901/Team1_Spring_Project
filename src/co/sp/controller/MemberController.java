@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.sp.beans.AdminVO;
+import co.sp.beans.EmailSet;
 import co.sp.beans.MemberVO;
 import co.sp.service.AdminService;
+import co.sp.service.EmailSender;
 import co.sp.service.MemberService;
 import co.sp.validator.MemberValidator;
 
@@ -34,11 +36,19 @@ public class MemberController {
 	@Autowired
     private AdminService adminService;
 	
+	@Autowired
+    private EmailSender emailSender;
+	
 	@Resource(name = "loginBean")
 	private MemberVO loginBean;
 	
+	@Resource(name = "pwBean")
+    private MemberVO pwBean;
+	
 	@Resource(name = "loginBean2")
 	private AdminVO loginBean2;
+
+	
 
 	/**
 	 * 등록폼
@@ -144,7 +154,64 @@ public class MemberController {
 		session.invalidate();
 		return "member/logout";
 	}
+
+	/**
+	 * 비밀번호 찾기
+	 * @param tempPWBean
+	 * @param fail
+	 * @param model
+	 * @return
+	 */
+    @GetMapping("/find_pw")
+    public String find_pw(@ModelAttribute("tempPWBean") MemberVO tempPWBean,
+                        @RequestParam(value="fail", defaultValue ="false") boolean fail,
+                        Model model) {
+        model.addAttribute("fail", fail);
+        
+        return "member/find_pw";
+    }
+    
+    
+    /**
+     * 비밀번호 찾기 프로시저
+     * @param tempPWBean
+     * @param result
+     * @param m
+     * @return
+     * @throws Exception 
+     */
+    @PostMapping("/find_pw_pro")
+    public String find_pw_pro(@Valid @ModelAttribute("tempPWBean") MemberVO tempPWBean, BindingResult result, Model m) throws Exception {
+        if(result.hasErrors()) {
+          System.out.println("에러 발생");
+            return "member/find_pw";
+        }
+        
+        memberService.getPWInfo(tempPWBean);
+
+        if(pwBean.isPwfind() == true) {
+          
+            m.addAttribute("tempPWBean", tempPWBean);
+            
+            System.out.println("보낸 메일주소: " +  tempPWBean.getMember_email());
+            System.out.println("아이디: " + tempPWBean.getMember_id());
+            System.out.println("비밀번호: " + pwBean.getMember_pw());
+ 
+            EmailSet email = new EmailSet();
+            email.setReceiver(tempPWBean.getMember_email());
+            email.setSubject(tempPWBean.getMember_id() + "님의 비밀번호 찾기 결과");
+            email.setContent("고객님의 비밀번호는 " + pwBean.getMember_pw() + " 입니다.");
+            
+            emailSender.SendEmail(email);
+
+            return "member/find_pw_success";
+        } else {
+          System.out.println("아이디나 이메일을 정확하지 않습니다");
+            return "member/find_pw_fail";
+        }
+    }
 	
+
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {

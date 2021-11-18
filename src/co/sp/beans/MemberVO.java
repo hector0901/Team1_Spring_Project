@@ -107,14 +107,16 @@ public class MemberVO {
   private String member_size_label;
   private MultipartFile upload_file;
 
-  /** id 중복체크 및 로그인 여부 관련 변수 **/
+  /** id 중복체크 및 로그인 여부, 패스워드 찾기 성공 여부 관련 변수 **/
   private boolean idExist;
   private boolean memberLogin;
+  private boolean pwfind;
 
   // 로그인이 되어있지 않은 초기값 + 아이디 중복 X
   public MemberVO() {
     this.idExist = false;
     this.memberLogin = false;
+    this.pwfind = false;
 
   }
 
@@ -278,6 +280,14 @@ public class MemberVO {
 
   public void setMemberLogin(boolean memberLogin) {
     this.memberLogin = memberLogin;
+  }
+
+  public boolean isPwfind() {
+    return pwfind;
+  }
+
+  public void setPwfind(boolean pwfind) {
+    this.pwfind = pwfind;
   }
 
 }

@@ -69,6 +69,19 @@ public interface MemberMapper {
 	@Select("select member_no, member_name " + "from member "
 			+ "where member_id=#{member_id} and member_pw=#{member_pw}")
 	MemberVO getLoginmemberInfo(MemberVO tempLoginMemberBean);
+	
+	
+	/**
+	 * id 및 email 일치시 pw값 반환 
+	 * @param tempPWBean
+	 * @return
+	 */
+	@Select("select member_pw " + 
+           "from member " + 
+           "where member_id = #{member_id} and member_email = #{member_email} " )
+    MemberVO getPWInfo(MemberVO tempPWBean);
+         
+    
 		
 
 	

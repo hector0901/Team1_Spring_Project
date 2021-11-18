@@ -8,8 +8,10 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.multipart.MultipartFile;
 
 import co.sp.beans.AdminVO;
@@ -35,6 +37,9 @@ public class MemberService {
 
   @Resource(name = "loginBean")
   private MemberVO loginBean;
+  
+  @Resource(name = "pwBean")
+  private MemberVO pwBean;
 
   
   // 파일을 저장하는 메소드로 중복파일이 올라오면 덮어쓰기가 됨
@@ -80,7 +85,6 @@ public class MemberService {
 
   /**
    * 회원 로그인
-   * 
    * @param tempLoginMemberBean
    */
   public void getLoginmemberInfo(MemberVO tempLoginMemberBean) {
@@ -140,5 +144,22 @@ public class MemberService {
       
       return pageBean;
   }
+  
+  /**
+   * 회원가입 관련
+   * @param tempPWBean
+   */
+  public void getPWInfo(MemberVO tempPWBean) {
+    tempPWBean.setMember_pw(pwBean.getMember_pw());
+    tempPWBean = memberDAO.getPWInfo(tempPWBean);
+    
+    if(tempPWBean != null) {
+      pwBean.setMember_pw(tempPWBean.getMember_pw());
+      pwBean.setPwfind(true);
+    }
+    
+  }
+
+  
 
 }

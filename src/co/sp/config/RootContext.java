@@ -18,6 +18,16 @@ public class RootContext {
 	public MemberVO loginBean() {
 		return new MemberVO();
 	}
+
+	/**
+	 * pw Bean
+	 * @return
+	 */
+	@Bean("pwBean")
+    @SessionScope
+    public MemberVO pwBean() {
+        return new MemberVO();
+    }
 	
 	@Bean("loginBean2")
 	@SessionScope

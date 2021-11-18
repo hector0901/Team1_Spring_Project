@@ -60,6 +60,17 @@ public class MemberDAO {
 	public MemberVO getdeletememberInfo(int member_no) {
 		return memberMapper.getdeletememberInfo(member_no);
 	} //조회
+	
+	/**
+	 * PW찾기
+	 * @param tempPWBean
+	 * @return
+	 */
+	public MemberVO getPWInfo(MemberVO tempPWBean) {
+	  return memberMapper.getPWInfo(tempPWBean);
+	}
+	
+	
 
 	
 

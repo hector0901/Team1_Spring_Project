@@ -63,10 +63,10 @@
   color: gray;
 }
 .col-sm-3{
-	margin-left:15%;
+  margin-left:15%;
 }
 input[type=text]{
-	margin-top:-10%;
+  margin-top:-10%;
 }
  textarea {
     width: 100%;
@@ -119,8 +119,8 @@ input[type=text]{
     n.innerText = tmp;
    }
    function reserveclick(){
-	      window.open("${root }pay/pay?reservation_no=1&pay_no=1","예약하기","width=500,height=600,left=300");
-	    }
+        window.open("${root }reservation/pay?reservation_no=1&pay_no=1","예약하기","width=500,height=600,left=300");
+      }
     </script>
 </head>
 <body >
@@ -152,11 +152,11 @@ input[type=text]{
             <li>
                 시간 선택&nbsp;&nbsp;
                 <form:input type="time" id="reservation" path="reservation_time"/>
-                <form:errors path="reservation_time" style='color:red'/>	
+                <form:errors path="reservation_time" style='color:red'/>  
             </li>
             
                 <br><br>
-                 
+            <form:form action="${root }reservation/reservation_pro" method='post' modelAttribute="reservationBean">     
             <li style="border-bottom: gray;">
                 인원 선택
                 <button type="button" id="minus-button" onclick="minus()" style="background-color: white; color: gray; border: none; font-size: 27px; cursor: pointer;">-</button>
@@ -164,6 +164,7 @@ input[type=text]{
                 <p id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;">1</p>
                 <button type="button" id="plus-button" onclick="plus()" style="background-color: white; color: gray; border: none; font-size: 20px; cursor: pointer;">&emsp;&emsp;+</button>
             (최대 5인까지 가능)</li>
+            </form:form>
         </ul>
             <fieldset>
             <legend>개인정보 확인</legend>

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
  <c:set var='root' value="${pageContext.request.contextPath }/"/>
 <!DOCTYPE html>
 <html>
 <head>
- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
@@ -25,32 +25,32 @@
   <script type="text/javascript">
 
     function reserveclick(){
-      window.open("${root }reservation/reservation?reservation_no=1&member_no=1&shop_no=1","¿¹¸ÅÇÏ±â","width=500,height=600,left=300");
+      window.open("${root }reservation/reservation?member_no=${loginBean.member_no}&shop_no=${shop_no}","ì˜ˆë§¤í•˜ê¸°","width=500,height=600,left=300");
     }
     function waitingclick(){
-      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","¿şÀÌÆÃ","width=500,height=500,left=300");
+      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","ì›¨ì´íŒ…","width=500,height=500,left=300");
     }
     function shopreplyclick() {
-    	window.open("${root}shopreply/shopreply?member_no=${loginBean.member_no}&shop_no=${shop_no}", "´ñ±Û");
+      window.open("${root}shopreply/shopreply?member_no=${loginBean.member_no}&shop_no=${shop_no}", "ëŒ“ê¸€");
     }
     function shopreplylistclick() {
-    	window.open("${root}shopreply/shopreply_list?member_no=${loginBean.member_no}&shop_no=${shop_no}", "´ñ±Û¸®½ºÆ®");
+      window.open("${root}shopreply/shopreply_list?member_no=${loginBean.member_no}&shop_no=${shop_no}", "ëŒ“ê¸€ë¦¬ìŠ¤íŠ¸");
     }
   </script>
   <script>
   function resizeMap() {
-	    var mapContainer = document.getElementById('map');
-	    mapContainer.style.width = '650px';
-	    mapContainer.style.height = '650px'; 
-	}
+      var mapContainer = document.getElementById('map');
+      mapContainer.style.width = '650px';
+      mapContainer.style.height = '650px'; 
+  }
 
-	function relayout() {    
-	    
-	    // Áöµµ¸¦ Ç¥½ÃÇÏ´Â div Å©±â¸¦ º¯°æÇÑ ÀÌÈÄ Áöµµ°¡ Á¤»óÀûÀ¸·Î Ç¥ÃâµÇÁö ¾ÊÀ» ¼öµµ ÀÖ½À´Ï´Ù
-	    // Å©±â¸¦ º¯°æÇÑ ÀÌÈÄ¿¡´Â ¹İµå½Ã  map.relayout ÇÔ¼ö¸¦ È£ÃâÇØ¾ß ÇÕ´Ï´Ù 
-	    // windowÀÇ resize ÀÌº¥Æ®¿¡ ÀÇÇÑ Å©±âº¯°æÀº map.relayout ÇÔ¼ö°¡ ÀÚµ¿À¸·Î È£ÃâµË´Ï´Ù
-	    map.relayout();
-	}
+  function relayout() {    
+      
+      // ì§€ë„ë¥¼ í‘œì‹œí•˜ëŠ” div í¬ê¸°ë¥¼ ë³€ê²½í•œ ì´í›„ ì§€ë„ê°€ ì •ìƒì ìœ¼ë¡œ í‘œì¶œë˜ì§€ ì•Šì„ ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤
+      // í¬ê¸°ë¥¼ ë³€ê²½í•œ ì´í›„ì—ëŠ” ë°˜ë“œì‹œ  map.relayout í•¨ìˆ˜ë¥¼ í˜¸ì¶œí•´ì•¼ í•©ë‹ˆë‹¤ 
+      // windowì˜ resize ì´ë²¤íŠ¸ì— ì˜í•œ í¬ê¸°ë³€ê²½ì€ map.relayout í•¨ìˆ˜ê°€ ìë™ìœ¼ë¡œ í˜¸ì¶œë©ë‹ˆë‹¤
+      map.relayout();
+  }
   </script>
   
 </head>
@@ -60,21 +60,21 @@
   <c:import url="/WEB-INF/views/menu/page_top.jsp"/>
 
 
-  <!--°¡°Ô¼³¸í-->
+  <!--ê°€ê²Œì„¤ëª…-->
 
     <div id="shop_main">
       <ul id="shop_detail_page">
-      	
+        
         <li id="shop_main_img">
         
-        <!-- ¸ŞÀÎÀÌ¹ÌÁö  -->
+        <!-- ë©”ì¸ì´ë¯¸ì§€  -->
         <c:choose>
-      	  <c:when test="${readShopBean.shop_main != null}"> <!-- ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é -->
-          	<img src="${root }upload/${readShopBean.shop_main }" style="width: 250px; height: 250px;">
-      	  </c:when>
-          <c:otherwise> <%-- ÆÄÀÏÀÌ ¾ø´Â °æ¿ì ±âº» ÀÌ¹ÌÁö Ãâ·Â --%>
+          <c:when test="${readShopBean.shop_main != null}"> <!-- íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ -->
+            <img src="${root }upload/${readShopBean.shop_main }" style="width: 250px; height: 250px;">
+          </c:when>
+          <c:otherwise> <%-- íŒŒì¼ì´ ì—†ëŠ” ê²½ìš° ê¸°ë³¸ ì´ë¯¸ì§€ ì¶œë ¥ --%>
             <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-       	  </c:otherwise>
+          </c:otherwise>
         </c:choose>
           
         </li> 
@@ -87,10 +87,10 @@
           <img src="image/clock.png" width="15" height="15"> ${readShopBean.shop_time }
          <br>
           <img src="image/clipboard.png" width="15" height="15"> ${readShopBean.shop_content }<br>
-          <input id="shop_reserve_button" type="submit" value="¿¹¾àÇÏ±â" onclick="reserveclick()">
+          <input id="shop_reserve_button" type="submit" value="ì˜ˆì•½í•˜ê¸°" onclick="reserveclick()">
           <input id="shop_waiting_button" type="submit" value="waiting" onclick="waitingclick()"><br><br><br>
-          <a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">°¡°Ô ¼öÁ¤</a>
-          <a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">°¡°Ô »èÁ¦</a>
+          <a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">ê°€ê²Œ ìˆ˜ì •</a>
+          <a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">ê°€ê²Œ ì‚­ì œ</a>
         </li>
       </ul>
       
@@ -98,37 +98,37 @@
     <br><br>
 
 
-<!--ÅÇ¹öÆ°ºÎºĞ-->  
+<!--íƒ­ë²„íŠ¼ë¶€ë¶„-->  
     <div class="shop_tab_menu">
         <ul class="list">
             <li class="tab_Button">
-                <a href="#shop_main_menu_content" class="btn" id="shop_main_menu_tab">¸ŞÀÎ¸Ş´º</a>
+                <a href="#shop_main_menu_content" class="btn" id="shop_main_menu_tab">ë©”ì¸ë©”ë‰´</a>
             </li>
             <li>
-                <a href="#shop_menu_pan_content" class="btn" id="shop_menu_pan_tab">»ó¼¼»çÁø</a>
+                <a href="#shop_menu_pan_content" class="btn" id="shop_menu_pan_tab">ìƒì„¸ì‚¬ì§„</a>
             </li> 
             <li>
-                <a href="#shop_review" class="btn" id="shop_review_tab">¸®ºä</a>
-                <input id="shop_reply_button" type="submit" value="´ñ±Ûµî·Ï" onclick="shopreplyclick()">
-                <input id="shop_reply_list_button" type="submit" value="´ñ±Û¸ñ·Ï" onclick="shopreplylistclick()">
+                <a href="#shop_review" class="btn" id="shop_review_tab">ë¦¬ë·°</a>
+                <input id="shop_reply_button" type="submit" value="ëŒ“ê¸€ë“±ë¡" onclick="shopreplyclick()">
+                <input id="shop_reply_list_button" type="submit" value="ëŒ“ê¸€ëª©ë¡" onclick="shopreplylistclick()">
             </li> 
             <li>
-                <a href="#shop_map_contact" class="btn" id="shop_contact_tab">¿À½Ã´Â±æ</a>
+                <a href="#shop_map_contact" class="btn" id="shop_contact_tab">ì˜¤ì‹œëŠ”ê¸¸</a>
             </li>     
         </ul>
 
         <div class="shop_tab_content">
           <div id="shop_main_menu_content" class="cont">
-            <!-- ¸Ş´º ÀÌ¹ÌÁö -->
+            <!-- ë©”ë‰´ ì´ë¯¸ì§€ -->
             <div id="shop_mainmenu_img">
             
             <c:choose>
-      	      <c:when test="${readShopBean.shop_menu_img != null}"> <!-- ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é -->
-            	<img src="${root }upload/${readShopBean.shop_menu_img }" style="width: 250px; height: 250px;">
-      	      </c:when>
-              <c:otherwise> <%-- ÆÄÀÏÀÌ ¾ø´Â °æ¿ì ±âº» ÀÌ¹ÌÁö Ãâ·Â --%>
+              <c:when test="${readShopBean.shop_menu_img != null}"> <!-- íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ -->
+              <img src="${root }upload/${readShopBean.shop_menu_img }" style="width: 250px; height: 250px;">
+              </c:when>
+              <c:otherwise> <%-- íŒŒì¼ì´ ì—†ëŠ” ê²½ìš° ê¸°ë³¸ ì´ë¯¸ì§€ ì¶œë ¥ --%>
                 <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-       	      </c:otherwise>
+              </c:otherwise>
             </c:choose>
                
             </div>
@@ -138,16 +138,16 @@
         <div id="shop_menu_pan_content" class="cont">
              <div id="shop_menu_pan">
                     <div id="shop_menu_pan_back_button">      
-                    <!-- ³»ºÎÀÌ¹ÌÁö  -->
+                    <!-- ë‚´ë¶€ì´ë¯¸ì§€  -->
                     
                     <c:choose>
-	      	          <c:when test="${readShopBean.shop_inside_img != null}"> <!-- ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é -->
-	                    <img src="${root }upload/${readShopBean.shop_inside_img }" style="width: 250px; height: 250px;">
-	      	          </c:when>
-	                  <c:otherwise> <%-- ÆÄÀÏÀÌ ¾ø´Â °æ¿ì ±âº» ÀÌ¹ÌÁö Ãâ·Â --%>
-	                    <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-	       	          </c:otherwise>
-	                </c:choose>
+                    <c:when test="${readShopBean.shop_inside_img != null}"> <!-- íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ -->
+                      <img src="${root }upload/${readShopBean.shop_inside_img }" style="width: 250px; height: 250px;">
+                    </c:when>
+                    <c:otherwise> <%-- íŒŒì¼ì´ ì—†ëŠ” ê²½ìš° ê¸°ë³¸ ì´ë¯¸ì§€ ì¶œë ¥ --%>
+                      <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
+                    </c:otherwise>
+                  </c:choose>
                          
                    <br><br>
                   </div>
@@ -155,39 +155,39 @@
         </div>
 
         <div id="shop_review" class="cont">
-        	<div id="review_view">
-        	<!-- ´Ğ³×ÀÓ ¿Ã¸° ¸®ºäµé¾î°¡¾ßÇÔ -->
-        	<div class="container" style="margin-top: 100px">
-		<div class="card shadow">
-			<div class="card-body">
-				<table class="table table-hover" id=shopreply_list>
-					<thead>
-						<tr>
-							<th class="text-center d-none d-md-table-cell">È¸¿ø´Ğ³×ÀÓ</th>
-							<th class="text-center d-none d-md-table-cell">È¸¿øÇÁ·ÎÇÊ</th>
-							<th class="text-center d-none d-md-table-cell">´ñ±Û³»¿ë</th>
-							<th class="text-center d-none d-md-table-cell">´ñ±Ûµî·ÏÀÏ</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var='obj' items="${shopreply_list }" varStatus="status">
-							<tr>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.member_profile }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_content }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_rdate }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+          <div id="review_view">
+          <!-- ë‹‰ë„¤ì„ ì˜¬ë¦° ë¦¬ë·°ë“¤ì–´ê°€ì•¼í•¨ -->
+          <div class="container" style="margin-top: 100px">
+    <div class="card shadow">
+      <div class="card-body">
+        <table class="table table-hover" id=shopreply_list>
+          <thead>
+            <tr>
+              <th class="text-center d-none d-md-table-cell">íšŒì›ë‹‰ë„¤ì„</th>
+              <th class="text-center d-none d-md-table-cell">íšŒì›í”„ë¡œí•„</th>
+              <th class="text-center d-none d-md-table-cell">ëŒ“ê¸€ë‚´ìš©</th>
+              <th class="text-center d-none d-md-table-cell">ëŒ“ê¸€ë“±ë¡ì¼</th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach var='obj' items="${shopreply_list }" varStatus="status">
+              <tr>
+                <td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
+                <td class="text-center d-none d-md-table-cell" id="id">${obj.member_profile }</td>
+                <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_content }</td>
+                <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_rdate }</td>
+              </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
         </div>
 
         <div id="shop_map_contact" class="cont">
             <div id="map_content">
-            <p style="font:30px bold">¿À½Ã´Â±æ</p> 
+            <p style="font:30px bold">ì˜¤ì‹œëŠ”ê¸¸</p> 
             <div id="map" oninput=resizeMap() style="width: 120%; height: 120%;">${readShopBean.map }</div> 
             
             </div>
@@ -197,26 +197,26 @@
 <script>
     const tabList = document.querySelectorAll('.shop_tab_menu .list li');
     const contents = document.querySelectorAll('.cont')
-    let activeCont =""; // ÇöÀç È°¼ºÈ­ µÈ ÄÁÅÙÃ÷ (±âº»:#tab1 È°¼ºÈ­)
+    let activeCont =""; // í˜„ì¬ í™œì„±í™” ëœ ì»¨í…ì¸  (ê¸°ë³¸:#tab1 í™œì„±í™”)
      /* var map=document.getElementById("map"); */
     for(var i = 0; i < tabList.length; i++){
       tabList[i].querySelector('.btn').addEventListener('click', function(e){
         e.preventDefault();
         for(var j = 0; j < tabList.length; j++){
-          // ³ª¸ÓÁö ¹öÆ° Å¬·¡½º Á¦°Å
+          // ë‚˜ë¨¸ì§€ ë²„íŠ¼ í´ë˜ìŠ¤ ì œê±°
           tabList[j].classList.remove('tab_Button');
   
-          // ³ª¸ÓÁö ÄÁÅÙÃ÷ display:none Ã³¸®
+          // ë‚˜ë¨¸ì§€ ì»¨í…ì¸  display:none ì²˜ë¦¬
           contents[j].style.display ='none';
         }
   
-        // ¹öÆ° °ü·Ã ÀÌº¥Æ®
+        // ë²„íŠ¼ ê´€ë ¨ ì´ë²¤íŠ¸
         this.parentNode.classList.add('tab_Button');
   
-        // ¹öÆ° Å¬¸¯½Ã ÄÁÅÙÃ÷ ÀüÈ¯
+        // ë²„íŠ¼ í´ë¦­ì‹œ ì»¨í…ì¸  ì „í™˜
         activeCont = this.getAttribute('href');
         document.querySelector(activeCont).style.display = 'block';
-        // display: block ÀÌ µÈ Á÷ ÈÄ,
+        // display: block ì´ ëœ ì§ í›„,
         window.setTimeout(function() {
          /* map.relayout(); */
      }, 0);

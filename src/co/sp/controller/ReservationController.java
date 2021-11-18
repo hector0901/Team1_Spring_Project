@@ -51,8 +51,8 @@ public class ReservationController {
       return "reservation/reservation"; 
     } else {
       m.addAttribute("reservationBean", reservationBean);
-      reservationService.reservation(reservationBean);
-      return "reservation/reservation_success"; 
+//      reservationService.reservation(reservationBean);
+      return "reservation/pay"; 
     }
     
   }
@@ -109,9 +109,28 @@ public class ReservationController {
     return "reservation/reservation_delete";
 
   }
+  
+  
+  //∞·¡¶
+	@GetMapping("/pay")
+	public String pay(@RequestParam("pay_no") int pay_no, @RequestParam("reservation_no") int reservation_no,
+			Model model) {
 
-  
-  
-  
+		model.addAttribute("pay_no", pay_no);
+		model.addAttribute("reservation_no", reservation_no);
+
+		return "reservation/kakaopay";
+	}
+
+	@GetMapping("/kakaopay")
+	public String kakaopay(@RequestParam("pay_no") int pay_no, @RequestParam("reservation_no") int reservation_no,
+			               @ModelAttribute("reservationBean") ReservationVO reservationBean, Model model) {
+
+		model.addAttribute("pay_no", pay_no);
+		model.addAttribute("reservation_no", reservation_no);
+		reservationService.reservation(reservationBean);
+
+		return "reservation/kakaopay";
+	}
 
 }

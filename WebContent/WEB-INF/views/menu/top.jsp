@@ -56,6 +56,9 @@
           <li class="nav-item">
             <a href="${root }member/join" class="nav-link">회원가입</a>
           </li>
+          <li class="nav-item">
+            <a href="${root }member/find_pw" class="nav-link">비밀번호 찾기</a>
+          </li>
         </c:otherwise>
       </c:choose>
         
