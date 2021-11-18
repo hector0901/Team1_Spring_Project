@@ -318,7 +318,7 @@ function telCheck(){
               </div>
            </div>
            
-           <br><br><br><br>
+           <br><br><br><br><br>
           
           <div class="form-group">
               <form:label path="member_pw2" class="col-md-2 control-label">비밀번호확인 *</form:label>
@@ -330,7 +330,7 @@ function telCheck(){
               </div>
            </div>
            
-           <br><br><br><br>
+           <br><br><br><br><br><br>
            
            <div class="form-group">
               <form:label path="member_name" class="col-md-2 control-label">이름 *</form:label>

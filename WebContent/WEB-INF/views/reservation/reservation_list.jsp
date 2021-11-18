@@ -26,6 +26,13 @@ td {
 #id {
    padding-top: 5.5%;
 }
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: gray;
+    background-color: lemonchiffon;
+    border-color: lemonchiffon;
+}
 </style>
 <body>
    <c:import url="/WEB-INF/views/menu/page_top.jsp" />

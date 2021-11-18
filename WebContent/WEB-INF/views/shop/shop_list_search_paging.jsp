@@ -15,6 +15,11 @@
 <link rel="stylesheet" type="text/css" href="../menu/css/ShopList.css">
 
 <style>
+#area:hover {
+	background-color: #ffeec8;
+}
+
+
 a:focus, a:hover {
     color:rgba(163, 156, 156, 0.925);
     text-decoration: none;
@@ -126,6 +131,14 @@ a{
    text-decoration: none;
        color:rgba(163, 156, 156, 0.925);
 }
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: gray;
+    cursor: default;
+    background-color: lemonchiffon;
+    border-color: lemonchiffon;
+}
 </style>
 
 </head>
@@ -134,16 +147,7 @@ a{
 
   <c:import url="/WEB-INF/views/menu/page_top.jsp"/>
   
-	<div id="search" style="margin-left: 50%; margin-bottom: 5%;">
-	    <input type="text" name="keyword" placeholder="검색어 입력">
-	    <input type="submit" id="submit" value="검색">
-	    <c:choose>
-      	<c:when test="${loginBean2.adminLogin == true }">
-              <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
-        </c:when>
-        <c:otherwise></c:otherwise>
-    </c:choose>        
-	</div>
+
 
     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
      <a href="${root }shop/shop_detail?category_no=${obj.category_no }&shop_no=${obj.shop_no}&member_no=${loginBean.member_no}">
@@ -179,7 +183,7 @@ a{
        </a>
       </c:forEach>
       
-      <div class="d-none d-md-block">
+      <div class="d-none d-md-block" style="text-align: center">
           <ul class="pagination justify-content-center">
             <c:choose>
           <c:when test="${pageBean.prevPage <= 0 }">

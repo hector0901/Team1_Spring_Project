@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>미니 프로젝트</title>
+<title>로그인</title>
 <!-- Bootstrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -100,6 +100,7 @@
 						<div class="form-group text-right">
 							<form:button class='login_btn'>로그인</form:button>
 							<a href="${root }member/join" class="join_btn">회원가입</a>
+							<a href="${root }member/find_pw" class="join_btn">비밀번호 찾기</a>
 						</div>
 					</form:form>
 				</div>

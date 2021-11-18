@@ -22,6 +22,21 @@ td {
 #id {
   padding-top: 5.5%;
 }
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: gray;
+    cursor: default;
+    background-color: lemonchiffon;
+    border-color: lemonchiffon;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: gray;
+    background-color: lemonchiffon;
+    border-color: lemonchiffon;
+}
 </style>
 <body>
 	<c:import url="/WEB-INF/views/menu/page_top.jsp"/>

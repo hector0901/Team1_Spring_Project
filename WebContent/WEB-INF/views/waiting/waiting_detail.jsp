@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap" rel="stylesheet">

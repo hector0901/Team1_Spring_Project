@@ -15,7 +15,7 @@
     
       <img src="${root }menu/image/logo_1.png" alt="" width="15%" height="15%">
       <ul>
-        <li><a href="#">LOGIN</a>
+        <li><a href="#">로그인</a>
         <ul>
         
         <c:choose>
@@ -32,7 +32,7 @@
             <a href="${root }member/update" class="nav-link">내 정보 관리</a>
           </li>
           <li class="nav-item">
-            <a href="${root }member/logout" class="nav-link">회원 로그아웃</a>
+            <a href="${root }member/logout" class="nav-link">로그아웃</a>
           </li>
         </c:when>
         <c:when test="${loginBean.memberLogin == null }">
@@ -56,9 +56,6 @@
           <li class="nav-item">
             <a href="${root }member/join" class="nav-link">회원가입</a>
           </li>
-          <li class="nav-item">
-            <a href="${root }member/find_pw" class="nav-link">비밀번호 찾기</a>
-          </li>
         </c:otherwise>
       </c:choose>
         
@@ -67,28 +64,40 @@
       </ul>
       </li>
 
-         <li><a href="#">MORE</a>
+         <li><a href="#">예약 내역</a>
           <ul>
           <c:choose>
             <c:when test="${loginBean.memberLogin == true }">
-            <li><a href="${root }member/delete_page">탈퇴하기</a></li>
-            <li><a href="${root }waiting/waiting_list?member_no=${loginBean.member_no}">웨이팅 목록</a></li>
+            <li><a href="${root }waiting/waiting_list?member_no=${loginBean.member_no}">웨이팅 조회</a></li>
             <li><a href="${root }reservation/reservation_list?member_no=${loginBean.member_no}">예약내역 확인</a></li>
-          </c:when>
-          
+            </c:when>
+            
+            <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
+              <li class="nav-item">
+            <a href="${root }waiting/waiting_list" class="nav-link">웨이팅 리스트</a>
+              </li>
+            <li class="nav-item">
+            <a href="#" class="nav-link">예약 리스트</a>
+              </li>
+             </c:when>
+  
           <c:otherwise>
-          <li><a href="#">sub menu</a></li>
-            <li><a href="#">sub menu</a></li>
-          
-         </c:otherwise>
+          </c:otherwise>
         </c:choose>
        </ul>
        </li>
 
-        <li><a href="#">MORE</a>
+        <li><a href="#">더보기</a>
           <ul>
-            <li><a href="#">sub menu</a></li>
-            <li><a href="#">sub menu</a></li>
+            <li><a href="${root }about/about">about</a></li>
+            <c:choose>
+            <c:when test="${loginBean.memberLogin == true }">
+            <li><a href="${root }member/delete_page">탈퇴하기</a></li>
+            </c:when>
+            
+            <c:otherwise>
+            </c:otherwise>
+            </c:choose>
           </ul>
         </li>
         
