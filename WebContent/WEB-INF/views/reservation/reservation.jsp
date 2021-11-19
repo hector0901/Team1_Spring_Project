@@ -96,30 +96,24 @@ input[type=text]{
 
       </style>
     <script>
-     function minus(){
-    var n=document.getElementById("eun_number");
-    var tmp = parseInt(n.innerText);
+    window.onload=function(){
+ 	   var today=new Date();
+ 	   document.getElementById("reservation_date").valueAsDate = new Date();  
+ 	   var dd = today.getDate();
+ 	   var mm = today.getMonth()+1; //January is 0!
+ 	   var yyyy = today.getFullYear();
+ 	    if(dd<10){
+ 	           dd='0'+dd
+ 	       } 
+ 	       if(mm<10){
+ 	           mm='0'+mm
+ 	       } 
 
-    tmp--;
-    if(tmp < 1){
-        tmp = 1;
+ 	   today = yyyy+'-'+mm+'-'+dd;
+ 	   document.getElementById("reservation_date").setAttribute("min", today);
     }
-    n.innerText = tmp;
-   }
-
-   function plus(){
-    var n=document.getElementById("eun_number");
-    var tmp = parseInt(n.innerText);
-
-    tmp++;
-    if(tmp>6){
-        tmp=5;
-        alert("최대 인원은 5명입니다.");
-    }
-    n.innerText = tmp;
-   }
    function reserveclick(){
-        window.open("${root }reservation/pay?reservation_no=1&pay_no=1","예약하기","width=500,height=600,left=300");
+        window.open("${root }reservation/pay?reservation_no=${reservation_no }&pay_no=${pay_no }","예약하기","width=500,height=350,left=300");
       }
     </script>
 </head>
@@ -157,12 +151,9 @@ input[type=text]{
             
                 <br><br>
             <form:form action="${root }reservation/reservation_pro" method='post' modelAttribute="reservationBean">     
-            <li style="border-bottom: gray;">
+             <li style="border-bottom: gray;">
                 인원 선택
-                <button type="button" id="minus-button" onclick="minus()" style="background-color: white; color: gray; border: none; font-size: 27px; cursor: pointer;">-</button>
-                <form:input type="number" path="reservation_person" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" />
-                <p id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;">1</p>
-                <button type="button" id="plus-button" onclick="plus()" style="background-color: white; color: gray; border: none; font-size: 20px; cursor: pointer;">&emsp;&emsp;+</button>
+                <form:input type="number" path="reservation_person" value="1" min="1" max="5" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" />
             (최대 5인까지 가능)</li>
             </form:form>
         </ul>
@@ -203,7 +194,7 @@ input[type=text]{
        </form:form>
         </div>
        <hr style="width: 86%;">
-        <div style="font-size: 3px; margin:2%;margin-left: 35%">
+        <div style="font-size: 12px; margin:2%;margin-left: 32%">
             예약시 예약금 인원수*10,000원 결제 되는점 양해부탁드립니다.<br>
             노쇼 방지를 위하여 예약 후 취소는 불가한점 안내드립니다.<br>
             예약취소시 모든 예약금은 소멸되므로 신중한 예약부탁드립니다.

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-
+<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
 <div class="container" style="margin-top:100px">
 	<div class="row">
 		<div class="col-sm-3"></div>

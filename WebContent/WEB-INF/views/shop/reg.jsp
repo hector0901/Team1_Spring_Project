@@ -93,6 +93,13 @@ h1 {
 .select_img3 {
     margin-left: 18%;
 }
+.error{
+	color: red;
+	width: 60%;
+	height: 10%;
+	padding-top: 5%;
+	padding-left: 16%;
+}
 </style>
 
 <script type="text/javascript">
@@ -312,14 +319,39 @@ function execPostCode() {
            
        <br><br><br>
            
-       <div class="form-group">
+      <div class="form-group">
         <form:label path="shop_remain_seat" class="col-md-2 control-label">잔여 좌석 수 *</form:label>
           <div class="col-md-6">
-            <form:input type="number" path="shop_remain_seat" class='form-control' />
+            <form:input type="number" path="shop_remain_seat" min="0" id="shop_remain_seat" oninput="seat()" class='form-control' />
           </div>
+          <div id="shop_remain_seat1" class="error" oninput="seat()"></div>
        </div>
-       
-       <br><br><br>
+      
+       <script type="text/javascript">
+       		function seat() {
+				var shop_total_seat=document.getElementById('shop_total_seat');
+				var shop_remain_seat=document.getElementById('shop_remain_seat');
+				shop_remain_seat.setAttribute("max", shop_total_seat.value);
+				
+				var shop_total_seat = $("#shop_total_seat").val()
+				var shop_remain_seat = $("#shop_remain_seat").val()
+				if(shop_total_seat.value == shop_remain_seat.value){
+					var c=document.getElementById("shop_remain_seat1"); //div아이디
+	       			  c.innerHTML=null;
+	       		    var a= document.createElement("div"); //오류 텍스트
+	       			  a.innerHTML = "잔여좌석 수를 초과했습니다.";
+	       			document.getElementById("shop_remain_seat1").appendChild(a);
+	       			  return;
+				}
+				else{
+	       			  var c2=document.getElementById("shop_remain_seat1");
+	       			  c2.innerHTML=null;
+	       			  var b2=document.getElementById("shop_remain_seat1").removeChild(a);
+	       			  return;
+	       			}	
+			}
+       </script>
+       <br>
        
        <div class="form-group">
         <form:label path="shop_time" class="col-md-2 control-label">영업 시간 *</form:label>

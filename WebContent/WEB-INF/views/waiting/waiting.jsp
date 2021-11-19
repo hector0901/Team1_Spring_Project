@@ -53,29 +53,6 @@
 
       </style>
       <script>
-            function minus(){
-    var n=document.getElementById("eun_number");
-    var tmp = parseInt(n.innerText);
-
-    tmp--;
-    if(tmp < 1){
-        tmp = 1;
-    }
-    n.innerText = tmp;
-   }
-
-   function plus(){
-    var n=document.getElementById("eun_number");
-    var tmp = parseInt(n.innerText);
-
-    tmp++;
-    if(tmp>8){
-        tmp=8;
-        alert("최대 인원은 8명입니다.");
-    }
-    n.innerText = tmp;
-   }
-
    function watiting_check(){
        window.close;
    }
@@ -100,22 +77,12 @@
                 <form:hidden path="member_no"/>
                 <form:hidden path="shop_no"/>
                     <div class="waiting_im">
-                        <h3>대기 고객정보</h3>
+                         <h3>대기 인원 선택</h3>
                         <div class="waiting_people">
-                            대기인원
-                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" min="0" max="8"/><br>
+                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" value="1" min="1" max="8"/><br>
                             <span id="waiting_guide">(인원은 최대 8명까지입력해주세요)</span>
                         </div>
-                        <hr style="width: 85%;">
-                        <div id="waiting_people_im">
-                        <div id="waiting_name">
-                          <!-- name -->
-                        </div>
-                        <div id="waiting_tel">
-                           <!-- tel -->
-                        </div>
-                        </div>
-                        <hr>
+                        <hr width="80%" style="margin-top:8%; padding-bottom: 2px; background: black;">
                         <ul id="waiting_gu">
                             <li>
                                 매장상황에 따라 입장시간이 지연될 수 있습니다.

@@ -1,131 +1,28 @@
 @charset "EUC-KR";
-
-/* @import url(https://fonts.googleapis.com/css?family=Lato); */
-/* body {
-  margin: 0; */
-/* } */
-
-
-body{
-  margin: 0;
-}
-
-
-.bg-slide{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top:0px;
-    left: 0px;
-   
-
-   /* ��媛곸꽑 議곗젅 */
-     transform: skewX(160deg) translateX(60%); 
-    overflow: hidden;
-    
-    
-}
-
-.bg-slide li{
-    width: 100%;
-    height: 100%;
-    position:absolute;
-    TOP:0px;
-    left: 0px;
-    opacity: 0;
-    background-size: 75%;      /*諛곌꼍 �궗�씠利� 議곗젙*/
-    /* background-position:50% 50%; */
-    background-repeat: none;             /* 諛곌꼍�씠誘몄� 諛섎났:none */
-    -webkit-animation: bg-slide-animation 30s linear infinite 0s; /*�씪�젙�냽�룄濡� �븷�땲硫붿씠�뀡 臾댄븳�옱�깮*/
-     animation: bg-slide-animation 30s
-      linear infinite 0s;
-}
-
-
-.bg-slide li:nth-child(1){
-  background:url('../image/slide_1.png');
-}
-.bg-slide li:nth-child(2){
-     background:url('../image/slide_2.jpg');
-    -webkit-animation-delay:7s ;
-    animation-delay: 7s;
-}
-.bg-slide li:nth-child(3){
- background:url('../image/slide_3.jpg');
-    -webkit-animation-delay:7s ;
-    animation-delay: 14s;
-}
-.bg-slide li:nth-child(4){
-    background:url('../image/slide_4.jpg');
-    -webkit-animation-delay:7s ;
-    animation-delay: 21s;
-}
-@-webkit-keyframes bg-slide-animation{
-    0%{ -webkit-animation-timing-function:ease-in;    /*ease-in�븷�땲硫붿씠�뀡 �뒓由ш쾶 �떆�옉*/
-    opacity: 0;}
-
-    10%{
-        -webkit-transform: scale(1.1);
-        -webkit-animation-timing-function: ease-out;  /*ease-in�븷�땲硫붿씠�뀡 �뒓由ш쾶 �걹�궓*/
-        opacity:1;
-    }
-    30%{-webkit-transform: scale(1.3);     /*scale:1.3諛� �솗�� */
-        opacity: 1;                        /*�닾紐낅룄:1 (�셿�쟾遺덊닾紐�) */
-    }
-    50%{-webkit-transform: scale(1.3);
-        opacity: 0;
-    }
-    100%{opacity: 0}
-}
-@keyframes bg-slide-animation{
-    0%{
-        animation-timing-function: ease-in;
-        opacity: 0;
-    }
-    10%{
-        transform: scale(1.1);
-        animation-timing-function:ease-out;
-        opacity: 1;
-    }
-    30%{transform: scale(1.3);
-    opacity: 1;
-}
-50%{
-    transform: scale(1.3);
-    opacity: 0;
-}
-100%{opacity: 0;}
-}
-
-#font {
-   font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-
-.category img {
-    transition: all 0.2s linear;
-     padding-left: 8%;
-  }
-  .category:hover img {
-    transform: scale(1.2);
-  }
-
- /*가게상세 페이지 스타일*/ 
- 
+ a{
+ 	text-decoration: none;
+ 	color: rgba(112, 109, 109, 0.925)
+ }
     #shop_main{ 
-      /*margin: 60px 60px 60px 90px;*/
+      /*margin: 60px 60px 60px 90px; text-align: center;*/
       margin-top: 0%;
-      text-align: center;
+      margin-left: 20%;
+     
     }
-    
+    #explanation{
+    	float: left;
+    	
+    }
+    #shop_main_explanation{
+    	padding-left: 10%;
+    }
     #shop_detail_page{
       list-style-type: none;
       
     }
     #shop_main_img{
       float: left;
-      margin-left: 18%;
+      
     }
     #shop_main_explanation{
       width: 50%;
@@ -133,13 +30,17 @@ body{
       margin-left: 33%;
       font-size: 18px;
     }
+    #shop_menu_pan{
+    	margin-left: 5%;
+    	margin-top: 5%
+    }
     
     #shop_reserve_button{
-      margin: 10px 0px 50px 10px;
-      padding: 1% 3%;
+      margin: 10px 0px 50px 80px;
+      padding: 2% 4%;
       background-color: lemonchiffon;
       border-radius: 5px;
-      font-family:"맑은고딕";
+      font-family:"留���怨���";
       border:none;
       color: rgba(112, 109, 109, 0.925);
       font-size: 20px;
@@ -149,11 +50,11 @@ body{
       background-color: rgb(228, 223, 184);
     }
     #shop_waiting_button{
-      margin: 10px 0px 50px 10px;
-      padding: 1% 3%;
+      margin: 10px 0px 50px 20px;
+      padding: 2% 4%;
       background-color: white;
       border-radius: 5px;
-      font-family:"맑은고딕";
+      font-family:"留���怨���";
       border:1px solid;
       color: rgba(112, 109, 109, 0.925);
       font-size: 20px;
@@ -178,50 +79,20 @@ body{
       font-size:30px;
       font-weight: bold;
     }
-    #map_content{
-      text-align: center;
-    }
+    #map{
+      margin-top: 10%;
+      margin-left: 18%;
+  }
     
-    
-    #menuname1{
-      /*가게2 메뉴글씨*/
-      text-align: center;
-      margin-left: 150px;
-      margin-top: 30px;
-    }
-    #menuname2{
-      text-align: center;
-      margin-left: 180px;
-      margin-top: 30px;
-    }
-
-    #shop_menu_pan{
-      margin: 9% 0 10% 8%; /*위 오 아 왼*/
-    }
-      #shop_menu_pan_back_button,#shop_menu_pan_after_button{
-        display: inline-block;
-        
-      }
-      #after_button, #back_button{ 
-        background-color: white;
-        border:none;
-        font: 3em bold black;
-      }
-      #back_button:hover, #after_button:hover{
-        opacity: 0.3;
-        cursor: pointer;
-      }
-      
       #shop_review_img{
       	margin-top: 5%
       	
       }
-      
       #review_button{
       padding: 1% 3%;
       background-color: lemonchiffon;
       border-radius: 5px;
-      font-family:"맑은고딕";
+      font-family:"留���怨���";
       border:none;
       color: rgba(112, 109, 109, 0.925);
       font-size: 20px;
@@ -251,42 +122,36 @@ body{
 	}
 	.review_nickname:focus ,.add:focus{
 		outline:none;
-		/*테두리 없애기*/
+		/*����由� ����湲�*/
 	}
 	.review_nickname{
 		font:25px bold black;
 		border:0px;
 		background-color:transparent;
 		margin-bottom: 10%;
-		/*크기조절 및 라인없애기*/
+		/*�ш린議곗�� 諛� �쇱�몄����湲�*/
 	}
 	.add{
 		font-size:20px;
 		resize: none;
 		border:0px;
 		background-color:transparent;
-		/*크기조절 및 라인없애기*/
+		/*�ш린議곗�� 諛� �쇱�몄����湲�*/
 	}
 	#review_user{
 	  margin-top:-10%;
 	  margin-left: 12%
 	}
-      
-      
-      
-  
 
-
-
-
-
-/*탭전체 스타일*/
+/*����泥� �ㅽ����*/
 .shop_tab_menu{
     position:relative;
     width: 900px;
     margin-top: 5%;
     padding-bottom: 40px;
     margin-left: 23%;
+    height: 700px;
+    overflow: hidden;
     }
 
 .shop_tab_menu .list{
@@ -304,7 +169,7 @@ body{
   text-align: center;
   display: block;
   float: left;
-  text-align: center;
+ 
   font-weight: bold;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -316,14 +181,16 @@ body{
 }
 
 #shop_menu_pan_content,
-#shop_review,
-#shop_map_contact{
+#shop_review{
   overflow: hidden;
   display: none;
 }
+#shop_map_contact{
+	overflow: hidden;
+}
 
 
-/*선택된 탭스타일*/
+/*������ ���ㅽ����*/
 .shop_tab_menu .list li.tab_Button .btn{
   font-weight: bold;
   color: rgba(112, 109, 109, 0.925);

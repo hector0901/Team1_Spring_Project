@@ -16,15 +16,28 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+   <!-- 폰트 링크 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
 </head>
-
 <style>
+/* 폰트 링크 */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+	.font{
+	  font-family: 'Mochiy Pop P One', sans-serif;
+	  margin-left:19%;
+	  margin-top: -32px;
+	  position: absolute;
+	  z-index : 1;
+	}
 td {
 	text-align: center;
 }
 
 #id {
-	padding-top: 5.5%;
+	padding-top: 2.5%;
+    padding-bottom: 2.5%;
 }
 .page-item.active .page-link {
     z-index: 1;
@@ -35,6 +48,9 @@ td {
 </style>
 <body>
 	<c:import url="/WEB-INF/views/menu/page_top.jsp" />
+		<div class="font">
+			<h1>waiting</h1>
+		</div>
 
 	<!-- 게시글 리스트 -->
 	<div class="container" style="margin-top: 100px">
@@ -57,8 +73,8 @@ td {
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_name }</td>
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_count }</td>
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate }</td>
-								<td><a
-									href="${root }waiting/waiting_delete?member_no=${loginBean.member_no}&waiting_no=${obj.waiting_no}">취소</a></td>
+								<td class="text-center d-none d-md-table-cell" id="id">
+								<a href="${root }waiting/waiting_delete?member_no=${loginBean.member_no}&waiting_no=${obj.waiting_no}"><img alt="" src="${root }image/x.png"></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

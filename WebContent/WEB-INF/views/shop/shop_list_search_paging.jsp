@@ -59,8 +59,8 @@ h3{margin-left: 10px;}
    line-height: 50px;
     font-size: 18px;
     font-weight: bold;
-    margin-left: 110%;
-    margin-top: 20%;
+    margin-left: 64%;
+    margin-top: 5%;
     display: block;
 }
 
@@ -88,13 +88,6 @@ h3{margin-left: 10px;}
 :-ms-input-placeholder {color:rgba(163, 156, 156, 0.925)}
 ::-webkit-input-placeholder {color:rgba(163, 156, 156, 0.925)}
 input::-moz-placeholder {color:rgba(163, 156, 156, 0.925)}
-
-#search {
-    height:40px;
-    width:400px;
-    border: 1px solid lightgrey;
-    background: #ffffff;
-}
 
 input[type=text] {
     font-size: 16px;
@@ -147,8 +140,14 @@ a{
 
   <c:import url="/WEB-INF/views/menu/page_top.jsp"/>
   
-
-
+<div id="search">
+ <c:choose>
+      	<c:when test="${loginBean2.adminLogin == true }">
+              <button class="reg-button"onclick="location.href='${root }shop/reg?admin_no=${admin_no }&category_no=${category_no }'">가게 등록</button>
+        </c:when>
+        <c:otherwise></c:otherwise>
+    </c:choose> 
+     </div>
     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
      <a href="${root }shop/shop_detail?category_no=${obj.category_no }&shop_no=${obj.shop_no}&member_no=${loginBean.member_no}">
      <div class="option">

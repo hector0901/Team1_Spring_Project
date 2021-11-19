@@ -10,27 +10,19 @@
 <link rel="stylesheet" type="text/css" href="css/shop_Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <style>
-        #card:hover{
-            background-color: blanchedalmond;
-        }
-        #pay_name{
-            display: block;
-        }
-        #pay_option{
-            display: inline-block;
-        }
-        #hr_line{
+              #hr_line{
             border: 0%;
             width: 95%; 
             height: 2px;
             background: black;
+            
         }
         #hr_line_02{
             border: 0%;
             width: 95%; 
             height: 0.3px;
             background: black;
-            margin-top: 5%;
+            margin-top: 20%;
         }
         #card:target{
             background-color: blue;
@@ -76,11 +68,31 @@
         #pay_cancel:hover{
          background-color: rgb(219, 218, 204);
     }
-       
+input[type=radio] {
+	display:none;
+	margin: 10px;
+      
+}
+input[type=radio]+ label {
+	display:inline-block;
+	padding:8px 19px;
+  	cursor: pointer;
+  	border: 1px solid black; 
+  	width: 110px;
+  	text-align: center;
+}
+input[type=radio]:checked + .c{
+  border: 10px solid lemonchiffon;
+}
+#a{
+	float: left;
+	margin-left: 1%;
+}
+
     </style>
     <script>
     function payclick(){
-	      window.open("${root }reservation/kakaopay?reservation_no=1&pay_no=1&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
+	      window.open("${root }reservation/kakaopay?reservation_no=${reservation_no }&pay_no=${pay_no }&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
 	      window.close();
 	    }
     </script>
@@ -90,23 +102,35 @@
     <h2>결제 정보</h2>
     <hr id="hr_line">
                 <div id="pay_option">
-                    <h3>결제 방법</h3>
-                    <button id="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
-                    <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
-                  </svg>
-                  <span id="pay_name">신용카드</span></button>
-
-                <button id="money">
-                <img src="image/money-svgrepo-com.svg" width="30" height="30">
-                <span id="pay_name">무통장입금</span></button>
-
-               <button id="kakao">
-                      <img src="image/카카오페이_CI_combination.svg" width="30" height="30">
-                      <span id="pay_name">카카오 페이</span>
-                  </button> 
-                </div>
+                      <h3>결제 방법</h3>
+                    
+                    <div class="pay">
+                    <div id="a">
+                    	<input type="radio" name="pay_name" value="1" id="card" >
+                    	<label for="card" class="c">
+                    		<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                   				<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                    			<path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                  			</svg><div id="pay_no">신용카드</div></label>
+                    	</div>
+                    		
+                  		<div id="a">
+                    	<input type="radio" name="pay_name" value="2" id="money" >
+                    	<label for="money" class="c">
+                    	<img src="image/money-svgrepo-com.svg" width="60" height="60">
+                    	<div id="pay_no">무통장입금</div></label>
+                    	</div>	
+                    		
+                    	
+                    	<div id="a">
+                    	<input type="radio" name="pay_name" value="3" id="ckakao" o>
+                    	<label for="ckakao" class="c">
+                    	<img src="image/카카오페이_CI_combination.svg" width="60" height="60">
+                    	<div id="pay_no">카카오 페이</div></label>
+                    	</div>	
+                    		
+                  </div>
+                    </div>
              <hr id="hr_line_02">
 
 
@@ -123,19 +147,19 @@
                 <div id="pay_div_02">
                     <div id="pay_table_tr_02">
                         예약금액&ensp;&nbsp;&emsp;&emsp;
-                        <input type="text" id="reserve_pay" size="10" dir="rtl" value="10000" readonly>원 
+                        <input type="number" id="reserve_pay"  dir="rtl" value="10000" readonly>원 
                     </div> 
                   <!--  <form action="kakaopay " method="get"></form>   -->
                 <div id="pay_table_tr_02">총 인수&ensp;&emsp;&emsp;&emsp;
-                        <input type="number" id="people" name="people" size="10" dir="rtl" readonly>${reservationBean.reservation_person }명
+                        <input type="number" id="people" name="people"  dir="rtl" value="${reservationBean.reservation_person }" readonly>명
                         </div>
                     
                     <div id="pay_table_tr_02" style="margin-top: 5%;">
                         <span style="font-weight: bold;">최종 결제금액</span>&nbsp;
-                        <input type="number" id="pay_text" name="pay_text" size="10" dir="rtl" readonly>${reservationBean.reservation_person *10000}원
+                        <input type="number" id="pay_text" name="pay_text"  dir="rtl" value="${reservationBean.reservation_person *10000}" readonly>원
                     </div>
                     
-                    <div id="pay_table_tr_02" style="margin-top: 5%;">
+                  <!--   <div id="pay_table_tr_02" style="margin-top: 5%;">
                         <span style="font-weight: bold;">데이트</span>&nbsp;
                         <input type="text" id="date" name="date" size="10" dir="rtl" readonly>${reservationBean.reservation_date}
                     </div>
@@ -148,12 +172,12 @@
                     <div id="pay_table_tr_02" style="margin-top: 5%;">
                         <span style="font-weight: bold;">add</span>&nbsp;
                         <input type="text" id="add" name="add" size="10" dir="rtl" readonly>${reservationBean.reservation_add}
-                    </div>
+                    </div>-->
                     
                  </div>
                  
 </div>
-    <hr id="hr_line_02">
+    <hr id="hr_line_02" style="margin-top: 5%;">
     <input type="submit" id="pay_cancel" value="취소" onclick="click()">
     <input type="submit" id="pay_cl" value="결제" onclick="payclick()">
     

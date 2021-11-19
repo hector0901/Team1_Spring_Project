@@ -12,9 +12,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
-
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+.font{
+  font-family: 'Jua', sans-serif;
+  margin-left: 19%;
+}
 td {
   text-align: center;
 }
@@ -40,9 +47,12 @@ td {
 </style>
 <body>
 	<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
+	<div class="font">
+  <h1>회원 목록</h1>
+</div>
 
 <!-- 게시글 리스트 -->
-<div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:-20px">
 	<div class="card shadow">
 		<div class="card-body">
 			<table class="table table-hover" id='board_list'>

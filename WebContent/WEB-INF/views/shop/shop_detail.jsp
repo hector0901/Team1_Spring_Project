@@ -64,34 +64,49 @@
 
     <div id="shop_main">
       <ul id="shop_detail_page">
-        
+      	
         <li id="shop_main_img">
         
         <!-- 메인이미지  -->
         <c:choose>
-          <c:when test="${readShopBean.shop_main != null}"> <!-- 파일이 존재하면 -->
-            <img src="${root }upload/${readShopBean.shop_main }" style="width: 250px; height: 250px;">
-          </c:when>
+      	  <c:when test="${readShopBean.shop_main != null}"> <!-- 파일이 존재하면 -->
+          	<img src="${root }upload/${readShopBean.shop_main }" style="width: 550px; height: 550px;  ">
+      	  </c:when>
           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-            <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-          </c:otherwise>
+            <img src='${root }image/alt_image.png' style='width:550px; height: 550px;'>
+       	  </c:otherwise>
         </c:choose>
           
         </li> 
-        <li id="shop_main_explanation">
+        <li>
+        	<div id="shop_main_explanation">
           <p id="shop_main_name">${readShopBean.shop_name }</p>
           <p>${readShopBean.shop_simple }</p>
-          <img src="image/telephone.png" width="15" height="15"> 0507-1339-9951<br>
+          <div id="explanation">
           <img src="image/pin.png" width="15" height="15">${readShopBean.shop_address1 }<br>
           ${readShopBean.shop_address2 }<br>
           <img src="image/clock.png" width="15" height="15"> ${readShopBean.shop_time }
          <br>
           <img src="image/clipboard.png" width="15" height="15"> ${readShopBean.shop_content }<br>
+          </div><br><br>
+         <c:choose> 
+         <c:when test="${loginBean.memberLogin == true }">
           <input id="shop_reserve_button" type="submit" value="예약하기" onclick="reserveclick()">
-          <input id="shop_waiting_button" type="submit" value="waiting" onclick="waitingclick()"><br><br><br>
-          <a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a>
-          <a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">가게 삭제</a>
+          <input id="shop_waiting_button" type="submit" value="waiting" onclick="waitingclick()">
+         </c:when>
+			<c:when test="${loginBean2.adminLogin == true }">
+         		<button id="shop_reserve_button"><a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a></button>
+         		<button id="shop_waiting_button"><a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">가게 삭제</a></button>
+         	</c:when>
+         <c:otherwise>
+         	<input id="shop_reserve_button" type="submit" value="예약하기">
+          	<input id="shop_waiting_button" type="submit" value="waiting">
+         </c:otherwise>
+         </c:choose>
         </li>
+        <li>
+        	<span style="font-size: 12px; margin-left: 45%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
+        </li></div>
       </ul>
       
     </div>
@@ -109,8 +124,6 @@
             </li> 
             <li>
                 <a href="#shop_review" class="btn" id="shop_review_tab">리뷰</a>
-                <input id="shop_reply_button" type="submit" value="댓글등록" onclick="shopreplyclick()">
-                <input id="shop_reply_list_button" type="submit" value="댓글목록" onclick="shopreplylistclick()">
             </li> 
             <li>
                 <a href="#shop_map_contact" class="btn" id="shop_contact_tab">오시는길</a>
@@ -123,12 +136,12 @@
             <div id="shop_mainmenu_img">
             
             <c:choose>
-              <c:when test="${readShopBean.shop_menu_img != null}"> <!-- 파일이 존재하면 -->
-              <img src="${root }upload/${readShopBean.shop_menu_img }" style="width: 250px; height: 250px;">
-              </c:when>
+      	      <c:when test="${readShopBean.shop_menu_img != null}"> <!-- 파일이 존재하면 -->
+            	<img src="${root }upload/${readShopBean.shop_menu_img }" style="width: 950px; height: 500px;">
+      	      </c:when>
               <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-                <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-              </c:otherwise>
+                <img src='${root }image/alt_image.png' style='width:1500px; height: 600px;'>
+       	      </c:otherwise>
             </c:choose>
                
             </div>
@@ -141,13 +154,13 @@
                     <!-- 내부이미지  -->
                     
                     <c:choose>
-                    <c:when test="${readShopBean.shop_inside_img != null}"> <!-- 파일이 존재하면 -->
-                      <img src="${root }upload/${readShopBean.shop_inside_img }" style="width: 250px; height: 250px;">
-                    </c:when>
-                    <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-                      <img src='${root }image/alt_image.png' style='width: 250px; height: 250px;'>
-                    </c:otherwise>
-                  </c:choose>
+	      	          <c:when test="${readShopBean.shop_inside_img != null}"> <!-- 파일이 존재하면 -->
+	                    <img src="${root }upload/${readShopBean.shop_inside_img }" style="width: 960px; height: 550px;">
+	      	          </c:when>
+	                  <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+	                    <img src='${root }image/alt_image.png' style='width: 960px; height: 550px;'>
+	       	          </c:otherwise>
+	                </c:choose>
                          
                    <br><br>
                   </div>
@@ -156,6 +169,8 @@
 
         <div id="shop_review" class="cont">
           <div id="review_view">
+          <input id="shop_reply_button" type="submit" value="댓글등록" onclick="shopreplyclick()">
+                <input id="shop_reply_list_button" type="submit" value="댓글목록" onclick="shopreplylistclick()">
           <!-- 닉네임 올린 리뷰들어가야함 -->
           <div class="container" style="margin-top: 100px">
     <div class="card shadow">
@@ -184,12 +199,10 @@
     </div>
   </div>
         </div>
-
+</div>
         <div id="shop_map_contact" class="cont">
             <div id="map_content">
-            <p style="font:30px bold">오시는길</p> 
             <div id="map" oninput=resizeMap() style="width: 120%; height: 120%;">${readShopBean.map }</div> 
-            
             </div>
         </div>
         </div>
