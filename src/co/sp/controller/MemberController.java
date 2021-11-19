@@ -206,7 +206,7 @@ public class MemberController {
 
             return "member/find_pw_success";
         } else {
-          System.out.println("아이디나 이메일을 정확하지 않습니다");
+          System.out.println("아이디나 이메일이 정확하지 않습니다");
             return "member/find_pw_fail";
         }
     }

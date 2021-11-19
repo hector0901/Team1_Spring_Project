@@ -325,7 +325,7 @@ function telCheck(){
               <div class="col-md-6">
                 <form:password path="member_pw2" class='form-control'/>
               </div>
-              <div class="col-md-6" style="margin-left: 14.8%; margin-top: 0.3%"  >
+              <div class="col-md-6" style="margin-left: -12%; margin-top: 0.3%"  >
                 <form:errors path="member_pw2" style='color:red;' />
               </div>
            </div>

@@ -7,17 +7,32 @@
 <head>
 <meta charset="EUC-KR">
 <link rel="stylesheet" type="text/css" href="menu/css/mainHeader_Style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
+nav ul li a  {
+   font-family: 'Hi Melody', cursive;
+   font-size: 22px;
+}
+</style>
 </head>
 <body>
 
 <!-- 헤더 -->
     <nav class="header">
     
-      <img src="${root }menu/image/logo_1.png" alt="" width="15%" height="15%">
+    <div style="margin-right: -10%; margin-left: -3%">
+      <img src="${root }menu/image/logo_1.png" alt="" width="50%" height="50%">
+     </div>
       <ul>
-        <li><a href="#">로그인</a>
+        <li class="head_1"><a href="#">로그인</a>
         <ul>
         
+           
         <c:choose>
          <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
           <li class="nav-item">
@@ -64,8 +79,9 @@
       </ul>
       </li>
 
-         <li><a href="#">예약 내역</a>
+         <li class="head_1"><a href="#">예약 내역</a>
           <ul>
+          
           <c:choose>
             <c:when test="${loginBean.memberLogin == true }">
             <li><a href="${root }waiting/waiting_list?member_no=${loginBean.member_no}">웨이팅 조회</a></li>
@@ -87,9 +103,19 @@
        </ul>
        </li>
 
-        <li><a href="#">더보기</a>
+        <li class="head_1"><a href="#">더보기</a>
           <ul>
             <li><a href="${root }about/about">about</a></li>
+             <li>
+             <a href="${root }about/about">추천</a>
+             <ul>
+                <li class="child"><a href="#">child</a></li>
+                <li class="child"><a href="#">child</a></li>
+                <li class="child"><a href="#">child</a></li>
+              </ul>
+             </li>
+            
+             
             <c:choose>
             <c:when test="${loginBean.memberLogin == true }">
             <li><a href="${root }member/delete_page">탈퇴하기</a></li>

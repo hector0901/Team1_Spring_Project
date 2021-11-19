@@ -49,22 +49,29 @@ nav ul li {
 }
 
 /* first-child     苑         源 域밸 肉         */
- /* nav ul li:not(:first-child) {  
+  nav ul li:not(:first-child) {  
    border-left: none; 
-}  */
+}  
 
 
-nav ul li:hover {
+.head_1:hover {
   background-color: lemonchiffon;
 }
+nav ul li:hover {
+  background-color: #fffcde;
+}
+
+.child:hover{
+	background-color: #fffdee;
+}
+
 
 /*  湲     簾ル뗀  (1   )           */
 nav ul li a { 
   display: inline-block;
-  padding: 0.7em 5em;
+  padding: 0.7em 4.5em;
   color:rgba(163, 156, 156, 0.925);
-  font: 400 22px/1 'Lato', sans-serif;
-  font-size: 18px;
+  font-family: 'Hi Melody', cursive;
   text-decoration: none;
   white-space: nowrap;     /* ⑤ ш 力μ    ,nowrap : https://www.codingfactory.net/10597*/
 }
@@ -83,19 +90,24 @@ nav ul ul li {
   margin: 0; 
 }
 
-/* first-child     苑         源 域밸 肉         */
-/* nav ul ul li:not(:first-child) {
-  border: 2px solid white;
+/* first-child �냽�꽦�젣�쇅 �깭洹몄뿉 �쟻�슜 */
+nav ul ul li:not(:first-child) {
+/*   border: 2px solid white; */
   border-top: none;
-} */
+} 
+nav ul ul ul {
+  position: absolute;
+  top: 0px;
+   right: 100%; 
+}
 
 
 
 /*         */
 /*   域뱀 ⑥빵    μ   鈺곌    : https://gahyun-web-diary.tistory.com/80*/
-/* .header ul li {
+ .header ul li {
   perspective: 300px;    
-} */
+} 
 
 /* 釉    簾ル뗀          (2   )*/
 .header ul ul {
@@ -106,9 +118,14 @@ nav ul ul li {
   transform-origin: 0 0;
 }
 
-/* .header ul ul li {
+.header ul ul li {
   perspective: 1500px;
-} */
+} 
+
+
+.nav ul ul ul {
+  transform: rotateX(0) rotateY(-90deg);
+}
 
 /* 釉    簾ル뗀         (2   ) */
 .header ul li:hover > ul {

@@ -7,6 +7,18 @@
 <head>
 <meta charset="EUC-KR">
 <link rel="stylesheet" type="text/css" href="../menu/css/PageHeader.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
+nav ul li a  {
+   font-family: 'Hi Melody', cursive;
+   font-size: 22px;
+}
+</style>
 
 
 </head>
@@ -19,7 +31,7 @@
 				width="50%" height="50%"></a>
 		</div>
 		<ul>
-			<li><a href="#">로그인</a>
+			<li class="head_1"><a href="#">로그인</a>
 				<ul>
 
 					<c:choose>
@@ -51,7 +63,7 @@
 				</ul></li>
 
 
-			<li><a href="#">예약 내역</a>
+			<li class="head_1"><a href="#">예약 내역</a>
 				<ul>
 					<c:choose>
                      <c:when test="${loginBean.memberLogin == true }">
@@ -74,9 +86,17 @@
 					</c:choose>
 				</ul></li>
 
-			<li><a href="#">더보기</a>
+			<li class="head_1"><a href="#">더보기</a>
 			 <ul>
                   <li><a href="${root }about/about">about</a></li>
+                  <li>
+             <a href="${root }about/about">추천</a>
+             <ul>
+                <li class="child"><a href="#">child</a></li>
+                <li class="child"><a href="#">child</a></li>
+                <li class="child"><a href="#">child</a></li>
+              </ul>
+             </li>
                <c:choose>
                   <c:when test="${loginBean.memberLogin == true }">
                   <li><a href="${root }member/delete_page">탈퇴하기</a></li>

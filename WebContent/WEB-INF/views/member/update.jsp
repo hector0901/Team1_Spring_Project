@@ -129,7 +129,7 @@ function execPostCode() {
 	<form:form action='${root }member/update_pro' method='post' modelAttribute="updateMemberBean">
 		<div class="mypage회원정보수정_div" style="margin-top: -3%;">
 			<div class="form-group">
-				<form:label path="member_id" class="col-md-2 control-label">아이디 *</form:label>
+				<form:label path="member_id" class="col-md-2 control-label">아이디 </form:label>
 				<div class="col-md-4">
 					<form:input path="member_id" type='text' class="form-control" required="required" readonly="true" disabled="disabled" />
 				</div>
@@ -148,7 +148,7 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_pw2" class="col-md-2 control-label">비밀번호 확인 *</form:label>
+				<form:label path="member_pw2" class="col-md-2 control-label">비밀번호확인 *</form:label>
 				<div class="col-md-4">
 					<form:input path="member_pw2" type='password' class="form-control" required="required" />
 				</div>
@@ -158,7 +158,7 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_name" class="col-md-2 control-label">성명 *</form:label>
+				<form:label path="member_name" class="col-md-2 control-label">이름 </form:label>
 				<div class=" col-md-4">
 					<form:input path="member_name" type='text' class="form-control"
 						required="required" disabled="disabled" readonly="true" />
@@ -169,7 +169,7 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_social" class="col-md-2 control-label">주민등록번호 *</form:label>
+				<form:label path="member_social" class="col-md-2 control-label">주민등록번호 </form:label>
 				<div class="col-md-4">
 					<form:input path="member_social" type='text' class="form-control"
 						required="required" disabled="disabled" readonly="true" />
@@ -191,7 +191,7 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_tel" class="col-md-2 control-label">연락처 *</form:label>
+				<form:label path="member_tel" class="col-md-2 control-label">전화번호 *</form:label>
 				<div class="col-md-4">
 					<form:input path="member_tel" type='tel' class="form-control"
 						required="required" />
@@ -202,7 +202,7 @@ function execPostCode() {
 			<br>
 
 			<div class="form-group">
-				<form:label path="member_email" class="col-md-2 control-label">이메일 *</form:label>
+				<form:label path="member_email" class="col-md-2 control-label">이메일 </form:label>
 				<div class="col-md-4">
 					<form:input path="member_email" type='email' class="form-control"
 						required="required" disabled="disabled" readonly="true" />
@@ -279,7 +279,7 @@ function execPostCode() {
 			<br><br>
 
 			<div class="form-group">
-              <form:label path="member_profile" class="col-md-2 control-label">프로필 이미지 *</form:label>
+              <form:label path="member_profile" class="col-md-2 control-label">프로필 이미지 </form:label>
               <div class="col-md-4img">
                    <c:choose>
 						      <c:when test="${updateMemberBean.member_profile != null}"> <!-- 파일이 존재하면 -->

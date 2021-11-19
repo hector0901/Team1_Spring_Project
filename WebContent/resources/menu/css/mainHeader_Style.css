@@ -46,52 +46,67 @@ nav ul li {
 }
 
 /* first-child �냽�꽦�젣�쇅 �깭洹몄뿉 �쟻�슜 */
- /* nav ul li:not(:first-child) {  
+  nav ul li:not(:first-child) {  
    border-left: none; 
-}  */
+}  
 
+.head_1:hover {
+  background-color: lemonchiffon;
+}
 
 nav ul li:hover {
-  background-color: lemonchiffon;
+  background-color: #fffcde;
+}
+
+.child:hover{
+	background-color: #fffdee;
 }
 
 /* �긽�쐞 硫붾돱(1�떒) �뒪���씪  */
 nav ul li a { 
   display: inline-block;
-  padding: 0.7em 5.5em;
+  padding: 0.7em 3.5em;
   color:rgba(163, 156, 156, 0.925);
-  font: 400 22px/1 'Lato', sans-serif;
-  font-size: 18px;
+  font-family: 'Hi Melody', cursive;
   text-decoration: none;
   white-space: nowrap;     /*怨듬갚泥섎━,nowrap : https://www.codingfactory.net/10597*/
 }
+
 
 /* �븯�쐞 硫붾돱 �겕湲� 議곗젙(2�떒) */
 nav ul ul {
   position: absolute;
   top: 100%;
   width: 100%;
+  
 
 }
 /* �븯�쐞 硫붾돱 �겕湲� 議곗젙(2�떒) */
 nav ul ul li {
+	
   float: none;
   margin: 0; 
 }
 
 /* first-child �냽�꽦�젣�쇅 �깭洹몄뿉 �쟻�슜 */
-/* nav ul ul li:not(:first-child) {
-  border: 2px solid white;
+nav ul ul li:not(:first-child) {
+/*   border: 2px solid white; */
   border-top: none;
-} */
+} 
+
+nav ul ul ul {
+  position: absolute;
+  top: 0px;
+   right: 100%; 
+}
 
 
 
 /* �슚怨�  */
 /*�썝洹쇨컧 李⑥씠 議곗젙 : https://gahyun-web-diary.tistory.com/80*/
-/* .header ul li {
+ .header ul li {
   perspective: 300px;    
-} */
+} 
 
 /*�븯�쐞硫붾돱 �슚怨� (2�떒)*/
 .header ul ul {
@@ -102,9 +117,15 @@ nav ul ul li {
   transform-origin: 0 0;
 }
 
-/* .header ul ul li {
+ .header ul ul li {
   perspective: 1500px;
-} */
+} 
+
+.nav ul ul ul {
+  transform: rotateX(0) rotateY(-90deg);
+}
+
+
 
 /*�븯�쐞硫붾돱 �슚怨�(2�떒) */
 .header ul li:hover > ul {
