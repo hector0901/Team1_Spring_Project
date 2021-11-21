@@ -177,7 +177,7 @@
           <p class="info"><span class="point">Leader</span><br>
             Choi sunwoong <br><br>
             <span class="point"> member</span><br> Kim jihyum,
-            Park gunwoo<br>
+            Park geonwoo<br>
             Choi eungyum,
             Yun yeongki
           </p>

@@ -92,9 +92,9 @@ input[type=radio]:checked + .c{
     </style>
     <script>
     function payclick(){
-	      window.open("${root }reservation/kakaopay?reservation_no=${reservation_no }&pay_no=${pay_no }&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
+	      window.open("${root }reservation/kakaopay?reservation_no=${reservation_no}&pay_no=1&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
 	      window.close();
-	    }
+	}
     </script>
 </head>
 <body>
@@ -143,6 +143,7 @@ input[type=radio]:checked + .c{
                     <form>
                     <input type='hidden' name='member_no' id='member_no' value='${reservationBean.member_no }'>
                     <input type='hidden' name='shop_no' id='shop_no' value='${reservationBean.shop_no }'>
+                    <input type='hidden' name='reservation_no' id='reservation_no' value='${reservationBean.reservation_no }'>
                     </form>
                 <div id="pay_div_02">
                     <div id="pay_table_tr_02">
@@ -178,7 +179,7 @@ input[type=radio]:checked + .c{
                  
 </div>
     <hr id="hr_line_02" style="margin-top: 5%;">
-    <input type="submit" id="pay_cancel" value="취소" onclick="click()">
+    <input type="button" id="pay_cancel" value="취소" onclick="window.close()">
     <input type="submit" id="pay_cl" value="결제" onclick="payclick()">
     
 </body>

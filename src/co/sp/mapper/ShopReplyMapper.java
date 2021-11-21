@@ -16,7 +16,7 @@ public interface ShopReplyMapper {
 	void shopreply_create(Shop_ReplyVO joinShopreplyBean);
 	
 	//¥Ò±€ ∏Ò∑œ+∆‰¿Ã¬°
-	@Select("select m.member_nickname, m.member_profile, r.shop_reply_content, r.shop_reply_rdate, r.shop_reply_no " +
+	@Select("select m.member_nickname, m.member_no, m.member_profile, r.shop_reply_content, r.shop_reply_rdate, r.shop_reply_no " +
 	        "from member m, shop s, shop_reply r " +
 			"where m.member_no = r.member_no AND s.shop_no = r.shop_no AND s.shop_no = #{shop_no} " + 
 	        "order by shop_reply_no desc")
@@ -26,7 +26,8 @@ public interface ShopReplyMapper {
 	int getShopreplyCnt();
 	
 	//¥Ò±€ ªË¡¶
-	@Delete("delete from shop_reply where shop_reply_no=#{shop_reply_no} ")
-	void deleteShopreplyInfo(int shop_reply_no);
+	@Delete("delete from shop_reply"
+			+" where shop_reply_no = #{shop_reply_no} and shop_no = #{shop_no} and member_no = #{member_no}")
+	void deleteReply(Shop_ReplyVO DeleteShopreplyBean);
 	
 }

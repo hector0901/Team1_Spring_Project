@@ -99,6 +99,7 @@ input[type=text]{
     window.onload=function(){
  	   var today=new Date();
  	   document.getElementById("reservation_date").valueAsDate = new Date();  
+ 	   document.getElementById("reservation").value = new Date().toISOString().slice(11, 16);
  	   var dd = today.getDate();
  	   var mm = today.getMonth()+1; //January is 0!
  	   var yyyy = today.getFullYear();
@@ -112,8 +113,8 @@ input[type=text]{
  	   today = yyyy+'-'+mm+'-'+dd;
  	   document.getElementById("reservation_date").setAttribute("min", today);
     }
-   function reserveclick(){
-        window.open("${root }reservation/pay?reservation_no=${reservation_no }&pay_no=${pay_no }","예약하기","width=500,height=350,left=300");
+    function reserveclick(){
+        window.open("${root }reservation/pay?pay_no=1","예약하기","width=500,height=350,left=300");
       }
     </script>
 </head>
@@ -145,7 +146,7 @@ input[type=text]{
             
             <li>
                 시간 선택&nbsp;&nbsp;
-                <form:input type="time" id="reservation" path="reservation_time"/>
+                <form:input type="time" id="reservation" path="reservation_time"></form:input>
                 <form:errors path="reservation_time" style='color:red'/>  
             </li>
             
@@ -157,29 +158,6 @@ input[type=text]{
             (최대 5인까지 가능)</li>
             </form:form>
         </ul>
-            <fieldset>
-            <legend>개인정보 확인</legend>
-            <div style="margin-left:5%;">
-        <div class="form-inline form-group" style="width: 70%">
-         <label for="name" class="col-sm-2 control-label">이름:</label>
-         <div class="col-sm-3"> 
-         <input type="text" class="form-control" id="name" readonly="readonly" value="홍길동">
-         </div>
-        </div>
-     
-      <div class="form-inline form-group" style="width: 70%">
-         <label for="tel" class="col-sm-2 control-label">연락처:</label>
-         <div class="col-sm-3">
-         <input type="text" class="form-control" id="tel" value="abc@naver.com" readonly="readonly">
-         </div>
-        </div>
-   
-      <div class="form-inline form-group" style="width: 70%">
-         <label for="email" class="col-sm-2 control-label">이메일:</label>
-         <div class="col-sm-3">
-         <input type="text" class="form-control" id="email" value="01077323936" readonly="readonly">
-         </div>
-        </div>
       
         <div class="form-group" style="width: 70%; margin-left: 3%">
     <label for="add">추가사항</label>
@@ -188,8 +166,7 @@ input[type=text]{
     </div>
   </div>
 </div>
-        <form:button type="submit" id="pay" onclick="check()">결제하기</form:button>
-        </fieldset>
+        <form:button type="submit" id="pay" onclick="reserveclick()">결제하기</form:button>
 
        </form:form>
         </div>

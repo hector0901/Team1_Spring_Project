@@ -28,7 +28,7 @@ public class ShopReplyDAO {
 	}
 	
 	//¥Ò±€ ªË¡¶
-	public void deleteShopreplyInfo(int shop_reply_no) {
-		shopreplyMapper.deleteShopreplyInfo(shop_reply_no);
+	public void deleteReply(Shop_ReplyVO DeleteShopreplyBean) {
+		shopreplyMapper.deleteReply(DeleteShopreplyBean);
 	}
 }

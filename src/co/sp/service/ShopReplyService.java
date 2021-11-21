@@ -44,7 +44,7 @@ public class ShopReplyService {
 	}
 	
 	//¥Ò±€ ªË¡¶
-	public void deleteShopreplyInfo(int shop_reply_no) {
-		shopreplyDAO.deleteShopreplyInfo(shop_reply_no);
+	public void deleteReply(Shop_ReplyVO DeleteShopreplyBean) {
+		shopreplyDAO.deleteReply(DeleteShopreplyBean);
 	}
 }

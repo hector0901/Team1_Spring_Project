@@ -313,7 +313,7 @@ function execPostCode() {
        <div class="form-group">
         <form:label path="shop_total_seat" class="col-md-2 control-label">총 좌석 수 *</form:label>
           <div class="col-md-6">
-            <form:input type="number" path="shop_total_seat" class='form-control'/>
+            <form:input type="number" path="shop_total_seat" min="0" class='form-control'/>
           </div>
        </div>
            
@@ -335,12 +335,14 @@ function execPostCode() {
 				
 				var shop_total_seat = $("#shop_total_seat").val()
 				var shop_remain_seat = $("#shop_remain_seat").val()
-				if(shop_total_seat.value == shop_remain_seat.value){
+				if(shop_total_seat < shop_remain_seat){
 					var c=document.getElementById("shop_remain_seat1"); //div아이디
 	       			  c.innerHTML=null;
-	       		    var a= document.createElement("div"); //오류 텍스트
-	       			  a.innerHTML = "잔여좌석 수를 초과했습니다.";
-	       			document.getElementById("shop_remain_seat1").appendChild(a);
+				}
+				else if(shop_total_seat == shop_remain_seat) {
+					var a=document.createElement("div"); //오류 텍스트
+	       			  a.innerHTML = "잔여 좌석 수가 총 좌석 수를 초과했습니다.";
+	       			  document.getElementById("shop_remain_seat1").appendChild(a);
 	       			  return;
 				}
 				else{
@@ -348,7 +350,7 @@ function execPostCode() {
 	       			  c2.innerHTML=null;
 	       			  var b2=document.getElementById("shop_remain_seat1").removeChild(a);
 	       			  return;
-	       			}	
+	       		}	
 			}
        </script>
        <br>
@@ -364,7 +366,7 @@ function execPostCode() {
 
        <div id="btn">
         <form:button class='btn1'>가게 등록</form:button>&emsp;
-        <button type="button" class='btn2' onclick="location.href='${root }shop/main?category_no=1'">취소</button>  
+        <button type="button" class='btn2' onclick="location.href='${root }shop/shop_list_search_paging?category_no=${RegShopBean.category_no }'">취소</button>  
        </div>
     </form:form>
     

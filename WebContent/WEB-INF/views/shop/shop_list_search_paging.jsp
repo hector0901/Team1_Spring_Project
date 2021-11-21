@@ -149,7 +149,7 @@ a{
     </c:choose> 
      </div>
     <c:forEach var='obj' items="${shop_list_search_paging }"  varStatus="status" >
-     <a href="${root }shop/shop_detail?category_no=${obj.category_no }&shop_no=${obj.shop_no}&member_no=${loginBean.member_no}">
+     <a href="${root }shop/shop_detail?shop_no=${obj.shop_no}&member_no=${loginBean.member_no}">
      <div class="option">
             <div id="area">
                <div id="image">
