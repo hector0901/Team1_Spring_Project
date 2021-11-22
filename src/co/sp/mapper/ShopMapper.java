@@ -10,6 +10,7 @@ import org.apache.ibatis.session.RowBounds;
 
 import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.ShopVO;
+import co.sp.beans.Shop_ReplyVO;
 
 public interface ShopMapper {
   
@@ -55,7 +56,17 @@ public interface ShopMapper {
   @Delete("delete from shop where shop_no = #{shop_no} ")
   void deleteShopInfo(int shop_no);
   
-  
+  /**
+   * 카테고리별 댓글순 추천(정렬)
+   * @return
+   */
+  @Select("SELECT s.shop_no, s.shop_name, s.shop_address1, s.shop_main, s.shop_menu_img, s.shop_inside_img, s.shop_total_seat, s.shop_remain_seat, s.shop_time, COUNT(r.shop_reply_no) AS cnt  " + 
+          "FROM shop s, shop_reply r " + 
+          "WHERE s.shop_no = r.shop_no AND s.category_no = #{category_no} " + 
+          "GROUP BY s.shop_no, s.shop_name, s.shop_address1, s.shop_main, s.shop_menu_img, s.shop_inside_img, s.shop_total_seat, s.shop_remain_seat, s.shop_time " + 
+          "ORDER BY cnt DESC"
+          )
+  List<ShopVO> recommend_list(int category_no);
   
   
   

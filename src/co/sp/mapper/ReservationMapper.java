@@ -55,4 +55,15 @@ public interface ReservationMapper {
   @Delete("delete from reservation where reservation_no=#{reservation_no} ")
   void reservation_delete(int reservation_no);
 
+  /**
+   * 관리자용 목록
+   * @return
+   */
+  @Select("SELECT m.member_id, s.shop_name, r.reservation_date, r.reservation_time, r.reservation_person, r.reservation_rdate " +
+          "FROM shop s, member m, reservation r " +
+          "WHERE r.member_no = m.member_no AND r.shop_no = s.shop_no " +
+          "ORDER BY m.member_no DESC ")
+  List<ReservationVO> reservation_list_admin();
+  
+
 }

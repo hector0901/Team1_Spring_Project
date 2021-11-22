@@ -36,6 +36,10 @@ public class ShopVO {
   /** 카테고리 번호 **/
   private int category_no;
   
+  private int shop_reply_no;
+  
+  private int cnt;
+  
   ////////////////////////////////////////////
   
   /** 가게명 **/
@@ -215,5 +219,19 @@ public class ShopVO {
   public void setShop_time(String shop_time) {
     this.shop_time = shop_time;
   }
+  public int getShop_reply_no() {
+    return shop_reply_no;
+  }
+  public void setShop_reply_no(int shop_reply_no) {
+    this.shop_reply_no = shop_reply_no;
+  }
+  public int getCnt() {
+    return cnt;
+  }
+  public void setCnt(int cnt) {
+    this.cnt = cnt;
+  }
+  
+  
   
 }

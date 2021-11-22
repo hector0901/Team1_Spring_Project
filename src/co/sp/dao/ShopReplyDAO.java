@@ -31,4 +31,5 @@ public class ShopReplyDAO {
 	public void deleteReply(Shop_ReplyVO DeleteShopreplyBean) {
 		shopreplyMapper.deleteReply(DeleteShopreplyBean);
 	}
+
 }

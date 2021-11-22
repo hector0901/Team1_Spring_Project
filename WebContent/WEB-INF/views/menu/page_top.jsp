@@ -73,10 +73,10 @@ nav ul li a  {
 				     
 				     <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
                      <li class="nav-item">
-                     <a href="${root }waiting/waiting_list" class="nav-link">웨이팅 리스트</a>
+                      <a href="${root }waiting/waiting_list_admin" class="nav-link">웨이팅 리스트</a>
                      </li>
                      <li class="nav-item">
-                     <a href="${root }reservation/reservation_list" class="nav-link">예약 리스트</a>
+                     <a href="${root }reservation/reservation_list_admin" class="nav-link">예약 리스트</a>
                      </li>
                      </c:when>
 
@@ -90,11 +90,11 @@ nav ul li a  {
 			 <ul>
                   <li><a href="${root }about/about">about</a></li>
                   <li>
-             <a href="${root }about/about">추천</a>
+             <a href="${root }about/about">댓글순 추천</a>
              <ul>
-                <li class="child"><a href="#">child</a></li>
-                <li class="child"><a href="#">child</a></li>
-                <li class="child"><a href="#">child</a></li>
+                <li class="child"><a href="${root }shop/recommend_list?category_no=1">주점</a></li>
+                <li class="child"><a href="${root }shop/recommend_list?category_no=2">식당</a></li>
+                <li class="child"><a href="${root }shop/recommend_list?category_no=3">카페</a></li>
               </ul>
              </li>
                <c:choose>

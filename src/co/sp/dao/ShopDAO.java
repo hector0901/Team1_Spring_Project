@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.sp.beans.ShopVO;
+import co.sp.beans.Shop_ReplyVO;
 import co.sp.mapper.ShopMapper;
 import co.sp.service.ShopService;
 
@@ -51,6 +52,14 @@ public class ShopDAO {
   //가게 삭제
   public void deleteShopInfo(int shop_no) {
 	  shopMapper.deleteShopInfo(shop_no);
+  }
+  
+  /**
+   * 댓글순 가게 목록
+   * @return
+   */
+  public List<ShopVO> recommend_list(int category_no) {
+    return shopMapper.recommend_list(category_no);
   }
   
   

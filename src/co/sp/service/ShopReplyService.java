@@ -47,4 +47,6 @@ public class ShopReplyService {
 	public void deleteReply(Shop_ReplyVO DeleteShopreplyBean) {
 		shopreplyDAO.deleteReply(DeleteShopreplyBean);
 	}
+
+	
 }

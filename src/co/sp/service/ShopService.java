@@ -16,6 +16,7 @@ import co.sp.beans.AdminVO;
 import co.sp.beans.Admin_Category_ShopVO;
 import co.sp.beans.Page;
 import co.sp.beans.ShopVO;
+import co.sp.beans.Shop_ReplyVO;
 import co.sp.dao.ShopDAO;
 
 @Service
@@ -146,6 +147,16 @@ public class ShopService {
   public void deleteShopInfo(int shop_no) {
 	  shopDAO.deleteShopInfo(shop_no);
   }
+  
+
+  /**
+   * 댓글 기준 추천 
+   * @return
+   */
+  public List<ShopVO> recommend_list(int category_no) {
+    return shopDAO.recommend_list(category_no);
+  }
+  
   
   
 

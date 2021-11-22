@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
 import co.sp.beans.Page;
 import co.sp.beans.ReservationVO;
@@ -30,6 +31,9 @@ public class ReservationController {
   
   @Resource(name = "loginBean")
   private MemberVO loginBean;
+  
+  @Resource(name = "loginBean2")
+  private AdminVO loginBean2;
 
   @GetMapping("/reservation")
   public String reservation(@ModelAttribute("reservationBean") ReservationVO reservationBean,
@@ -132,5 +136,21 @@ public class ReservationController {
 
 		return "reservation/kakaopay";
 	}
+
+	  
+    /////
+    /**
+     * 관리자용 예약 목록 화면 
+     * @param model
+     * @return
+     */
+    @GetMapping("/reservation_list_admin")
+    public String reservation_list_admin(Model model) {
+      List<ReservationVO> reservation_list_admin = reservationService.reservation_list_admin();
+      model.addAttribute("reservation_list_admin", reservation_list_admin);
+      model.addAttribute(loginBean2.getAdmin_no());
+      return "reservation/reservation_list_admin";
+    }
+    /////
 
 }

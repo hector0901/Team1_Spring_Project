@@ -9,8 +9,11 @@ public class Shop_ReplyVO {
 	private String member_profile;
 	private MultipartFile upload_file1;
 	private int shop_no;
+	private int category_no;
 	private String shop_reply_content;
 	private String shop_reply_rdate;
+	private String shop_name;
+
 	public int getShop_reply_no() {
 		return shop_reply_no;
 	}
@@ -59,6 +62,20 @@ public class Shop_ReplyVO {
 	public void setShop_reply_rdate(String shop_reply_rdate) {
 		this.shop_reply_rdate = shop_reply_rdate;
 	}
+  public String getShop_name() {
+    return shop_name;
+  }
+  public void setShop_name(String shop_name) {
+    this.shop_name = shop_name;
+  }
+  public int getCategory_no() {
+    return category_no;
+  }
+  public void setCategory_no(int category_no) {
+    this.category_no = category_no;
+  }
+	
+  
 	
 	
 }

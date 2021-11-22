@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.session.RowBounds;
 
 import co.sp.beans.Shop_ReplyVO;
+import co.sp.beans.WaitingVO;
 
 public interface ShopReplyMapper {
 	//´ñ±Û µî·Ï
@@ -29,5 +30,6 @@ public interface ShopReplyMapper {
 	@Delete("delete from shop_reply"
 			+" where shop_reply_no = #{shop_reply_no} and shop_no = #{shop_no} and member_no = #{member_no}")
 	void deleteReply(Shop_ReplyVO DeleteShopreplyBean);
+
 	
 }

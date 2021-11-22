@@ -13,6 +13,7 @@ import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
 import co.sp.beans.Page;
 import co.sp.beans.ReservationVO;
+import co.sp.beans.WaitingVO;
 import co.sp.dao.ReservationDAO;
 
 @Service
@@ -77,5 +78,18 @@ public class ReservationService {
   public void reservation_delete(int reservation_no) {
     reservationDAO.reservation_delete(reservation_no);
   }
+  
+  
+  /**
+   * 관리자용 웨이팅 목록
+   * @return
+   */
+  public List<ReservationVO> reservation_list_admin() {
+    return reservationDAO.reservation_list_admin();
+  } 
+  
+  
+  
+  
 
 }

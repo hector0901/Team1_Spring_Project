@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
 import co.sp.beans.Page;
+import co.sp.beans.ReservationVO;
 import co.sp.beans.ShopVO;
 import co.sp.beans.Shop_ReplyVO;
 import co.sp.service.ShopReplyService;
@@ -213,5 +214,21 @@ public class ShopController {
 		shopreplyService.deleteReply(DeleteShopreplyBean);
 	    return "shop/reply_success";
 	}
+	
+	/////
+    @GetMapping("/recommend_list")
+    public String recommend_list(@RequestParam("category_no") int category_no, Model model) {
+      List<ShopVO> recommend_list = shopService.recommend_list(category_no);
+
+      model.addAttribute("category_no", category_no);
+      model.addAttribute("recommend_list", recommend_list);
+      
+      return "shop/recommend_list";
+    }
+    /////
+	
+	
+	
+	
 	
 }

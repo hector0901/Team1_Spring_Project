@@ -53,5 +53,12 @@ public class ReservationDAO {
     reservationMapper.reservation_delete(reservation_no);
   }
 
+  /**
+   * 관리자용 예약 목록
+   * @return
+   */
+  public List<ReservationVO> reservation_list_admin() {
+    return reservationMapper.reservation_list_admin();
+  }
 
 }
