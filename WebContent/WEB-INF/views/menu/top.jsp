@@ -90,7 +90,7 @@ nav ul li a  {
             
             <c:when test="${loginBean2.adminLogin == true }">                   <!--  관리자 로그인 -->
               <li class="nav-item">
-            <a href="${root }waiting/waiting_list" class="nav-link">웨이팅 리스트</a>
+            <a href="${root }waiting/waiting_list_admin" class="nav-link">웨이팅 리스트</a>
               </li>
             <li class="nav-item">
             <a href="#" class="nav-link">예약 리스트</a>

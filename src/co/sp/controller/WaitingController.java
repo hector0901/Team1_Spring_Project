@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import co.sp.beans.AdminVO;
 import co.sp.beans.MemberVO;
+import co.sp.beans.Page;
 import co.sp.beans.WaitingVO;
 import co.sp.service.WaitingService;
 import co.sp.validator.WaitingValidator;
@@ -32,6 +34,9 @@ public class WaitingController {
 	
 	@Resource(name = "loginBean")
 	private MemberVO loginBean;
+	
+	@Resource(name = "loginBean2")
+    private AdminVO loginBean2;
 
 	@GetMapping("/waiting")
 	public String waiting(@RequestParam("member_no") int member_no, @RequestParam("shop_no") int shop_no,
@@ -62,6 +67,21 @@ public class WaitingController {
 		waitingService.deleteWaitingInfo(waiting_no);
 		return "waiting/waiting_delete";
 	}
+	
+	/////
+	/**
+	 * 관리자용 웨이팅 목록 화면 
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/waiting_list_admin")
+    public String waiting_list_admin(Model model) {
+      List<WaitingVO> waiting_list_admin = waitingService.wating_list_admin();
+      model.addAttribute("waiting_list_admin", waiting_list_admin);
+      model.addAttribute(loginBean2.getAdmin_no());
+      return "waiting/waiting_list_admin";
+    }
+	/////
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

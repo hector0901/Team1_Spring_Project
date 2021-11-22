@@ -24,6 +24,7 @@ COMMENT ON COLUMN waiting.wating_rdate is '웨이팅 등록시간';
 	private int waiting_count;
 	private String waiting_rdate;
 	private String shop_name;
+	private String member_id;
 	
 	
 	public int getWaiting_no() {
@@ -62,6 +63,13 @@ COMMENT ON COLUMN waiting.wating_rdate is '웨이팅 등록시간';
 	public void setShop_name(String shop_name) {
 		this.shop_name = shop_name;
 	}
+    public String getMember_id() {
+      return member_id;
+    }
+    public void setMember_id(String member_id) {
+      this.member_id = member_id;
+    }
+	
 	
 	
 	

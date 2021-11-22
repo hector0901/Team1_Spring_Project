@@ -37,4 +37,14 @@ public class WaitingDAO {
 	public void deleteWaitingInfo(int waiting_no) {
 		waitingMapper.deleteWaitingInfo(waiting_no);
 	}
+	
+	/**
+	 * 관리자용 웨이팅 목록
+	 * @return
+	 */
+	public List<WaitingVO> wating_list_admin() {
+      return waitingMapper.wating_list_admin();
+    } 
+	
+	
 }
