@@ -83,65 +83,44 @@
       margin-top: 10%;
       margin-left: 18%;
   }
-    
-      #shop_review_img{
-      	margin-top: 5%
-      	
-      }
       #review_button{
       padding: 1% 3%;
       background-color: lemonchiffon;
       border-radius: 5px;
-      font-family:"留���怨���";
       border:none;
       color: rgba(112, 109, 109, 0.925);
       font-size: 20px;
       cursor: pointer;
-      margin-top: 3%
 }
 #review_button:hover{
   background-color: rgb(228, 223, 184);
 }
+#review_button1{
+	margin-top: -8%;
+	margin-left: 57%;
+}
 #shop_review_img{
-    width: 10%;
-    height: 10%; 
+	width:57%;
+	height:61%;
     border-radius: 70%;
     overflow: hidden;
+    
 	}
-	#profile{
+	/*#profile{
   		object-fit: cover;
-	}
-	#review_view{
-	  width: 100%;
-	 margin-left: 15%;
-	 margin-bottom: 3%;
-	}
-	#review_user{
-	  width: 120px;
-	  margin-top: 10%;
 	}
 	.review_nickname:focus ,.add:focus{
 		outline:none;
-		/*����由� ����湲�*/
-	}
-	.review_nickname{
+		����由� ����湲�
+	}*/
+	/*.review_nickname{
 		font:25px bold black;
 		border:0px;
 		background-color:transparent;
 		margin-bottom: 10%;
-		/*�ш린議곗�� 諛� �쇱�몄����湲�*/
-	}
-	.add{
-		font-size:20px;
-		resize: none;
-		border:0px;
-		background-color:transparent;
-		/*�ш린議곗�� 諛� �쇱�몄����湲�*/
-	}
-	#review_user{
-	  margin-top:-10%;
-	  margin-left: 12%
-	}
+		�ш린議곗�� 諛� �쇱�몄����湲�*
+	}/
+
 
 /*����泥� �ㅽ����*/
 .shop_tab_menu{

@@ -26,16 +26,10 @@
   <script type="text/javascript">
 
     function reserveclick(){
-      window.open("${root }reservation/reservation?member_no=${loginBean.member_no}&shop_no=${shop_no}","예매하기","width=500,height=600,left=300");
+      window.open("${root }reservation/reservation?member_no=${loginBean.member_no}&shop_no=${shop_no}","예매하기","width=500,height=450,left=300");
     }
     function waitingclick(){
-      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=500,left=300");
-    }
-    function shopreplyclick() {
-      window.open("${root}shopreply/shopreply?member_no=${loginBean.member_no}&shop_no=${shop_no}", "댓글");
-    }
-    function shopreplylistclick() {
-      window.open("${root}shopreply/shopreply_list?member_no=${loginBean.member_no}&shop_no=${shop_no}", "댓글리스트");
+      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=350,left=300");
     }
   </script>
   <script>
@@ -106,7 +100,7 @@
          </c:choose>
         </li>
         <li>
-        	<span style="font-size: 12px; margin-left: 45%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
+        	<span style="font-size: 12px; margin-left: 8%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
         </li></div>
       </ul>
       
@@ -168,67 +162,70 @@
             </div>   
         </div>
 
-   <div id="shop_review" class="cont">
-   <div id="review_view">
-   <!-- 닉네임 올린 리뷰들어가야함 -->
-   <div class="container" style="margin-top: 100px">
-   <div class="card shadow">
+  <div id="shop_review" class="cont">
+  <!-- <div id="review_view">
+    닉네임 올린 리뷰들어가야함 -->
+   <div class="container" style="margin-top: 30px; width:100%; margin-left: 20%;">
        <form:form action="${root }shop/reply_pro" method='post' modelAttribute="joinShopreplyBean">
 	   <form:hidden path="member_no" />
 	   <form:hidden path="shop_no" />
-					댓글내용
-					<form:textarea path="shop_reply_content" />
-			        <button type="submit" id="review_button">등록</button>
+					<h4>리뷰작성</h4>
+					<form:textarea path="shop_reply_content" placeholder="로그인 회원만 댓글작성가능합니다" rows="4" cols="60" wrap="hard" style="resize: none; "/>
+					<c:choose>
+                        <c:when test="${loginBean.memberLogin == true }">
+			       <div id="review_button1"><button type="submit" id="review_button">등록</button></div> 
+			        </c:when>
+                        <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+                        	<div id="review_button1"><input type="button" id="review_button" value="등록"></div>
+                        </c:otherwise>
+                   </c:choose>
       </form:form>
    </div>
-      <div class="card-body">
-           <table class="table table-hover" id=shopreply_list>
-           <thead>
-            <tr>
-              <th class="text-center d-none d-md-table-cell">회원닉네임</th>
-              <th class="text-center d-none d-md-table-cell">프로필사진</th>
-              <th class="text-center d-none d-md-table-cell">댓글내용</th>
-              <th class="text-center d-none d-md-table-cell">댓글등록일</th>
-              <th class="text-center d-none d-md-table-cell">삭제</th>
-            </tr>
-          </thead>
+      <div class="card-body" style="margin-left: 5%;">
+           <table class="table table-hover" style="width: 80%; margin-top: 8%;margin-left: 7%;">
                  <tbody>
                    <c:forEach var='obj' items="${shopreply_list }" varStatus="status">
                    <tr>
+					 <td rowspan='2' style="width: 5px; padding-left: 15%;"><!-- 프로필 -->
+					 <div id="shop_review_img">
+							<c:choose>
+								<c:when test="${obj.member_profile != null}"> <!-- 파일이 존재하면 -->
+									<img src="${root }upload/${obj.member_profile}" style="width: 90px; height: 90px;"> <!--  -->
+								</c:when>
+								<c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+								     <img src='${root }image/none1.png' style='width: 90px; height: 90px;'>
+					             </c:otherwise>
+					         </c:choose>
+					         </div>       
+					</td>	
+					
+					<!-- 닉네임 -->
+                   <td class="text-center d-none d-md-table-cell" style="width: 40px">${obj.member_nickname }</td>		
                    
-
-                   <td>
+                   <!-- 등록일 -->
+                   <td class="text-center d-none d-md-table-cell" style="width: 40px">${obj.shop_reply_rdate }</td>
+                   
+                   <td style="width: 10px"><!-- 삭제 -->
                    <c:choose>
                         <c:when test="${obj.member_no == loginBean.member_no}">
-                          <a href="${root }shop/reply_delete?member_no=${loginBean.member_no}&shop_reply_no=${obj.shop_reply_no}&shop_no=${shop_no}"><img alt="" src="${root }image/x.png"></a>
+                          <a href="${root }shop/reply_delete?member_no=${loginBean.member_no}&shop_reply_no=${obj.shop_reply_no}&shop_no=${shop_no}">
+                             <img alt="" src="${root }image/x.png"></a>
                         </c:when>
                         <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-
                         </c:otherwise>
                    </c:choose>
                    </td>
-                   
-                   <td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
-                   <td>
-						 <c:choose>
-						    <c:when test="${obj.member_profile != null}"> <!-- 파일이 존재하면 -->
-						    <img src="${root }upload/${obj.member_profile}" style="width: 120px; height: 120px;"> <!--  -->
-				            </c:when>
-			              <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
-			                 <img src='${root }image/none1.png' style='width: 150px; height: 150px;'>
-                          </c:otherwise>
-                         </c:choose>       
-				   </td>			
-                   <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_content }</td>
-                   <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_reply_rdate }</td>
+                   </tr>
+       
+                   <tr>
+                   <!-- 댓글내용 -->
+                   <td class="text-center d-none d-md-table-cell" colspan='3' style="overflow:auto;">${obj.shop_reply_content }</td>
                    </tr>
                    </c:forEach>
                  </tbody>
             </table>
        </div>
      </div>
-    </div>
-   </div>
    </div>
    
         <div id="shop_map_contact" class="cont">

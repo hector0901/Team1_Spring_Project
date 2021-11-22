@@ -44,7 +44,7 @@
             margin-bottom: 5%;
         }
         #waiting_gu{
-            font-size:3px;
+            font-size:12px;
             margin-bottom: 3%; 
             list-style-type: none;
         }
@@ -63,24 +63,16 @@
            <div style="margin-left: 35%;">
                <img src="${root }image/logo_1.png" alt="" width="30%" height="30%">
            </div>
-
-        <form>
-            <fieldset>
-            <legend>현재 웨이팅 번호</legend>
-                <div class="waiting_number">
-                    <span class="waiting_num">12</span>
-                </div>
-            
-            </fieldset>
-        </form>
                 <form:form action="${root }waiting/waiting_pro" method='post' modelAttribute="joinWaitingBean">
                 <form:hidden path="member_no"/>
                 <form:hidden path="shop_no"/>
+                
+                
                     <div class="waiting_im">
-                         <h3>대기 인원 선택</h3>
+                         <h1>대기 인원 선택</h1>
                         <div class="waiting_people">
-                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" value="1" min="1" max="8"/><br>
-                            <span id="waiting_guide">(인원은 최대 8명까지입력해주세요)</span>
+                                <form:input type="number" path="waiting_count" id="eun_number" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" value="1" min="1" max="5"/><br>
+                            <span id="waiting_guide">(인원은 최대 5명까지입력해주세요)</span>
                         </div>
                         <hr width="80%" style="margin-top:8%; padding-bottom: 2px; background: black;">
                         <ul id="waiting_gu">
