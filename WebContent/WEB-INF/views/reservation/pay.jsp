@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>결제</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/shop_Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
@@ -105,25 +106,9 @@ input[type=radio]:checked + .c{
                       <h3>결제 방법</h3>
                     
                     <div class="pay">
-                    <div id="a">
-                    	<input type="radio" name="pay_name" value="1" id="card" >
-                    	<label for="card" class="c">
-                    		<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-                   				<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
-                    			<path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
-                  			</svg><div id="pay_no">신용카드</div></label>
-                    	</div>
-                    		
-                  		<div id="a">
-                    	<input type="radio" name="pay_name" value="2" id="money" >
-                    	<label for="money" class="c">
-                    	<img src="image/money-svgrepo-com.svg" width="60" height="60">
-                    	<div id="pay_no">무통장입금</div></label>
-                    	</div>	
-                    		
-                    	
+                    <div id="a">       	
                     	<div id="a">
-                    	<input type="radio" name="pay_name" value="3" id="ckakao" o>
+                    	<input type="radio" name="pay_name" value="3" id="ckakao" >
                     	<label for="ckakao" class="c">
                     	<img src="image/카카오페이_CI_combination.svg" width="60" height="60">
                     	<div id="pay_no">카카오 페이</div></label>

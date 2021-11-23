@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-
+<title>추천 리스트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
@@ -133,6 +133,9 @@ a{
     background-color: lemonchiffon;
     border-color: lemonchiffon;
 }
+.d-noned-md-block {
+    text-align: center;
+}
 </style>
 
 </head>
@@ -182,7 +185,7 @@ a{
        </div>
        </a>
       </c:forEach>
-      <div class="d-none d-md-block">
+      <div class="d-noned-md-block">
           <ul class="pagination justify-content-center">
             <c:choose>
           <c:when test="${pageBean.prevPage <= 0 }">

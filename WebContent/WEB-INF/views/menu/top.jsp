@@ -105,7 +105,7 @@ nav ul li a  {
 
         <li class="head_1"><a href="#">더보기</a>
           <ul>
-            <li><a href="${root }about/about">about</a></li>
+            <li><a href="${root }about/about">소개</a></li>
              <li>
              <a href="${root }about/about">댓글순 추천</a>
              <ul>

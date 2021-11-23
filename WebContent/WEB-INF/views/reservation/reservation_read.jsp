@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>예약</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 .font{
   font-family: 'Jua', sans-serif;
+  margin-left: 20%;
 }
 .col-md-4 {
     margin-left: -75px;

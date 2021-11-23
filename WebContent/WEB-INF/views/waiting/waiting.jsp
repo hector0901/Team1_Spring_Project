@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>¿‏ÀÌÆÃ</title>
 <link rel="stylesheet" type="text/css" href="css/shop_Style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
  <style>

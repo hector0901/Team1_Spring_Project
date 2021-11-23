@@ -6,6 +6,7 @@
 
 <!DOCTYPE html>
 <head>
+<title>개인정보 수정</title>
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -278,18 +279,18 @@ function execPostCode() {
 
 			<br><br>
 
-			<div class="form-group">
+		   <div class="form-group">
               <form:label path="member_profile" class="col-md-2 control-label">프로필 이미지 </form:label>
               <div class="col-md-4img">
                    <c:choose>
 						      <c:when test="${updateMemberBean.member_profile != null}"> <!-- 파일이 존재하면 -->
 						        <img src="${root }upload/${updateMemberBean.member_profile}" style="width: 120px; height: 120px;"> <!--  -->
 				          </c:when>
-			           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
+			           <c:otherwise> 
 			            <img src='${root }image/none1.png' style='width: 150px; height: 150px;'>
                  </c:otherwise>
               </c:choose>   
-            </div>
+            </div> 
             </div>
 
 

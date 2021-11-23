@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-
+<title>가게 리스트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
@@ -167,7 +167,7 @@ a{
                <div id="shop-address">${obj.shop_address1 }</div>
                
                <c:choose>
-	               <c:when test="${obj.shop_remain_seat  >  shop_total_seat * 0.5 }">
+	               <c:when test="${obj.shop_remain_seat  >  obj.shop_total_seat * 0.5 }">
                     <div id="face-image"><img src="${root }shop/image/smile.png" style="width: 100px; height: 100px;"></div>
 	               </c:when>
 	               <c:otherwise>

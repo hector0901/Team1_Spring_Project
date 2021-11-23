@@ -42,7 +42,7 @@ public class ShopController {
 	private AdminVO loginBean2;
 
 	/**
-	 * 紐⑸줉
+	 * 筌뤴뫖以�
 	 * 
 	 * @param category_no
 	 * @param model
@@ -54,18 +54,18 @@ public class ShopController {
 		model.addAttribute("admin_no", loginBean2.getAdmin_no());
 		model.addAttribute("category_no", category_no);
 
-		System.out.println("愿�由ъ옄 踰덊샇: " + loginBean2.getAdmin_no());
-		System.out.println("移댄뀒怨좊━ 踰덊샇: " + category_no);
+		System.out.println("�꽴占썹뵳�딆쁽 甕곕뜇�깈: " + loginBean2.getAdmin_no());
+		System.out.println("燁삳똾�믤�⑥쥓�봺 甕곕뜇�깈: " + category_no);
 
 		return "shop/main";
 	}
 
 	/**
-	 * 媛�寃� �벑濡앺뤌
+	 * 揶쏉옙野껓옙 占쎈쾻嚥≪빜琉�
 	 * 
 	 * @param RegShopBean
-	 * @param admin_no    -- 愿�由ъ옄 踰덊샇
-	 * @param category_no -- 移댄뀒怨좊━ 踰덊샇
+	 * @param admin_no    -- �꽴占썹뵳�딆쁽 甕곕뜇�깈
+	 * @param category_no -- 燁삳똾�믤�⑥쥓�봺 甕곕뜇�깈
 	 * @return
 	 */
 	@GetMapping("/reg")
@@ -76,7 +76,7 @@ public class ShopController {
 	}
 
 	/**
-	 * 媛�寃� �벑濡앹쿂由�
+	 * 揶쏉옙野껓옙 占쎈쾻嚥≪빘荑귞뵳占�
 	 * 
 	 * @param RegShopBean
 	 * @param result
@@ -86,16 +86,16 @@ public class ShopController {
 	@PostMapping("/reg_pro")
 	public String reg_pro(@Valid @ModelAttribute("RegShopBean") ShopVO RegShopBean, BindingResult result, Model m) {
 		if (result.hasErrors()) {
-			return "shop/reg"; // 媛�寃� �벑濡앹뿉 �떎�뙣�븳 寃쎌슦
+			return "shop/reg"; // 揶쏉옙野껓옙 占쎈쾻嚥≪빘肉� 占쎈뼄占쎈솭占쎈립 野껋럩�뒭
 		} else {
 			m.addAttribute("RegShopBean", RegShopBean);
 			shopService.shop_create(RegShopBean);
-			return "shop/reg_success"; // 媛�寃� �벑濡앹뿉 �꽦怨듯븳 寃쎌슦
+			return "shop/reg_success"; // 揶쏉옙野껓옙 占쎈쾻嚥≪빘肉� 占쎄쉐�⑤벏釉� 野껋럩�뒭
 		}
 	}
 
 	/**
-	 * 移댄뀒怨좊━蹂� 媛�寃� 紐⑸줉
+	 * 燁삳똾�믤�⑥쥓�봺癰귨옙 揶쏉옙野껓옙 筌뤴뫖以�
 	 * 
 	 * @param category_no
 	 * @param model
@@ -108,7 +108,7 @@ public class ShopController {
 		List<ShopVO> shop_list_search_paging = shopService.shop_list_search_paging(category_no, page);
 
 		model.addAttribute("category_no", category_no);
-		model.addAttribute("admin_no", loginBean2.getAdmin_no()); // 媛�寃� �벑濡앹뿉 �븘�슂�븳 愿�由ъ옄 踰덊샇
+		model.addAttribute("admin_no", loginBean2.getAdmin_no()); // 揶쏉옙野껓옙 占쎈쾻嚥≪빘肉� 占쎈툡占쎌뒄占쎈립 �꽴占썹뵳�딆쁽 甕곕뜇�깈
 		model.addAttribute("shop_list_search_paging", shop_list_search_paging);
 		
 		Page pageBean = shopService.getShopCnt(page);
@@ -119,7 +119,7 @@ public class ShopController {
 
 	}
 
-	// 媛�寃� �긽�꽭�럹�씠吏�(議고쉶)
+	// 揶쏉옙野껓옙 占쎄맒占쎄쉭占쎈읂占쎌뵠筌욑옙(鈺곌퀬�돳)
 	@GetMapping("/shop_detail")
 	public String shopmain(@RequestParam("shop_no") int shop_no,
 			               @RequestParam(value = "page", defaultValue = "1") int page,
@@ -146,7 +146,7 @@ public class ShopController {
 	}
 
 
-	//媛�寃� �닔�젙
+	//揶쏉옙野껓옙 占쎈땾占쎌젟
 	@GetMapping("/shop_update")
 	public String shop_update(@RequestParam("shop_no") int shop_no,
 			@RequestParam(value = "admin_no", defaultValue = "1") int admin_no,
@@ -177,13 +177,13 @@ public class ShopController {
 	}
 	
 	@GetMapping("/shop_delete")
-	public String shop_delete(@RequestParam("shop_no") int shop_no,
-			                  @RequestParam(value = "admin_no", defaultValue = "1") int admin_no,
-			                  Model model) {
+	public String shop_delete(@RequestParam("shop_no") int shop_no, @RequestParam("admin_no") int admin_no,
+			Model model) {
+
 		shopService.deleteShopInfo(shop_no);
 		model.addAttribute("admin_no", admin_no);
-		
-		return "shop/shop_delete";
+		return "shop/shop_delete"; 
+
 	}
 	
 	
@@ -199,7 +199,7 @@ public class ShopController {
 		}
 	}
 	
-	//댓글 삭제
+	//�뙎湲� �궘�젣
 	@GetMapping("/reply_delete")
 	public String reply_delete(@ModelAttribute("DeleteShopreplyBean") Shop_ReplyVO DeleteShopreplyBean,
 			                   @RequestParam("member_no") int member_no, 

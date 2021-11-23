@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>상세페이지</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -29,8 +30,12 @@
       window.open("${root }reservation/reservation?member_no=${loginBean.member_no}&shop_no=${shop_no}","예매하기","width=500,height=450,left=300");
     }
     function waitingclick(){
-      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=350,left=300");
+      window.open("${root }waiting/waiting?member_no=${loginBean.member_no}&shop_no=${shop_no}","웨이팅","width=500,height=500,left=300");
     }
+    function deleteclick(){
+    	location.href="${root }shop/shop_delete?admin_no=${loginBean2.admin_no}&shop_no=${shop_no}"
+    }
+    
   </script>
   <script>
   function resizeMap() {
@@ -86,15 +91,19 @@
           </div><br><br>
          <c:choose> 
          <c:when test="${loginBean.memberLogin == true }">
+          <input id="shop_waiting_button" type="submit" value="웨이팅" onclick="waitingclick()">
           <input id="shop_reserve_button" type="submit" value="예약하기" onclick="reserveclick()">
-          <input id="shop_waiting_button" type="submit" value="waiting" onclick="waitingclick()">
+          
          </c:when>
 			<c:when test="${loginBean2.adminLogin == true }">
          		<button id="shop_reserve_button"><a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a></button>
+         	    <input id="shop_waiting_button" type="submit" value="가게 삭제" onclick="deleteclick()">	
          	</c:when>
          <c:otherwise>
+         	<input id="shop_waiting_button" type="submit" value="웨이팅">
          	<input id="shop_reserve_button" type="submit" value="예약하기">
-          	<input id="shop_waiting_button" type="submit" value="waiting">
+          	
+          	
          </c:otherwise>
          </c:choose>
         </li>

@@ -54,6 +54,8 @@ public class ShopDAO {
 	  shopMapper.deleteShopInfo(shop_no);
   }
   
+  
+  
   /**
    * 댓글순 가게 목록
    * @return

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>관리자용 예약 리스트</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CDN -->
@@ -59,6 +60,7 @@ td {
         <table class="table table-hover" id='waiting_list'>
           <thead>
             <tr>
+              <th class="text-center d-none d-md-table-cell">회원이름</th>
               <th class="text-center d-none d-md-table-cell">가게명</th>
               <th class="text-center d-none d-md-table-cell">예약날짜</th>
               <th class="text-center d-none d-md-table-cell">예약시간</th>
@@ -69,6 +71,7 @@ td {
           <tbody>
             <c:forEach var='obj' items="${reservation_list_admin }" varStatus="status">
               <tr>
+                 <td class="text-center d-none d-md-table-cell" id="id">${obj.member_id }</td>
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_name }</td>
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_date }</td>
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_time }</td>

@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>관리자용 웨이팅 리스트</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CDN -->
 <link rel="stylesheet"

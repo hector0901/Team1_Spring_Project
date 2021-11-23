@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>예약</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -74,7 +74,7 @@ input[type=text]{
     resize: none;
   }
    #pay{
-            margin-left: 30%;
+            margin-left: 40%;
             width: 130px;
             height: 40px;
             background-color: lemonchiffon;
@@ -166,7 +166,7 @@ input[type=text]{
        </form:form>
         </div>
        <hr style="width: 86%;">
-        <div style="font-size: 12px; margin:2%;margin-left: 32%">
+        <div style="font-size: 12px; margin:2%;margin-left: 25%">
             예약시 예약금 인원수*10,000원 결제 되는점 양해부탁드립니다.<br>
             노쇼 방지를 위하여 예약 후 취소는 불가한점 안내드립니다.<br>
             예약취소시 모든 예약금은 소멸되므로 신중한 예약부탁드립니다.

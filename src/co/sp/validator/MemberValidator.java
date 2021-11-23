@@ -20,7 +20,7 @@ public class MemberValidator implements Validator {
 		String beanName = errors.getObjectName();
 		
 		// 회원 가입, 수정시 비밀번호1과 2가 일치하지 않으면 NotEquals Error 발생
-		if(beanName.equals("joinMemberBean") || beanName.equals("modifyUserBean")) {
+		if(beanName.equals("joinMemberBean") || beanName.equals("updateMemberBean")) {
 			if(memberVO.getMember_pw().equals(memberVO.getMember_pw2()) == false) {
 				errors.rejectValue("member_pw", "NotEquals");
 				errors.rejectValue("member_pw2", "NotEquals");
