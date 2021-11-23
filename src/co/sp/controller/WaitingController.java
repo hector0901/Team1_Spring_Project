@@ -44,6 +44,8 @@ public class WaitingController {
 
 		model.addAttribute("member_no", member_no);
 		model.addAttribute("shop_no", shop_no);
+		model.addAttribute("cnt", waitingService.getWaitingNo());
+
 
 		// 웨이팅+멤버+샵 vo만들기 (조인 vo)
 		return "waiting/waiting";
@@ -68,20 +70,7 @@ public class WaitingController {
 		return "waiting/waiting_delete";
 	}
 	
-	/////
-	/**
-	 * 관리자용 웨이팅 목록 화면 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/waiting_list_admin")
-    public String waiting_list_admin(Model model) {
-      List<WaitingVO> waiting_list_admin = waitingService.wating_list_admin();
-      model.addAttribute("waiting_list_admin", waiting_list_admin);
-      model.addAttribute(loginBean2.getAdmin_no());
-      return "waiting/waiting_list_admin";
-    }
-	/////
+	
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

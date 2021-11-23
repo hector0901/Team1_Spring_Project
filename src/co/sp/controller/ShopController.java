@@ -217,11 +217,19 @@ public class ShopController {
 	
 	/////
     @GetMapping("/recommend_list")
-    public String recommend_list(@RequestParam("category_no") int category_no, Model model) {
-      List<ShopVO> recommend_list = shopService.recommend_list(category_no);
+    public String recommend_list(@RequestParam("category_no") int category_no, 
+                                 @RequestParam(value = "page", defaultValue = "1") int page, 
+                                 Model model) {
+      // 
+      
+      List<ShopVO> recommend_list = shopService.recommend_list(category_no, page);
 
       model.addAttribute("category_no", category_no);
       model.addAttribute("recommend_list", recommend_list);
+
+      Page pageBean=shopService.getRecommendCnt(page);
+      model.addAttribute("pageBean", pageBean);
+      model.addAttribute("page", page);
       
       return "shop/recommend_list";
     }

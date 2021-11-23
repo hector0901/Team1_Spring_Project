@@ -120,6 +120,7 @@ input[type=submit] {
 #submit:hover {
     font-size: 18px;
 }
+
 a{
    text-decoration: none;
        color:rgba(163, 156, 156, 0.925);
@@ -138,7 +139,7 @@ a{
 
 <body>
 
-  <c:import url="/WEB-INF/views/menu/page_top.jsp"/>
+<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
   
 <div id="search">
  <c:choose>
@@ -181,7 +182,54 @@ a{
        </div>
        </a>
       </c:forEach>
-      
+      <div class="d-none d-md-block">
+          <ul class="pagination justify-content-center">
+            <c:choose>
+          <c:when test="${pageBean.prevPage <= 0 }">
+          <li class="page-item active">
+            <a href="${root }shop/recommend_list?page=${pageBean.prevPage}&category_no=${category_no}" class="page-link">이전</a>
+          </li>
+          </c:when>
+          <c:otherwise>
+          <li class="page-item">
+            <a href="${root }shop/recommend_list?page=${pageBean.prevPage}&category_no=${category_no}" class="page-link">이전</a>
+          </li>
+          </c:otherwise>
+          </c:choose>
+          
+          
+          <c:forEach var='idx' begin="${pageBean.min }" end='${pageBean.max }'>
+          <c:choose>
+          <c:when test="${idx == pageBean.currentPage }">
+          <li class="page-item active">
+            <a href="${root }shop/recommend_list?page=${idx}&category_no=${category_no}" class="page-link">${idx }</a>
+          </li>
+          </c:when>
+          <c:otherwise>
+          <li class="page-item">
+            <a href="${root }shop/recommend_list?page=${idx}&category_no=${category_no}" class="page-link">${idx }</a>
+          </li>
+          </c:otherwise>
+          </c:choose>
+          
+          </c:forEach>
+          
+          <c:choose>
+          <c:when test="${pageBean.max >= pageBean.pageCnt }">
+          <li class="page-item active">
+            <a href="${root }shop/recommend_list?page=${pageBean.nextPage}&category_no=${category_no}" class="page-link">다음</a>
+          </li>
+          </c:when>
+          <c:otherwise>
+          <li class="page-item">
+            <a href="${root }shop/recommend_list?page=${pageBean.nextPage}&category_no=${category_no}" class="page-link">다음</a>
+          </li>
+          </c:otherwise>
+          </c:choose>
+
+          </ul>
+        </div>
+  
   
 </body>
 </html>

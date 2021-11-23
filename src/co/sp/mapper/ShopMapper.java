@@ -66,7 +66,10 @@ public interface ShopMapper {
           "GROUP BY s.shop_no, s.shop_name, s.shop_address1, s.shop_main, s.shop_menu_img, s.shop_inside_img, s.shop_total_seat, s.shop_remain_seat, s.shop_time " + 
           "ORDER BY cnt DESC"
           )
-  List<ShopVO> recommend_list(int category_no);
+ List<ShopVO> recommend_list(int category_no, RowBounds rowBounds);
+  
+  @Select("select count(*) from shop")
+  int getRecommendCnt();
   
   
   

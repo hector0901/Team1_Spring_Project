@@ -54,12 +54,30 @@ public class WaitingService {
 	}
 	
 	/**
-	 * 관리자용 웨이팅 목록
-	 * @return
-	 */
-	public List<WaitingVO> wating_list_admin() {
-      return waitingDAO.wating_list_admin();
+     * 관리자용 웨이팅 목록
+     * @return
+     */
+    public List<WaitingVO> wating_list_admin(int page) {
+        int start=(page-1)* page_listcount;
+        RowBounds rowBounds=new RowBounds(start, page_listcount);
+      return waitingDAO.waiting_list_admin(rowBounds);
     } 
+    
+    //관리자용 웨이팅 목록 페이징
+    public Page getWaitingAdminCnt(int currentPage) {
+        int waitingadmin_cnt=waitingDAO.getWaitingAdminCnt();
+        Page pageBean=new Page(waitingadmin_cnt, currentPage, page_listcount, page_pa);
+        
+        return pageBean;
+    }
+    
+    /**
+     * 웨이팅 번호+1 가져오기 
+     * @return
+     */
+    public int getWaitingNo() {
+      return waitingDAO.getWaitingCnt();
+    }
 	
 	
 	

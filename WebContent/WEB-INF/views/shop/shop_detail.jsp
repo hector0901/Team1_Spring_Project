@@ -91,7 +91,6 @@
          </c:when>
 			<c:when test="${loginBean2.adminLogin == true }">
          		<button id="shop_reserve_button"><a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a></button>
-         		<button id="shop_waiting_button"><a href="${root }shop/shop_delete?shop_no=${shop_no}" class="nav-link">가게 삭제</a></button>
          	</c:when>
          <c:otherwise>
          	<input id="shop_reserve_button" type="submit" value="예약하기">

@@ -57,8 +57,13 @@ public class ReservationDAO {
    * 관리자용 예약 목록
    * @return
    */
-  public List<ReservationVO> reservation_list_admin() {
-    return reservationMapper.reservation_list_admin();
+  public List<ReservationVO> reservation_list_admin(RowBounds rowBounds) {
+    return reservationMapper.reservation_list_admin(rowBounds);
+  }
+  
+  //관리자용 예약목록 페이징
+  public int getReservationAdminCnt() {
+      return reservationMapper.getReservationAdminCnt();
   }
 
 }

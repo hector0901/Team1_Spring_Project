@@ -79,7 +79,7 @@ public class ReservationController {
   }
   
   /**
-   * ·Î±×ÀÎµÈ È¸¿ø¹øÈ£ + ¿¹¾à¹øÈ£ ±âÁØ 1°Ç Á¶È¸
+   * ë¡œê·¸ì¸ëœ íšŒì›ë²ˆí˜¸ + ì˜ˆì•½ë²ˆí˜¸ ê¸°ì¤€ 1ê±´ ì¡°íšŒ
    * @param reservation_no
    * @param member_no
    * @param model
@@ -115,40 +115,43 @@ public class ReservationController {
   }
   
   
-  //°áÁ¦
+  //ê²°ì œ
 	@GetMapping("/pay")
-	public String pay(@RequestParam("pay_no") int pay_no, @RequestParam("reservation_no") int reservation_no,
+	public String pay(@RequestParam("pay_no") int pay_no,
 			Model model) {
 
 		model.addAttribute("pay_no", pay_no);
-		model.addAttribute("reservation_no", reservation_no);
 
 		return "reservation/kakaopay";
 	}
 
 	@GetMapping("/kakaopay")
-	public String kakaopay(@RequestParam("pay_no") int pay_no, @RequestParam("reservation_no") int reservation_no,
+	public String kakaopay(@RequestParam("pay_no") int pay_no,
 			               @ModelAttribute("reservationBean") ReservationVO reservationBean, Model model) {
 
-		model.addAttribute("pay_no", pay_no);
-		model.addAttribute("reservation_no", reservation_no);
-		reservationService.reservation(reservationBean);
-
-		return "reservation/kakaopay";
+	  model.addAttribute("pay_no", pay_no);
+      reservationService.reservation(reservationBean);
+      return "reservation/kakaopay";
+      
 	}
 
 	  
     /////
     /**
-     * °ü¸®ÀÚ¿ë ¿¹¾à ¸ñ·Ï È­¸é 
+     * ê´€ë¦¬ììš© ì˜ˆì•½ ëª©ë¡ í™”ë©´ 
      * @param model
      * @return
      */
-    @GetMapping("/reservation_list_admin")
-    public String reservation_list_admin(Model model) {
-      List<ReservationVO> reservation_list_admin = reservationService.reservation_list_admin();
+	@GetMapping("/reservation_list_admin")
+    public String reservation_list_admin(@RequestParam(value="page", defaultValue = "1") int page ,Model model) {
+      List<ReservationVO> reservation_list_admin = reservationService.reservation_list_admin(page);
       model.addAttribute("reservation_list_admin", reservation_list_admin);
       model.addAttribute(loginBean2.getAdmin_no());
+      
+      Page pageBean=reservationService.getReservationAdminCnt(page);
+      model.addAttribute("pageBean", pageBean);
+      model.addAttribute("page", page);
+      
       return "reservation/reservation_list_admin";
     }
     /////

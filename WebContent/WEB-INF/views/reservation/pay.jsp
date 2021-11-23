@@ -92,7 +92,7 @@ input[type=radio]:checked + .c{
     </style>
     <script>
     function payclick(){
-	      window.open("${root }reservation/kakaopay?reservation_no=${reservation_no}&pay_no=1&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
+	      window.open("${root }reservation/kakaopay?pay_no=1&reservation_person=${reservationBean.reservation_person}&reservation_date=${reservationBean.reservation_date}&reservation_time=${reservationBean.reservation_time}&reservation_add=${reservationBean.reservation_add}&member_no=${reservationBean.member_no}&shop_no=${reservationBean.shop_no}","예약하기","width=500,height=600,left=300");
 	      window.close();
 	}
     </script>

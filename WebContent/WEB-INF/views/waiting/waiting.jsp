@@ -63,6 +63,17 @@
            <div style="margin-left: 35%;">
                <img src="${root }image/logo_1.png" alt="" width="30%" height="30%">
            </div>
+              <form>
+            <fieldset>
+            <legend>현재 웨이팅 번호</legend>
+                <div class="waiting_number">
+                    <span class="waiting_num">${cnt + 1}</span>
+                </div>
+            </fieldset>
+        </form>
+           
+           
+           
                 <form:form action="${root }waiting/waiting_pro" method='post' modelAttribute="joinWaitingBean">
                 <form:hidden path="member_no"/>
                 <form:hidden path="shop_no"/>

@@ -113,9 +113,6 @@ input[type=text]{
  	   today = yyyy+'-'+mm+'-'+dd;
  	   document.getElementById("reservation_date").setAttribute("min", today);
     }
-    function reserveclick(){
-        window.open("${root }reservation/pay?pay_no=1","예약하기","width=500,height=350,left=300");
-      }
     </script>
 </head>
 <body >
@@ -151,12 +148,10 @@ input[type=text]{
             </li>
             
                 <br><br>
-            <form:form action="${root }reservation/reservation_pro" method='post' modelAttribute="reservationBean">     
              <li style="border-bottom: gray;">
                 인원 선택
                 <form:input type="number" path="reservation_person" value="1" min="1" max="5" style="display: inline-block; font-size: 18px; font-weight: bold; padding-left:2em;" />
             (최대 5인까지 가능)</li>
-            </form:form>
         </ul>
       
         <div class="form-group" style="width: 70%; margin-left: 3%">
@@ -166,7 +161,7 @@ input[type=text]{
     </div>
   </div>
 </div>
-        <form:button type="submit" id="pay" onclick="reserveclick()">결제하기</form:button>
+        <form:button type="submit" id="pay">결제하기</form:button>
 
        </form:form>
         </div>

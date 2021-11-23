@@ -58,8 +58,13 @@ public class ShopDAO {
    * 댓글순 가게 목록
    * @return
    */
-  public List<ShopVO> recommend_list(int category_no) {
-    return shopMapper.recommend_list(category_no);
+  public List<ShopVO> recommend_list(int category_no, RowBounds rowBounds) {
+    return shopMapper.recommend_list(category_no, rowBounds);
+  }
+  
+  //댓글순 가게목록 페이징
+  public int getRecommandCnt() {
+      return shopMapper.getRecommendCnt();
   }
   
   

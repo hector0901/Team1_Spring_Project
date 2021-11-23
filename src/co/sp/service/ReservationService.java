@@ -79,17 +79,22 @@ public class ReservationService {
     reservationDAO.reservation_delete(reservation_no);
   }
   
-  
   /**
-   * 관리자용 웨이팅 목록
+   * 관리자용 예약목록 목록
    * @return
    */
-  public List<ReservationVO> reservation_list_admin() {
-    return reservationDAO.reservation_list_admin();
+  public List<ReservationVO> reservation_list_admin(int page) {
+      int start=(page-1)* page_listcount;
+      RowBounds rowBounds=new RowBounds(start, page_listcount);
+    return reservationDAO.reservation_list_admin(rowBounds);
   } 
   
-  
-  
-  
+  //관리자용 예약목록 페이징
+  public Page getReservationAdminCnt(int currentPage) {
+      int reservationadmin_cnt=reservationDAO.getReservationAdminCnt();
+      Page pageBean = new Page(reservationadmin_cnt, currentPage, page_listcount, page_pa);
+      
+      return pageBean;
+  } 
 
 }

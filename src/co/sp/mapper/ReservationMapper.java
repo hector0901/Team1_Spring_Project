@@ -63,7 +63,10 @@ public interface ReservationMapper {
           "FROM shop s, member m, reservation r " +
           "WHERE r.member_no = m.member_no AND r.shop_no = s.shop_no " +
           "ORDER BY m.member_no DESC ")
-  List<ReservationVO> reservation_list_admin();
+  List<ReservationVO> reservation_list_admin(RowBounds rowBounds);
+  
+  @Select("select count(*) from reservation")
+  int getReservationAdminCnt();
   
 
 }

@@ -38,14 +38,26 @@ public interface WaitingMapper {
 	
 	
 	/**
-	 * 관리자용 웨이팅 목록 => 회원번호 기준
-	 * @return
-	 */
-	@Select("SELECT m.member_id, s.shop_name, w.waiting_no, w.waiting_count, w.waiting_rdate " +
-	        "FROM shop s, member m, waiting w " + 
-	        "WHERE w.shop_no = s.shop_no AND w.member_no = m.member_no " + 
-	        "ORDER BY m.member_no DESC ")
-	List<WaitingVO> wating_list_admin();
+     * 관리자용 웨이팅 목록 => 회원번호 기준
+     * @return
+     */
+    @Select("SELECT m.member_id, s.shop_name, w.waiting_no, w.waiting_count, w.waiting_rdate " +
+            "FROM shop s, member m, waiting w " + 
+            "WHERE w.shop_no = s.shop_no AND w.member_no = m.member_no " + 
+            "ORDER BY m.member_no DESC ")
+    List<WaitingVO> waiting_list_admin(RowBounds rowBounds);
+    
+    @Select("select count(*) from waiting")
+    int getWaitingAdminCnt();
+    
+    
+    /**
+     * 웨이팅 번호 + 1 가져오는 맵퍼
+     * @return
+     */
+    @Select("select count(waiting_no) + 1 " +
+            "from waiting ")
+    int getWaitingNo();
 	
 	
 	

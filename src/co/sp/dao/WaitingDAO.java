@@ -39,12 +39,25 @@ public class WaitingDAO {
 	}
 	
 	/**
-	 * 관리자용 웨이팅 목록
-	 * @return
-	 */
-	public List<WaitingVO> wating_list_admin() {
-      return waitingMapper.wating_list_admin();
+     * 관리자용 웨이팅 목록
+     * @return
+     */
+    public List<WaitingVO> waiting_list_admin(RowBounds rowBounds) {
+      return waitingMapper.waiting_list_admin(rowBounds);
     } 
+    
+    //관리자용 웨이팅목록 페이징
+    public int getWaitingAdminCnt() {
+        return waitingMapper.getWaitingAdminCnt();
+    }
+
+    /**
+     * 웨이팅 번호 가져오기
+     * @return
+     */
+    public int getWaitingNo() {
+      return waitingMapper.getWaitingNo();
+    }
 	
 	
 }

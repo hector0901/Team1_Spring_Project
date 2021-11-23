@@ -153,8 +153,17 @@ public class ShopService {
    * 댓글 기준 추천 
    * @return
    */
-  public List<ShopVO> recommend_list(int category_no) {
-    return shopDAO.recommend_list(category_no);
+  public List<ShopVO> recommend_list(int category_no, int page) {
+      int start=(page-1)* page_listcount;
+      RowBounds rowBounds=new RowBounds(start, page_listcount);
+    return shopDAO.recommend_list(category_no, rowBounds);
+  }
+  
+  public Page getRecommendCnt(int currentPage) {
+      int recommend_cnt=shopDAO.getRecommandCnt();
+      Page pageBean=new Page(recommend_cnt, currentPage, page_listcount, page_pa);
+      
+      return pageBean;
   }
   
   
