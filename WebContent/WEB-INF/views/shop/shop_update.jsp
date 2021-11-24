@@ -14,6 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="/resources/js/addressapi.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
 
@@ -38,12 +43,40 @@
 						</div>
 						<div class="form-group">
 							<form:label path="shop_total_seat">전체자리</form:label>
-							<form:input type="number" path="shop_total_seat" class='form-control'/>
+							<form:input type="number" path="shop_total_seat" min="0" class='form-control'/>
 						</div>
 						<div class="form-group">
 							<form:label path="shop_remain_seat">남은자리</form:label>
-							<form:input type="number" path="shop_remain_seat" class="form-control" rows="10" style="resize:none"/>
+							<form:input type="number" path="shop_remain_seat" class="form-control" min="0" oninput="seat()" rows="10" style="resize:none"/>
 						</div>
+						<script type="text/javascript">
+				       		function seat() {
+								var shop_total_seat=document.getElementById('shop_total_seat');
+								var shop_remain_seat=document.getElementById('shop_remain_seat');
+								shop_remain_seat.setAttribute("max", shop_total_seat.value);
+								
+								var shop_total_seat = $("#shop_total_seat").val()
+								var shop_remain_seat = $("#shop_remain_seat").val()
+								if(shop_total_seat < shop_remain_seat){
+									var c=document.getElementById("shop_remain_seat1"); //div아이디
+					       			  c.innerHTML=null;
+								}
+								else if(shop_total_seat == shop_remain_seat) {
+									var a=document.createElement("div"); //오류 텍스트
+					       			  a.innerHTML = "잔여 좌석 수가 총 좌석 수를 초과했습니다.";
+					       			  document.getElementById("shop_remain_seat1").appendChild(a);
+					       			  return;
+								}
+								else{
+					       			  var c2=document.getElementById("shop_remain_seat1");
+					       			  c2.innerHTML=null;
+					       			  var b2=document.getElementById("shop_remain_seat1").removeChild(a);
+					       			  return;
+					       		}	
+							}
+       					</script>
+						
+						
 						<div class="form-group">
 							<form:label path="shop_time">영업시간</form:label>
 							<form:input path="shop_time" class="form-control" rows="10" style="resize:none"/>

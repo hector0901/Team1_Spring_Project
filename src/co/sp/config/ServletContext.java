@@ -197,7 +197,7 @@ public class ServletContext implements WebMvcConfigurer {
         mailsender.setHost("smtp.gmail.com");
         mailsender.setPort(25);
         mailsender.setUsername("qhadl0796@gmail.com");
-        mailsender.setPassword("qhaqhaQ123");
+        mailsender.setPassword("");
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.auth", "true");

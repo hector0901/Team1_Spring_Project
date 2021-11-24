@@ -149,16 +149,19 @@ public class MemberService {
    * 회원가입 관련
    * @param tempPWBean
    */
+  
   public void getPWInfo(MemberVO tempPWBean) {
-    tempPWBean.setMember_pw(pwBean.getMember_pw());
-    tempPWBean = memberDAO.getPWInfo(tempPWBean);
-    
-    if(tempPWBean != null) {
-      pwBean.setMember_pw(tempPWBean.getMember_pw());
-      pwBean.setPwfind(true);
-    }
-    
-  }
+	    tempPWBean.setMember_pw(pwBean.getMember_pw());
+	    tempPWBean.setMember_id(pwBean.getMember_id());
+	    tempPWBean = memberDAO.getPWInfo(tempPWBean);
+	    
+	    if(tempPWBean != null) {
+	      pwBean.setMember_id(tempPWBean.getMember_id());
+	      pwBean.setMember_pw(tempPWBean.getMember_pw()); 
+	      pwBean.setPwfind(true);
+	    }
+	    
+	  }
 
   
 

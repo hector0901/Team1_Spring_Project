@@ -88,9 +88,9 @@
           </c:if>
           <form:form action="${root }member/find_pw_pro" method='post' modelAttribute="tempPWBean">
             <div class="form-group">
-              <form:label path="member_id">아이디</form:label>
-              <form:input path="member_id" class='form-control'/>
-              <form:errors path='member_id' style='color:red'/>
+              <form:label path="member_name">성명</form:label>
+              <form:input path="member_name" class='form-control'/>
+              <form:errors path='member_name' style='color:red'/>
             </div>
             <div class="form-group">
               <form:label path="member_email">이메일</form:label>

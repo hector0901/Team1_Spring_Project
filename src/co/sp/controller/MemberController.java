@@ -194,19 +194,19 @@ public class MemberController {
             m.addAttribute("tempPWBean", tempPWBean);
             
             System.out.println("보낸 메일주소: " +  tempPWBean.getMember_email());
-            System.out.println("아이디: " + tempPWBean.getMember_id());
+            System.out.println("아이디: " + pwBean.getMember_id());
             System.out.println("비밀번호: " + pwBean.getMember_pw());
  
             EmailSet email = new EmailSet();
             email.setReceiver(tempPWBean.getMember_email());
-            email.setSubject(tempPWBean.getMember_id() + "님의 비밀번호 찾기 결과");
-            email.setContent("고객님의 비밀번호는 " + pwBean.getMember_pw() + " 입니다.");
+            email.setSubject("파인 핫플 " + tempPWBean.getMember_name() + "님의 아이디 및 비밀번호 찾기 결과");
+            email.setContent("고객님의 아이디 및 비밀번호는 " + pwBean.getMember_id() + "와 "+ pwBean.getMember_pw() + " 입니다.");
             
             emailSender.SendEmail(email);
 
             return "member/find_pw_success";
         } else {
-          System.out.println("아이디나 이메일이 정확하지 않습니다");
+          System.out.println("가입하신 성함이나 이메일이 정확하지 않습니다");
             return "member/find_pw_fail";
         }
     }

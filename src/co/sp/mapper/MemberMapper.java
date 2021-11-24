@@ -76,9 +76,9 @@ public interface MemberMapper {
 	 * @param tempPWBean
 	 * @return
 	 */
-	@Select("select member_pw " + 
-           "from member " + 
-           "where member_id = #{member_id} and member_email = #{member_email} " )
+	@Select("select member_id, member_pw " + 
+            "from member " + 
+            "where member_name = #{member_name} and member_email = #{member_email} " )
     MemberVO getPWInfo(MemberVO tempPWBean);
          
     

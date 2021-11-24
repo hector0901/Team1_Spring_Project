@@ -46,7 +46,7 @@
 
     <div id="box">
         <img src="${root }menu/image/happybear.png" style="width: 230px; height: 200px;">
-        <div id="text" style="text-align: center;">입력하신 이메일로 비밀번호가<br> 발송되었습니다.</div>
+        <div id="text" style="text-align: center;">입력하신 이메일로 아이디와 비밀번호가<br> 발송되었습니다.</div>
         <div id="button-div" style="text-align: center;"><button id="button" onclick="location.href='${root}member/login'">로그인 페이지로 이동</button></div>
     </div>
     
