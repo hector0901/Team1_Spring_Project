@@ -65,7 +65,7 @@ td {
                      <th class="text-center d-none d-md-table-cell">예약시간</th>
                      <th class="text-center d-none d-md-table-cell">예약인원</th>
                      <th class="text-center d-none d-md-table-cell">예약등록일</th>                
-                     <th class="text-center d-none d-md-table-cell">삭제</th>        
+                     <th class="text-center d-none d-md-table-cell">예약취소</th>        
                   </tr>
                </thead>
                <tbody>
@@ -75,7 +75,7 @@ td {
                         <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_date }</td>
                         <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_time }</td>
                         <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_person }</td>
-                        <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_rdate.substring(0, 16)  }</td>
+                        <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_rdate.substring(0, 10)  }</td>
                         <td class="text-center d-none d-md-table-cell" id="id"><a href="${root }reservation/reservation_delete?member_no=${loginBean.member_no}&reservation_no=${obj.reservation_no}"><img alt="" src="${root }image/x.png"></a></td>
                      </tr>
                   </c:forEach>

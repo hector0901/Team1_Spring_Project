@@ -72,7 +72,7 @@ td {
                 <td class="text-center d-none d-md-table-cell" id="id">${obj.member_id }</td>
                 <td class="text-center d-none d-md-table-cell" id="id">${obj.shop_name }</td>
                 <td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_count }</td>
-                <td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate }</td>
+                <td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate.substring(0, 16) }</td>
               </tr>
             </c:forEach>
           </tbody>

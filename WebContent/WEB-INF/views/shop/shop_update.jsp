@@ -42,11 +42,11 @@
 							<form:input path="shop_content" class='form-control'/>
 						</div>
 						<div class="form-group">
-							<form:label path="shop_total_seat">전체자리</form:label>
+							<form:label path="shop_total_seat">총 좌석 수</form:label>
 							<form:input type="number" path="shop_total_seat" min="0" class='form-control'/>
 						</div>
 						<div class="form-group">
-							<form:label path="shop_remain_seat">남은자리</form:label>
+							<form:label path="shop_remain_seat">잔여 좌석 수</form:label>
 							<form:input type="number" path="shop_remain_seat" class="form-control" min="0" oninput="seat()" rows="10" style="resize:none"/>
 						</div>
 						<script type="text/javascript">

@@ -60,7 +60,7 @@ td {
         <table class="table table-hover" id='waiting_list'>
           <thead>
             <tr>
-              <th class="text-center d-none d-md-table-cell">회원이름</th>
+              <th class="text-center d-none d-md-table-cell">회원아이디</th>
               <th class="text-center d-none d-md-table-cell">가게명</th>
               <th class="text-center d-none d-md-table-cell">예약날짜</th>
               <th class="text-center d-none d-md-table-cell">예약시간</th>
@@ -76,7 +76,7 @@ td {
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_date }</td>
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_time }</td>
                  <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_person }</td>
-                 <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_rdate.substring(0, 16)  }</td>
+                 <td class="text-center d-none d-md-table-cell" id="id">${obj.reservation_rdate.substring(0, 10)  }</td>
               </tr>
             </c:forEach>
           </tbody>

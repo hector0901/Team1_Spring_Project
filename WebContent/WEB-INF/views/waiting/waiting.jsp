@@ -61,12 +61,12 @@
 </head>
 <body >
 
-           <div style="margin-left: 35%;">
+           <div style="margin-left: 40%;">
                <img src="${root }image/logo_1.png" alt="" width="30%" height="30%">
            </div>
               <form>
             <fieldset>
-            <legend>현재 웨이팅 번호</legend>
+            <legend>웨이팅 번호</legend>
                 <div class="waiting_number">
                     <span class="waiting_num">${cnt + 1}</span>
                 </div>

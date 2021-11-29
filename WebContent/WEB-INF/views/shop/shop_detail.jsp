@@ -63,10 +63,10 @@
   <!--가게설명-->
 
     <div id="shop_main">
+    
       <ul id="shop_detail_page">
       	
         <li id="shop_main_img">
-        
         <!-- 메인이미지  -->
         <c:choose>
       	  <c:when test="${readShopBean.shop_main != null}"> <!-- 파일이 존재하면 -->
@@ -75,9 +75,9 @@
           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
             <img src='${root }image/alt_image.png' style='width:550px; height: 550px;'>
        	  </c:otherwise>
-        </c:choose>
-          
+        </c:choose>  
         </li> 
+        
         <li>
         	<div id="shop_main_explanation">
           <p id="shop_main_name">${readShopBean.shop_name }</p>
@@ -89,27 +89,33 @@
          <br>
           <img src="image/clipboard.png" width="15" height="15"> ${readShopBean.shop_content }<br>
           </div><br><br>
+          </li>
+          <div id="all_button" style="margin-top: 25%;">
+          <li> 
          <c:choose> 
          <c:when test="${loginBean.memberLogin == true }">
-          <input id="shop_waiting_button" type="submit" value="웨이팅" onclick="waitingclick()">
-          <input id="shop_reserve_button" type="submit" value="예약하기" onclick="reserveclick()">
-          
+          <button id="shop_waiting_button" type="submit" onclick="waitingclick()">웨이팅</button>
+          <button id="shop_reserve_button" type="submit" onclick="reserveclick()">예약하기 </button>
+          <li>
+        	<span style="font-size: 12px; margin-left: 45%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
+        </li>
          </c:when>
 			<c:when test="${loginBean2.adminLogin == true }">
-         		<button id="shop_reserve_button"><a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a></button>
-         	    <input id="shop_waiting_button" type="submit" value="가게 삭제" onclick="deleteclick()">	
+         		<button id="shop_waiting_button"><a href="${root }shop/shop_update?shop_no=${shop_no}" class="nav-link">가게 수정</a></button>
+         	    <button id="shop_reserve_button" type="submit" onclick="deleteclick()">가게 삭제</button>
          	</c:when>
          <c:otherwise>
-         	<input id="shop_waiting_button" type="submit" value="웨이팅">
-         	<input id="shop_reserve_button" type="submit" value="예약하기">
-          	
-          	
+         	<button id="shop_waiting_button" type="submit">웨이팅</button>
+         	<button id="shop_reserve_button" type="submit">예약하기</button>
+         	<li>
+        	<span style="font-size: 12px; margin-left: 45%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
+        </li>
          </c:otherwise>
          </c:choose>
         </li>
-        <li>
-        	<span style="font-size: 12px; margin-left: 8%;">* 예약 및 웨이팅은 회원 전용 서비스입니다.</span>
-        </li></div>
+        </div>
+        
+        </div>
       </ul>
       
     </div>
@@ -123,10 +129,10 @@
                 <a href="#shop_main_menu_content" class="btn" id="shop_main_menu_tab">메인메뉴</a>
             </li>
             <li>
-                <a href="#shop_menu_pan_content" class="btn" id="shop_menu_pan_tab">상세사진</a>
+                <a href="#shop_menu_pan_content" class="btn" id="shop_menu_pan_tab">내부사진</a>
             </li> 
             <li>
-                <a href="#shop_review" class="btn" id="shop_review_tab">리뷰</a>
+                <a href="#shop_review" class="btn" id="shop_review_tab">댓글</a>
             </li> 
             <li>
                 <a href="#shop_map_contact" class="btn" id="shop_contact_tab">오시는길</a>
@@ -177,8 +183,8 @@
        <form:form action="${root }shop/reply_pro" method='post' modelAttribute="joinShopreplyBean">
 	   <form:hidden path="member_no" />
 	   <form:hidden path="shop_no" />
-					<h4>리뷰작성</h4>
-					<form:textarea path="shop_reply_content" placeholder="로그인 회원만 댓글작성가능합니다" rows="4" cols="60" wrap="hard" style="resize: none; "/>
+					<h4>댓글작성</h4>
+					<form:textarea path="shop_reply_content" placeholder="회원으로 로그인 후 댓글 작성이 가능합니다" rows="4" cols="60" wrap="hard" style="resize: none; "/>
 					<c:choose>
                         <c:when test="${loginBean.memberLogin == true }">
 			       <div id="review_button1"><button type="submit" id="review_button">등록</button></div> 
@@ -211,7 +217,7 @@
                    <td class="text-center d-none d-md-table-cell" style="width: 40px">${obj.member_nickname }</td>		
                    
                    <!-- 등록일 -->
-                   <td class="text-center d-none d-md-table-cell" style="width: 40px">${obj.shop_reply_rdate }</td>
+                   <td class="text-center d-none d-md-table-cell" style="width: 40px">${obj.shop_reply_rdate.substring(0, 16) }</td>
                    
                    <td style="width: 10px"><!-- 삭제 -->
                    <c:choose>

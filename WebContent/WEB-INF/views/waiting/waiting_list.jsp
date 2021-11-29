@@ -73,7 +73,7 @@ td {
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_no }</td>
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.shop_name }</td>
 								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_count }</td>
-								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate }</td>
+								<td class="text-center d-none d-md-table-cell" id="id">${obj.waiting_rdate.substring(0, 16) }</td>
 								<td class="text-center d-none d-md-table-cell" id="id">
 								<a href="${root }waiting/waiting_delete?member_no=${loginBean.member_no}&waiting_no=${obj.waiting_no}"><img alt="" src="${root }image/x.png"></a></td>
 							</tr>

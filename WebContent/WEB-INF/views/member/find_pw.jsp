@@ -71,7 +71,7 @@
 <img src="${root }image/logo_1.png" alt="" width="20%" height="20%"></a>
 </div>
 <div class="member_login_logo">
-  <h1>FindPW</h1>
+  <h1>Find ID/PW</h1>
 </div>
 
 <div class="container" style="margin-top:80px">
@@ -98,7 +98,7 @@
               <form:errors path='member_email' style='color:red'/>
             </div>
             <div class="form-group text-right">
-              <form:button class='login_btn'>비밀번호 찾기</form:button>
+              <form:button class='login_btn'>ID/PW 찾기</form:button>
             </div>
           </form:form>
         </div>

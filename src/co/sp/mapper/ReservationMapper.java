@@ -42,7 +42,7 @@ public interface ReservationMapper {
    * @return
    */
   @Select(" SELECT m.member_name, m.member_tel, " + 
-          " r.reservation_no, r.reservation_date, reservation_time, reservation_person, r.reservation_rdate, " +
+          " r.reservation_no, r.reservation_date, reservation_time, reservation_person, r.reservation_rdate,r.reservation_add, " +
           " s.shop_name, s.map " + 
           " FROM reservation r, member m, shop s " + 
           " WHERE r.member_no = m.member_no AND r.shop_no = s.shop_no AND r.reservation_no = #{reservation_no} ") 

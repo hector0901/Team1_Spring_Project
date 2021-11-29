@@ -115,7 +115,7 @@ body {
           </div>
           <br><br>
           <div class="form-group">
-            <label for="reservation_rdate" class="col-md-2 control-label">추가사항</label>
+            <label for="reservation_add" class="col-md-2 control-label">추가사항</label>
             <div class="col-md-4">
             <textarea id="reservation_add" name="reservation_add" class="form-control" disabled="disabled">${reservation_read.reservation_add }</textarea>
             </div>

@@ -34,10 +34,9 @@
     	margin-left: 5%;
     	margin-top: 5%
     }
-    
     #shop_reserve_button{
-      margin: 10px 0px 50px 80px;
-      padding: 2% 4%;
+      margin: 10px 0px 50px 5px;
+      padding: 20px;
       background-color: lemonchiffon;
       border-radius: 5px;
       font-family:"留���怨���";
@@ -50,8 +49,8 @@
       background-color: rgb(228, 223, 184);
     }
     #shop_waiting_button{
-      margin: 10px 0px 50px 20px;
-      padding: 2% 4%;
+      margin: 10px 0px 50px 60px;
+      padding: 20px;
       background-color: white;
       border-radius: 5px;
       font-family:"留���怨���";

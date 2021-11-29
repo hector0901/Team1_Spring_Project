@@ -20,7 +20,9 @@ public class ReservationVO {
   
   /* 회원번호 */
   private int member_no;
-  /* 가게번호 */
+  private String member_id;
+
+/* 가게번호 */
   private int shop_no;
   
   /* 예약등록일(예약이 눌린 시간) */
@@ -151,5 +153,12 @@ public class ReservationVO {
   public void setMember_tel(String member_tel) {
     this.member_tel = member_tel;
   } 
+  public String getMember_id() {
+	return member_id;
+}
+
+public void setMember_id(String member_id) {
+	this.member_id = member_id;
+}
   
 }

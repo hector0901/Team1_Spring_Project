@@ -86,7 +86,7 @@ td {
 						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_nickname }</td>
 						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_email }</td>
 						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_tel }</td>
-						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_rdate }</td>		
+						<td class="text-center d-none d-md-table-cell" id="id">${obj.member_rdate.substring(0, 16) }</td>		
 					  </tr>
 					</c:forEach>
 				</tbody>

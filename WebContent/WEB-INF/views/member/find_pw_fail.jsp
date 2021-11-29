@@ -46,7 +46,7 @@
 
     <div id="box">
         <img src="${root }menu/image/cry_bear.png" style="width: 200px; height: 200px;">
-        <div id="text" style="text-align: center;">아이디 또는 이메일을 확인해주세요.</div>
+        <div id="text" style="text-align: center;">성명 또는 이메일을 확인해주세요.</div>
         <div id="button-div" style="text-align: center;"><button id="button" onclick="location.href='${root}member/find_pw'">이전 페이지로 이동</button></div>
     </div>
     

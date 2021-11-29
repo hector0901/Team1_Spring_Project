@@ -111,7 +111,7 @@ nav ul li a  {
              <ul>
                 <li class="child"><a href="${root }shop/recommend_list?category_no=1">주점</a></li>
                 <li class="child"><a href="${root }shop/recommend_list?category_no=2">식당</a></li>
-                <li class="child"><a href="${root }shop/recommend_list?category_no=2">카페</a></li>
+                <li class="child"><a href="${root }shop/recommend_list?category_no=3">카페</a></li>
               </ul>
              </li>
             

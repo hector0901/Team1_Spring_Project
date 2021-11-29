@@ -100,7 +100,7 @@
 						<div class="form-group text-right">
 							<form:button class='login_btn'>로그인</form:button>
 							<a href="${root }member/join" class="join_btn">회원가입</a>
-							<a href="${root }member/find_pw" class="join_btn">비밀번호 찾기</a>
+							<a href="${root }member/find_pw" class="join_btn">ID/PW 찾기</a>
 						</div>
 					</form:form>
 				</div>

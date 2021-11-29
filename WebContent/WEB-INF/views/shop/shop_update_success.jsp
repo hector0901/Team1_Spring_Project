@@ -4,5 +4,5 @@
 <c:set var='root' value='${pageContext.request.contextPath }/' />
 <script type="text/javascript">
    alert('수정이 완료 되었습니다')
-   location.href = "${root }shop/shop_update?shop_no=${updateShopBean.shop_no}"
+   location.href = "../"
 </script>

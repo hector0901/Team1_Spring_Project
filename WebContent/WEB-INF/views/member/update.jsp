@@ -23,6 +23,10 @@
 <script src="/resources/js/addressapi.js"></script>
 <link rel="stylesheet" type="text/css" href="css/mypage.css">
 <style type="text/css">
+aside {
+    width: 44%;
+    margin-left: 60%;
+}
 .select_img {
 	margin-top:2%;
 	margin-left: 18%;
@@ -126,9 +130,13 @@ function execPostCode() {
 </head>
 
 <body>
-<c:import url="/WEB-INF/views/menu/page_top.jsp"/>
+<c:import url="/WEB-INF/views/menu/page_top.jsp"/>  
+<!-- aside 주의사항-->
+    <aside>
+        * 표시만 수정가능합니다.
+    </aside>
 	<form:form action='${root }member/update_pro' method='post' modelAttribute="updateMemberBean">
-		<div class="mypage회원정보수정_div" style="margin-top: -3%;">
+		<div class="mypage회원정보수정_div" >
 			<div class="form-group">
 				<form:label path="member_id" class="col-md-2 control-label">아이디 </form:label>
 				<div class="col-md-4">
